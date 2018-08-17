@@ -160,7 +160,7 @@ div#chart_div3 {
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Type</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" name="type[]">
+                                            <select class="form-control" name="type[]" required="">
                                         <option>Select Type</option>
                                         <?php 
                                           foreach ($flows as $f) {
@@ -174,7 +174,7 @@ div#chart_div3 {
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Machine</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control sel" name="machine[]">
+                                            <select class="form-control sel" name="machine[]" required="">
                                         <option>Select Machine</option>
                                     </select>
                                         </div>
@@ -187,7 +187,7 @@ div#chart_div3 {
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Priority</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" name="priority[]">
+                                            <select class="form-control" name="priority[]" required>
                                       <option>Select Priority</option>
                                       <option value="Hi">Hi</option>
                                       <option value="Low">Low</option>
@@ -216,14 +216,14 @@ div#chart_div3 {
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Start Date</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control start" name="start_date[]" type="datetime-local" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>">
+                                            <input class="form-control start" name="start_date[]" type="datetime-local" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" required="">
                                         </div>
 
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">End Date</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control end" name="end_date[]" type="datetime-local" value="" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" >
+                                            <input class="form-control end" name="end_date[]" type="datetime-local" value="" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" required="">
                                         </div>
 
                                     </div>
