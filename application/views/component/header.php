@@ -138,9 +138,9 @@ function get_single_difrreance($date,$end=null)
                 <div class="nav-container">
                     <!-- /.navbar-header -->
                     <ul class="nav navbar-nav hidden-xs">
-                        <li><a id="fullscreen" href="#"><i class="material-icons">fullscreen</i> </a></li>
+                        <!-- <li><a id="fullscreen" href="#"><i class="material-icons">fullscreen</i> </a></li> -->
                         <!-- /.Fullscreen -->
-                        <li class="hidden-xs">
+                        <!-- <li class="hidden-xs">
                             <a class="search-trigger" href="#">
                                 <i class="material-icons">search</i>
                             </a>
@@ -153,9 +153,9 @@ function get_single_difrreance($date,$end=null)
                                     </form>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         <!-- /.Full page search -->
-                        <li><a id="menu-toggle" href="#"><i class="material-icons">apps</i></a></li>
+                        <!-- <li><a id="menu-toggle" href="#"><i class="material-icons">apps</i></a></li> -->
                         <!-- /.Sidebar menu toggle icon -->
                         <!--Start dropdown mega menu-->
 
@@ -233,10 +233,10 @@ function get_single_difrreance($date,$end=null)
                                 <i class="material-icons">person_add</i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
-                                <li><a href="profile.html"><i class="ti-user"></i>&nbsp; Profile</a></li>
-                                <li><a href="mailbox.html"><i class="ti-email"></i>&nbsp; My Messages</a></li>
+                                <li><a href="#"><i class="ti-user"></i>&nbsp; Profile</a></li>
+                                <!-- <li><a href="mailbox.html"><i class="ti-email"></i>&nbsp; My Messages</a></li>
                                 <li><a href="lockscreen.html"><i class="ti-lock"></i>&nbsp; Lock Screen</a></li>
-                                <li><a href="#"><i class="ti-settings"></i>&nbsp; Settings</a></li>
+                                <li><a href="#"><i class="ti-settings"></i>&nbsp; Settings</a></li> -->
                                 <li><a href="<?php echo base_url() ?>logout/destroy"><i class="ti-layout-sidebar-left"></i>&nbsp; Logout</a></li>
                             </ul><!-- /.dropdown-user -->
                         </li><!-- /.Dropdown -->
