@@ -31,6 +31,8 @@
 		public function insert()
 		{
 
+			// print_r($_FILES);die();
+
 			if ( $this->permission['created'] == '0') 
 			{
 				redirect('home');
@@ -39,15 +41,15 @@
 			$data = $this->input->post();
 			$data['user_id'] = $this->session->userdata('user_id');
 
-			$config['upload_path'] = './uploads/orders';
+			$config['upload_path'] = './uploads/orders/';
 
-			$config['allowed_types'] = 'pdf|doc|word|docs|txt|xlsx|xls|jpeg';
+			$config['allowed_types'] = 'pdf|doc|word|docs|txt|xlsx|xls|jpeg|csv|jpg';
 
-			$config['max_size'] = '10000';
+			$config['max_size'] = '400000';
 
-			$config['max_width'] = '1024';
+			$config['max_width'] = '41024';
 
-			$config['max_height'] = '768';
+			$config['max_height'] = '44768';
 			if (!empty($_FILES['Attach_File']['name'])) {
 			  $this->load->library('upload', $config);
 			  if($this->upload->do_upload('Attach_File'))

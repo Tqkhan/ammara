@@ -51,7 +51,10 @@
                                                     foreach ($orders as $module) {
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $module["id"] ?></td><td><?php echo $module["Date"] ?></td><td><?php echo $module["Name"] ?></td><td><?php echo $module["Designation"] ?></td><td><?php echo $module["quantity"] ?></td><td><?php echo $module["Attach_File"] ?></td><td><?php echo $module["Order_Type"] ?></td><td><?php echo $module["Remarks"] ?></td><?php 
+                                                    <td><?php echo $module["id"] ?></td><td><?php echo $module["Date"] ?></td><td><?php echo $module["Name"] ?></td><td><?php echo $module["Designation"] ?></td><td><?php echo $module["quantity"] ?></td><td><?php if ($module["Attach_File"]!="") { ?>
+                                                        <a href="<?php echo base_url().$module["Attach_File"] ?>" download>Download</a>
+                                                        <?php
+                                                    }?></td><td><?php echo $module["Order_Type"] ?></td><td><?php echo $module["Remarks"] ?></td><?php 
                                                         if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
                                                     ?>
                                                     <td>

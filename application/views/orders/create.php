@@ -33,15 +33,15 @@
                         <div class="panel-body">
                             <div class="form-group row">
                                 <div class="form-group col-lg-6">
-                                    <label for="example-text-input" class="col-sm-3 col-form-label">Date</label>
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Date<span style="color: red;">*</span></label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="Date" type="date" value="" id="example-text-input" placeholder="">
+                                        <input class="form-control" name="Date" type="date" value="" id="example-text-input" placeholder="" required="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label for="example-text-input" class="col-sm-3 col-form-label">Name</label>
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Name<span style="color: red;">*</span></label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="Name" type="text" value="" id="example-text-input" placeholder="">
+                                        <input class="form-control" name="Name" type="text" value="" id="example-text-input" placeholder="" required="">
                                     </div>
                                 </div>
                             </div>
@@ -53,9 +53,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label for="example-text-input" class="col-sm-3 col-form-label">Quantity</label>
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Quantity<span style="color: red;">*</span></label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="quantity" type="text" value="" id="example-text-input" placeholder="">
+                                        <input class="form-control" name="quantity" type="text" value="" id="example-text-input" placeholder="" required="">
                                     </div>
                                 </div>
                             </div>
@@ -68,10 +68,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label for="example-text-input" class="col-sm-3 col-form-label">Order Type</label>
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Order Type<span style="color: red;">*</span></label>
                                     <div class="col-sm-9">
                                         
-                                        <select class="form-control" id="exampleSelect1" name="Order_Type">
+                                        <select class="form-control" id="exampleSelect1" name="Order_Type" required="">
                                             <option value="">Please Select</option>
                                             <option value="New">New</option>
                                             <option value="Repeat">Repeat</option>
