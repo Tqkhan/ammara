@@ -284,8 +284,22 @@ class Machine_flow extends MY_Controller {
 
     public function sorting_start($plane_id,$flow_id)
     {
-        $id = $this->start($flow_id);
+
+            if ($this->input->post()) {
+                unset($_POST['id']);
+          $data = $this->input->post();
+            //echo '<pre>';print_r($data);die;
+            $data['user_id'] = $this->session->userdata('user_id');
+            $id = $this->machine_flow_model->insert('sorting',$data);
+            if ($id) {
+         $id = $this->start($flow_id);
         redirect('sorting');
+       
+            }
+        }
+        $this->data['title'] = 'Sorting';
+        $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        $this->load->template('machine_flow/sorting',$this->data);
     }
 
     public function sorting_complete($plane_id,$flow_id)
