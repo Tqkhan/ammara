@@ -288,6 +288,9 @@ class Machine_flow extends MY_Controller {
             if ($this->input->post()) {
                 unset($_POST['id']);
           $data = $this->input->post();
+          $data['plane_id']=$plane_id;
+          $data['flow_id']=$flow_id;
+
             //echo '<pre>';print_r($data);die;
             $data['user_id'] = $this->session->userdata('user_id');
             $id = $this->machine_flow_model->insert('sorting',$data);
