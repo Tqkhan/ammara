@@ -1426,6 +1426,15 @@
                                             </div>        
                                                 </div>
 
+
+                    <?php if ($sorting): ?>
+                        <div>
+                            <?php echo "<pre>";
+                        print_r($sorting); ?>
+                            
+                        </div>
+                    <?php endif ?>
+
 <?php if ($batch_release) {?>
 <div class="row">
             <div class="col-sm-12">

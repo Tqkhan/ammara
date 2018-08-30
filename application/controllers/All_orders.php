@@ -84,6 +84,14 @@ class All_orders extends MY_Controller
 	        $this->data['printing_hourse'] = $this->all_orders_model->get_rows('printing_hourse',array('printing_id'=>$this->data['printing_complete']['id']));
 	        $this->data['printing_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 		}
+	    // sorting
+	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'10'));
+		if ($flow_data) {
+			$flow = $flow_data['id'];
+			$this->data['sorting'] = $this->all_orders_model->get_row_single('sorting',array('plane_id'=>$plane_id,'flow_id'=>$flow));
+	       
+		}
+
 		$this->data['line_clearance'] = $this->all_orders_model->line_clearance($plane_id);
 		$this->data['development'] = $this->all_orders_model->get_row_single('development_report',array('order_id'=>$id));
 		$this->data['design'] = $this->all_orders_model->get_row_single('design_report',array('order_id'=>$id));
