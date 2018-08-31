@@ -284,7 +284,7 @@ div#chart_div3 {
             // border depending upon property used. Only one should be  
             // specified.  
             // targetLeft: 0,  
-            targetRight: 450,  
+            targetRight: 350,  
   
             // Represents distance from top or bottom browser window  
             // border depending upon property used. Only one should be  
