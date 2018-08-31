@@ -268,7 +268,7 @@ div#chart_div3 {
     padding:16px;background:#FFFFFF;  
     border:2px solid #2266AA;  
     z-index:100; display:none;">  
- <button class="btn_close btn btn-primary" style="float:right; display: none;" >&times;</button>  
+ <button class="btn_close btn btn-primary" style="float:right; display: none;" >Close &times;</button>  
  <br>
  <br>
 
@@ -429,23 +429,3 @@ $("body").click(function () {
 </script>
 
 
-
-<a class="btn btn-primary click-b" data-toggle="modal" href='#modal-id'>Trigger modal</a>
-<div class="modal fade" id="modal-id">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <input type="text"  id="" class="focus_input">
-            </div>
-            <div class="modal-footer">
-                <a class="get_html">Get</a>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
