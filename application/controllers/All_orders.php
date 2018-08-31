@@ -131,7 +131,14 @@ class All_orders extends MY_Controller
 	    $this->load->template('all_orders/view_timeline',$this->data);
 		//echo '<pre>';print_r($this->data['timeline']);die;
 	}
-
+	public function batch_release_old($id,$flow_id)
+	{
+		$this->data['title'] = 'Batch Release Form';
+		$this->data['order'] = $this->all_orders_model->get_batch_detail($id,$flow_id);
+		//echo '<pre>';print_r($this->data['order']);die;
+		$this->load->template('all_orders/batch_release_old',$this->data);
+	}
+/*insert data in 2 table in one form*/
 	public function batch_release($id,$flow_id)
 	{
 		if ($this->permission['edit'] == '0') 
@@ -139,11 +146,71 @@ class All_orders extends MY_Controller
 			redirect('home');
 		}
 		if ($this->input->post()) {
+			$data_all=$_POST;
+			  unset($_POST['batch_release_id']);
+			  unset($_POST['grammage_status']);
+			  unset($_POST['grammage_remarks']);
+			  unset($_POST['color_status']);
+			  unset($_POST['color_remarks']);
+			  unset($_POST['design_status']);
+			  unset($_POST['design_remarks']);
+			  unset($_POST['text_status']);
+			  unset($_POST['text_remarks']);
+			  unset($_POST['scum_spots_status']);
+			  unset($_POST['scum_spots_remarks']);
+			  unset($_POST['gloss_status']);
+			  unset($_POST['gloss_remarks']);
+			  unset($_POST['die_cutting_embossing_status']);
+			  unset($_POST['die_cutting_embossing_remarks']);
+			  unset($_POST['creasing_status']);
+			  unset($_POST['creasing_remarks']);
+			  unset($_POST['stripping_status']);
+			  unset($_POST['stripping_remarks']);
+			  unset($_POST['folding_gluing_status']);
+			  unset($_POST['folding_gluing_remarks']);
+			  unset($_POST['labeling_status']);
+			  unset($_POST['labeling_remarks']);
+			  unset($_POST['packing_status']);
+			  unset($_POST['packing_remarks']);
+			  unset($_POST['master_cartons_status']);
+			  unset($_POST['master_cartons_remarks']);
 			$data = $this->input->post();
 			$data['user_id'] = $this->session->userdata('user_id');
 			$data['wo_id'] = $id;
 			$data['flow_id'] = $flow_id;
-			$id = $this->all_orders_model->insert('batch_release',$data);
+			if ($batch_id = $this->all_orders_model->insert('batch_release',$data)) {
+				$batch_release_parameter=array(
+				  'batch_release_id'=>$batch_id,
+				  'grammage_status'=>$data_all['grammage_status'],
+				  'grammage_remarks'=>$data_all['grammage_remarks'],
+				  'color_status'=>$data_all['color_status'],
+				  'color_remarks'=>$data_all['color_remarks'],
+				  'design_status'=>$data_all['design_status'],
+				  'design_remarks'=>$data_all['design_remarks'],
+				  'text_status'=>$data_all['text_status'],
+				  'text_remarks'=>$data_all['text_remarks'],
+				  'scum_spots_status'=>$data_all['scum_spots_status'],
+				  'scum_spots_remarks'=>$data_all['scum_spots_remarks'],
+				  'gloss_status'=>$data_all['gloss_status'],
+				  'gloss_remarks'=>$data_all['gloss_remarks'],
+				  'die_cutting_embossing_status'=>$data_all['die_cutting_embossing_status'],
+				  'die_cutting_embossing_remarks'=>$data_all['die_cutting_embossing_remarks'],
+				  'creasing_status'=>$data_all['creasing_status'],
+				  'creasing_remarks'=>$data_all['creasing_remarks'],
+				  'stripping_status'=>$data_all['stripping_status'],
+				  'stripping_remarks'=>$data_all['stripping_remarks'],
+				  'folding_gluing_status'=>$data_all['folding_gluing_status'],
+				  'folding_gluing_remarks'=>$data_all['folding_gluing_remarks'],
+				  'labeling_status'=>$data_all['labeling_status'],
+				  'labeling_remarks'=>$data_all['labeling_remarks'],
+				  'packing_status'=>$data_all['packing_status'],
+				  'packing_remarks'=>$data_all['packing_remarks'],
+				  'master_cartons_status'=>$data_all['master_cartons_status'],
+				  'master_cartons_remarks'=>$data_all['master_cartons_remarks']
+				);
+   			$this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter);
+
+			}
 			if ($id) {
 				echo '<script>window.open("","_self").close()</script>';
 				//redirect('all_orders');
