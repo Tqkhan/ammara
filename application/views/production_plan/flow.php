@@ -143,6 +143,10 @@ div#chart_div3 {
                     </div>
                 </div>
             </div>
+
+               
+
+
         </div>
         
         <form method="post" action="" enctype="multipart/form-data">
@@ -254,41 +258,51 @@ div#chart_div3 {
     </div>
 
 </div>
-<button type="button" style="display: none;" class="btn btn-info btn-lg click-btn" data-toggle="modal" data-target="#dialog-modal">Open Modal</button>
 
-<div class="modal fade" id="dialog-modal" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-                <div class=row>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 statistic-box  border" style="  background-color: #FFFFFF ">
-                        <h5 style="color: black;"><strong>1 : Cutting Machine Detail</strong></h5>
-                        <div class="loader">
-                            <div class="row">
-                                <div class="col-lg-4 col-lg-offset-4">  <button class="btn btn-primary ">show Chart</button></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-lg-offset-4"> <img style="height: 135px;margin-top: 6px;" src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy-downsized.gif">
-                                </div>
-                            </div>
-                        </div>
-                        <div id="chart_div3"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="clos" data-dismiss="modal">Close</button>
-            </div>
-        </div>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/floating-1.12.js"></script>
 
-    </div>
-</div>
+<div id="floatdiv" style="  
+    position:absolute;  
+    width:auto;height:auto;top:10px;right:10px;  
+    padding:16px;background:#FFFFFF;  
+    border:2px solid #2266AA;  
+    z-index:100; display:none;">  
+ <button class="btn_close btn btn-primary" style="float:right; display: none;" >&times;</button>  
+ <br>
+ <br>
+
+<div id="chart3"></div>
+</div>  
+
+<script type="text/javascript" src="floating-1.12.js"></script>
+  
+<script type="text/javascript">  
+    floatingMenu.add('floatdiv',  
+        {  
+            // Represents distance from left or right browser window  
+            // border depending upon property used. Only one should be  
+            // specified.  
+            // targetLeft: 0,  
+            targetRight: 450,  
+  
+            // Represents distance from top or bottom browser window  
+            // border depending upon property used. Only one should be  
+            // specified.  
+            targetTop: 150,  
+            // targetBottom: 0,  
+  
+            // Uncomment one of those if you need centering on  
+            // X- or Y- axis.  
+            // centerX: true,  
+            // centerY: true,  
+  
+            // Remove this one if you don't want snap effect  
+            snap: true  
+        });  
+</script>  
+
+
 <!-- </form></tbody></table></div></div></form></div></div></div></div></div></div></div> -->
 <!-- /.main content-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -302,15 +316,8 @@ div#chart_div3 {
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart(values) {
-        //console.log(values)
         var data = new google.visualization.DataTable();
-        /*data.addColumn('string', 'Task ID');
-        data.addColumn('string', 'Task Name');
-        data.addColumn('date', 'Start Date');
-        data.addColumn('date', 'End Date');
-        data.addColumn('number', 'Duration');
-        data.addColumn('number', 'Percent Complete');
-        data.addColumn('string', 'Dependencies');*/
+     
         data.addColumn('string', 'Task ID');
         data.addColumn('string', 'Task Name');
         data.addColumn('date', 'Start Date');
@@ -328,20 +335,7 @@ div#chart_div3 {
             data.setCell(i, 5, 0);
             data.setCell(i, 6, null);
         }
-        /*data.addRows([
-          ['2014Spring', 'Job 1',
-           new Date(2015, 2, 22), new Date(2015, 5, 20), null, 90, null],
-          ['2014Summer', 'Job 2',
-           new Date(2014, 5, 21), new Date(2014, 8, 20), null, 100, null],
-          ['2014Autumn', 'Job 3',
-           new Date(2014, 8, 21), new Date(2014, 11, 20), null, 100, null],
-          ['2014Winter', 'Job 4',
-           new Date(2014, 11, 21), new Date(2015, 2, 21), null, 100, null],
-          ['2015Spring', 'Job 5',
-           new Date(2015, 2, 22), new Date(2015, 5, 20), null, 50, null],
-          ['2015Summer', 'Job 6',
-           new Date(2015, 5, 21), new Date(2015, 8, 20), null, 0, null]
-        ]);*/
+     
         var options = {
             height: 230,
             width: 550,
@@ -349,41 +343,32 @@ div#chart_div3 {
                 trackHeight: 30
             }
         };
-        var chart = new google.visualization.Gantt(document.getElementById('chart_div3'));
+        var chart = new google.visualization.Gantt(document.getElementById('chart3'));
         google.visualization.events.addListener(chart, 'ready', afterDraw);
         chart.clearChart();
         chart.draw(data, options); 
-        setTimeout(function() {
-            if (typeof $("g").length !== undefined) {
-        if ($("g").length >= 1) {
-            //alert('1')
-            $('#chart_div3').css('opacity',0);
-            $('.loader').css('opacity',1);
-            $('#chart_div3 svg g').last().prev().prev().prev().addClass('hover');
-            $('.hover').hover(function(){$('#chart_div3').css('opacity',1)});
-        }
-        else{
-            //alert('2')
-            $('#chart_div3').css('opacity',1);
-            $('.loader').css('opacity',0);
-        }
-       }
-       else{
-        //alert('3')
-        $('#chart_div3').css('opacity',1);
-        $('.loader').css('opacity',0);
-       }
-        }, 300)
+
+       
     }
     function afterDraw(){
 
     }
 $("body").click(function () {
- $('#chart_div3').css('opacity',0)
+ // $('#chart3').css('opacity',0)
 });
 
 </script>
 <script type="text/javascript">
+   
+     
+
+    $("body").on("click", ".btn_close", function() {
+
+       $(this).hide();
+       $('#floatdiv').fadeOut(300);
+       $('#chart3').hide();
+    });
+
     $("body").on("click", ".add-sub", function() {
         var html = $(".add-div").first().clone();
         $(html).find(".delet").html("<a class='btn btn-danger remove'><i class='fa fa-trash-o' aria-hidden='true'></i> </a> " + ' <a class="btn btn-success add-sub"><strong> + </strong> </a>');
@@ -419,24 +404,48 @@ $("body").click(function () {
                 type: 'GET',
                 dataType: 'json', // added data type
                 success: function(res) {
-                    $('.click-btn').click();
-                    drawChart(res)
+                    // $('.click-b').click();
+                     $('#floatdiv').show();
+                     $('#chart3').show();
+                     $('.btn_close').show();
+
+                    drawChart(res);
+
+                    // alert($('#chart3').trigger('mouseover'));
+                    // alert($('#chart3').html());
+                   // alert($('#chart3 svg g rect text').html());
                 }
             });
         });
     }
-    get_machines()
-    // $('body').on('change', '.start', function() {
-    //     var start = $(this).val()
-    //     var myDate = new Date(start);
-    //     myDate.setDate(myDate.getDate() + 1);
-    //     var todaydate = myDate
-    //     var dd = todaydate.getDate();
-    //     var mm = todaydate.getMonth()+1; //January is 0!
-    //     if(dd<10){  dd='0'+dd } 
-    //     if(mm<10){  mm='0'+mm } 
-    //     var yyyy = todaydate.getFullYear();
-    //     var date = yyyy+'-'+mm+'-'+dd;
-    //     $(this).parent().parent().parent().find('.end').attr('min',date)
-    // })
+    get_machines();
+
+
+
+
+
+
+  
 </script>
+
+
+
+<a class="btn btn-primary click-b" data-toggle="modal" href='#modal-id'>Trigger modal</a>
+<div class="modal fade" id="modal-id">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text"  id="" class="focus_input">
+            </div>
+            <div class="modal-footer">
+                <a class="get_html">Get</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
