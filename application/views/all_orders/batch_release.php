@@ -1,3 +1,13 @@
+
+
+<?php 
+// echo "<pre>";
+
+// print_r($order);
+// die();
+
+ ?>
+
 <div class="control-sidebar-bg"></div>
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -34,13 +44,13 @@
                                         <div class="form-group col-md-6">
                                             <label for="" class="col-sm-3 col-form-label">W.O#:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="" id="" name="wo_id">
+                                                <input class="form-control" type="text" value="<?php echo $order['id'] ?>" readonly name="wo_id">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="" class="col-sm-3 col-form-label">Date:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="" id="" name="date">
+                                                <input class="form-control" type="text" value="<?php echo date('m/d/Y'); ?>" readonly id="" name="date">
                                             </div>
                                         </div>
                                     </div>
@@ -48,13 +58,13 @@
                                         <div class="form-group col-md-6">
                                             <label for="" class="col-sm-3 col-form-label">Product Name:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="" value="" id="" name="product_name">
+                                                <input class="form-control" type="" value="<?php echo $order['product_name'] ?>"  readonly id="" name="product_name">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="" class="col-sm-3 col-form-label">Order Qty:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="" value="" id="" name="order_qty">
+                                                <input class="form-control" type="" value="<?php echo $order['quantity'] ?>" readonly  id="" name="order_qty">
                                             </div>
                                         </div>
                                     </div>

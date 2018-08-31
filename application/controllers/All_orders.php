@@ -208,13 +208,14 @@ class All_orders extends MY_Controller
 				  'master_cartons_status'=>$data_all['master_cartons_status'],
 				  'master_cartons_remarks'=>$data_all['master_cartons_remarks']
 				);
-   			$this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter);
+   			
+			if ($this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter)) {
 
+				// echo '<script>window.open("","_self").close()</script>';
+				redirect('all_orders');
 			}
-			if ($id) {
-				echo '<script>window.open("","_self").close()</script>';
-				//redirect('all_orders');
 			}
+
 			//print_r($data);die;
 		}
 		$this->data['title'] = 'Batch Release Form';

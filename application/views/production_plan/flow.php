@@ -408,6 +408,7 @@ $("body").click(function () {
                      $('#floatdiv').show();
                      $('#chart3').show();
                      $('.btn_close').show();
+                     
 
                     drawChart(res);
 
