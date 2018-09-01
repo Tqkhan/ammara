@@ -1866,21 +1866,23 @@
                     </table>
                     <br>
                     <div class="form-group row">
-                                        <div class="form-group col-md-6">
-                                            <label for="" class="col-sm-3 col-form-label">Batch Release By:</label>
-                                            <div class="col-sm-9">
-
-                                                <p>____________________________</p>
+                                        <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                            <address>
+                                               <label for="example-text-input" class="col-sm-5">Batch Release By :</label>
+                                                <e class="aks_value">__________________</e></br>
                                                 <small>QA Executive</small>
-                                            </div>
+                                                <br>
+                                            </address>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="example-url-input" class="col-sm-3 col-form-label">Approved By:</label>
-                                            <div class="col-sm-9">
-                                                <p>____________________________</p>
+                                        <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                            <address>
+                                               <label for="example-text-input" class="col-sm-5">Approved By :</label>
+                                                <e class="aks_value">_________________________</e></br>
                                                 <small>Manager Quality Assurance</small>
-                                            </div>
+                                                <br>
+                                            </address>
                                         </div>
+
                                     </div>
                     <div>
                     </div>
