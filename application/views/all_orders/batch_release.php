@@ -73,7 +73,7 @@
                                         <div class="form-group col-md-6">
                                             <label for="" class="col-sm-3 col-form-label">Total Master Cartons:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="" value="" id="" name="total_carton">
+                                                <input class="form-control" type="number" value="" id="" name="total_carton">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -87,7 +87,7 @@
                                         <div class="form-group col-md-6">
                                             <label for="" class="col-sm-3 col-form-label">Finished Qty:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="" value="" id="" name="finished_qty">
+                                                <input class="form-control" type="number" value="" id="" name="finished_qty">
                                             </div>
                                         </div>
                                     </div>
