@@ -98,6 +98,8 @@ class All_orders extends MY_Controller
 		$this->data['profing'] = $this->all_orders_model->get_row_single('printing_report',array('order_id'=>$id));
 		$this->data['batch_release'] = $this->all_orders_model->get_batch_release($id);
 		$this->data['wo_no'] = $id;
+
+		// print_r($this->data['batch_release']);die();
 		$this->load->template('all_orders/view_plane',$this->data);
 	}
 
@@ -208,14 +210,13 @@ class All_orders extends MY_Controller
 				  'master_cartons_status'=>$data_all['master_cartons_status'],
 				  'master_cartons_remarks'=>$data_all['master_cartons_remarks']
 				);
-   			
-			if ($this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter)) {
+   			$this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter);
 
-				// echo '<script>window.open("","_self").close()</script>';
-				redirect('all_orders');
 			}
+			if ($id) {
+				echo '<script>window.open("","_self").close()</script>';
+				//redirect('all_orders');
 			}
-
 			//print_r($data);die;
 		}
 		$this->data['title'] = 'Batch Release Form';

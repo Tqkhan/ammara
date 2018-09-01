@@ -1546,92 +1546,350 @@
                             <small class="product-tital"> DOC NO: PRD/FM/005-01 | REV # 00</small>
                         </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <form>
-                                <div class="col-sm-12">
-                                    <div class="panel-body ">
+<div class="panel-body">
+    <div class="row">
+        <form>
+            <div class="col-sm-12">
+                <div class="panel-body ">
 
-                                        <table class="minimalistBlack" style="width: 100%;">
+                    <table class="minimalistBlack" style="width: 100%;">
 
-                                            <tbody>
+                        <tbody>
+                            <tr>
+                                <td>W.O # : <u><?php echo $batch_release['wo_id'] ?></u></td>
+                                <td colspan="3">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['created_at'])) ?></u></td>
 
-                                                <tr>
-                                                    <td>W.O # : <u><?php echo $batch_release['id'] ?></u></td>
-                                                    <td colspan="2">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['created_at'])) ?></u></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Product Name : <u><?php echo $batch_release['product_name'] ?></u></td>
 
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">Product Name : <u><?php echo $batch_release['product_name'] ?></u></td>
+                            </tr>
+                            <tr>
+                                <td >Order Qty : <u><?php echo $batch_release['quantity'] ?></u></td>
+                                <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
 
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">Order Qty : <u><?php echo $batch_release['quantity'] ?></u></td>
+                            </tr>
+                            <tr>
+                                <td >Name Of Machine Operator : <u><?php echo $batch_release['operator'] ?></u></td>
+                                <td colspan="3"> Machine Name : <u><?php echo $batch_release['machine_Name'] ?></u></td>
+                            </tr>
+                           
+                            <tr>
 
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">Name Of Machine Operator : <u><?php echo $batch_release['operator'] ?></u></td>
+                                <td >Status Of Batch : <u><?php echo $batch_release['status'] ?></u></td>
+                                 <td colspan="3">Finished Quantity : <u><?php echo $batch_release['finish_qty'] ?></u></td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <center>Parameters</center>
+                                </th>
+                                <th>
+                                    <center>Standard</center>
+                                </th>
 
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"> Machine Name : <u><?php echo $batch_release['machine_Name'] ?></u></td>
+                                <th>
+                                    <center>Status</center>
+                                </th>
 
-                                                </tr>
-                                                <tr>
+                                <th>
+                                    <center>Remarks</center>
+                                </th>
+                            </tr>   
+                            <tr>
+                                <td>
+                                    Grammage
+                                </td>
 
-                                                    <td colspan="3">Status Of Batch : <u><?php echo $batch_release['status'] ?></u></td>
+                                <td>
+                                    Specification
+                                </td>
 
-                                                </tr>
-                                                <tr>
+                                <td>
+                                    <?php echo $batch_release['grammage_status'] ?>
+                                </td>
 
-                                                    <td colspan="3">Finished Quantity : <u><?php echo $batch_release['finish_qty'] ?></u></td>
+                                <td>
+                                    <?php echo $batch_release['grammage_remarks'] ?>
+                                </td>
 
-                                                </tr>
-                                                <tr>
+                            </tr>
 
-                                                    <td colspan="3">
-                                                        <center>
-                                                            <h5>Packing Area</h5></center>
-                                                    </td>
+                            <tr>
+                                <td>
+                                    Color
+                                </td>
 
-                                                </tr>
-                                                <tr>
+                                <td>
+                                    Approved shade card
+                                </td>
 
-                                                    <td>Packer Name : <u><?php echo $batch_release['packer_name'] ?></u></td>
-                                                    <td colspan="2">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['date'])) ?></u></td>
+                                <td>
+                                    <?php echo $batch_release['color_status'] ?>
+                                </td>
 
-                                                </tr>
-                                                <tr>
+                                <td>
+                                    <?php echo $batch_release['color_remarks'] ?>
+                                </td>
 
-                                                    <td colspan="3">Qty per MC : <u><?php echo $batch_release['qty_per_mc'] ?></u></td>
+                            </tr>
 
-                                                </tr>
-                                                <tr>
+                            <tr>
+                                <td>
+                                    Design
+                                </td>
 
-                                                    <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
+                                <td>
+                                    Approved sample
+                                </td>
 
-                                                </tr>
+                                <td>
+                                    <?php echo $batch_release['design_status'] ?>
+                                </td>
 
-                                        </table>
-                                        <br>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
-                                                <address>
-                                                   <label for="example-text-input" class="col-sm-5">Packing In-charge</small> :</label>
-                                                    <e class="aks_value">__________________</e>
-                                                    <br>
-                                                </address>
+                                <td>
+                                    <?php echo $batch_release['design_remarks'] ?>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    Text
+                                </td>
+
+                                <td>
+                                    Approved text
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['text_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['text_remarks'] ?>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    Scum & Spots
+                                </td>
+
+                                <td>
+                                    As Client Standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['scum_spots_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['scum_spots_remarks'] ?>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    Gloss
+                                </td>
+
+                                <td>
+                                    As per Standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['gloss_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['gloss_remarks'] ?>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    Die Cutting & Embossing
+                                </td>
+
+                                <td>
+                                    As Client Standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['die_cutting_embossing_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['die_cutting_embossing_remarks'] ?>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Creasing
+                                </td>
+
+                                <td>
+                                    As per standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['creasing_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['creasing_remarks'] ?>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Stripping
+                                </td>
+
+                                <td>
+                                    As per standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['stripping_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['stripping_remarks'] ?>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Folding & Gluing
+                                </td>
+
+                                <td>
+                                    As per standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['folding_gluing_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['folding_gluing_remarks'] ?>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Labeling
+                                </td>
+
+                                <td>
+                                    As per standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['labeling_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['labeling_remarks'] ?>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Packing
+                                </td>
+
+                                <td>
+                                    As per standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['packing_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['packing_remarks'] ?>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Master Cartons
+                                </td>
+
+                                <td>
+                                    As per standard
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['master_cartons_status'] ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $batch_release['master_cartons_remarks'] ?>
+                                </td>
+
+                            </tr>
+                            
+                            <!-- <tr>
+
+                                <td colspan="3">
+                                    <center>
+                                        <h5>Packing Area</h5></center>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Packer Name : <u><?php echo $batch_release['packer_name'] ?></u></td>
+                                <td colspan="2">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['date'])) ?></u></td>
+
+                            </tr>
+                            <tr>
+
+                                <td colspan="3">Qty per MC : <u><?php echo $batch_release['qty_per_mc'] ?></u></td>
+
+                            </tr>
+                            <tr>
+
+                                <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
+
+                            </tr> -->
+
+                    </table>
+                    <br>
+                    <div class="form-group row">
+                                        <div class="form-group col-md-6">
+                                            <label for="" class="col-sm-3 col-form-label">Batch Release By:</label>
+                                            <div class="col-sm-9">
+
+                                                <p>____________________________</p>
+                                                <small>QA Executive</small>
                                             </div>
-
                                         </div>
-                                        <div>
+                                        <div class="form-group col-md-6">
+                                            <label for="example-url-input" class="col-sm-3 col-form-label">Approved By:</label>
+                                            <div class="col-sm-9">
+                                                <p>____________________________</p>
+                                                <small>Manager Quality Assurance</small>
+                                            </div>
                                         </div>
-
-                            </form>
-                            </div>
-                            </div>
-                        </div>
+                                    </div>
+                    <div>
                     </div>
+
+        </form>
+        </div>
+        </div>
+    </div>
+</div>
                 </div>
                 <button id="btn" class="print-btn btn btn-info pull-right" role="button">Generate Print</button>
                 <div style="height: 440px;"></div>
