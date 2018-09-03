@@ -249,6 +249,31 @@ class Machine_flow extends MY_Controller {
         redirect('requisition/pending_quantity/'.$wo_id.'/Label_Cutting?redirect='.base_url('label_cutting'));
     }
 
+    public function stripping_report_start($plane_id,$flow_id)
+    {
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            //echo '<pre>';print_r($data);die;
+            $data['user_id'] = $this->session->userdata('user_id');
+            $id = $this->machine_flow_model->insert('stripping_report',$data);
+            if ($id) {
+                $id = $this->start($flow_id);
+                redirect('stripping_report');
+            }
+        }
+        $this->data['title'] = 'Stripping Report';
+        $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        $this->load->template('machine_flow/stripping_report',$this->data);
+    }
+
+    public function stripping_report_complete($plane_id,$flow_id)
+    {
+        $id = $this->complete($flow_id);
+        //redirect('leaflet_cutting');
+        $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        redirect('requisition/pending_quantity/'.$wo_id.'/Stripping_report?redirect='.base_url('stripping_report'));
+    }
+
     public function leaflet_cutting($plane_id,$flow_id)
     {
         if ($this->input->post()) {
