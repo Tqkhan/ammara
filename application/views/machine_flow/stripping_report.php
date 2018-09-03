@@ -31,18 +31,20 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-
+                                <form method="post" action="">
+                                <input type="hidden" name="plane_id" value="<?php echo $job['id'] ?>">
+                                <input type="hidden" name="flow_id" value="<?php echo $job['flow'] ?>">
                                 <div class="form-group row">
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">W.O#:</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
+                                            <input class="form-control" type="text" value="<?php echo $job['WO_no'] ?>" id="" readonly="" name="WO_no">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">Date:</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
+                                           <input type="text" class="form-control" id="" value="<?php echo date("Y/m/d")?>" placeholder="" readonly="" name="date">
                                         </div>
                                     </div>
                                 </div>
@@ -50,80 +52,68 @@
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">Description:</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+                                            <textarea class="form-control" id="exampleTextarea" rows="1" name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">Name Of Workers:</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
+                                            <input class="form-control" type="text" value="" name="name_of_workers">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th colspan="4">
-                                                            <center>Time</center>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="2">
-                                                            <center>From</center>
-                                                        </th>
-                                                        <th colspan="2">
-                                                            <center>To</center>
-                                                        </th>
-                                                    </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="2"> <input class="form-control" type="" value="" id="example-url-input"></td>
-                                                        <td colspan="2"> <input class="form-control" type="" value="" id="example-url-input"></td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
                                 <div class="form-group row">
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="col-sm-3 col-form-label">Time :</label>
+                                        <div class="col-sm-9">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <input class="form-control" type="time" value="" name="time_from">
+                                                    <small>From</small>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <input class="form-control" type="time" value="" name="time_to">
+                                                    <small>To</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">Recived Quantity:</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
+                                            <input class="form-control" type="number" value="" id="" name="recived_quantity">
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">Finished Quantity:</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
+                                            <input class="form-control" type="number" value="" name="finished_quantity">
+                                        </div>
+                                    </div>
+                                     <div class="form-group col-md-6">
+                                        <label for="" class="col-sm-3 col-form-label">Sorter:</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" value="" id="" name="sorter">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="form-group col-md-6">
-                                        <label for="" class="col-sm-3 col-form-label">Sorter:</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
-                                        </div>
-                                    </div>
+                                   
                                     <div class="form-group col-md-6">
                                         <label for="" class="col-sm-3 col-form-label">Supervisior:</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" value="" id="">
+                                            <input class="form-control" type="text" value="" name="Supervisior">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary pull-right">Add</button>
+                                    </div>
+                            </form>
                             </div>
                         </div>
                     </div>

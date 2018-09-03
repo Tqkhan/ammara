@@ -77,7 +77,7 @@ class All_orders extends MY_Controller
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'20'));
 		if ($flow_data) {
 			$flow = $flow_data['id'];
-		    $this->data['label_cutting'] = $this->all_orders_model->get_row_single('stripping_report',array('plane_id'=>$plane_id,'flow_id'=>$flow));
+		    $this->data['stripping_report'] = $this->all_orders_model->get_row_single('stripping_report',array('plane_id'=>$plane_id,'flow_id'=>$flow));
 	    }
 	    // pasting
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'15'));
@@ -111,8 +111,8 @@ class All_orders extends MY_Controller
 		$this->data['profing'] = $this->all_orders_model->get_row_single('printing_report',array('order_id'=>$id));
 		$this->data['batch_release'] = $this->all_orders_model->get_batch_release($id);
 		$this->data['wo_no'] = $id;
-
-		// print_r($this->data['batch_release']);die();
+  //    echo "<pre>";
+		// print_r($this->data);die();
 		$this->load->template('all_orders/view_plane',$this->data);
 	}
 
