@@ -2026,7 +2026,7 @@
 </div>
                 </div>
                 <button id="btn" class="print-btn btn btn-info pull-right" role="button">Generate Print</button>
-                <div style="height: 440px;"></div>
+                
             </div>
         </div>
 <?php } ?>

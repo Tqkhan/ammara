@@ -156,11 +156,13 @@ class All_orders extends MY_Controller
 /*insert data in 2 table in one form*/
 	public function batch_release($id,$flow_id)
 	{
+		
 		if ($this->permission['edit'] == '0') 
 		{
 			redirect('home');
 		}
 		if ($this->input->post()) {
+
 			$data_all=$_POST;
 			  unset($_POST['batch_release_id']);
 			  unset($_POST['grammage_status']);
@@ -223,10 +225,14 @@ class All_orders extends MY_Controller
 				  'master_cartons_status'=>$data_all['master_cartons_status'],
 				  'master_cartons_remarks'=>$data_all['master_cartons_remarks']
 				);
+
+
+
    			$this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter);
+								print_r($batch_release_parameter);die();
 
 			}
-			if ($id) {
+			if ($batch_id) {
 				echo '<script>window.open("","_self").close()</script>';
 				//redirect('all_orders');
 			}
