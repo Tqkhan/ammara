@@ -311,7 +311,7 @@
                     </div>
                 </div>
             </div>
-                        <button id="btn" class="print-btn_view_cutting btn btn-info pull-right" role="button">Generate Print</buttbr><br></br>
+                        <button id="btn" class="print-btn_view_cutting btn btn-info pull-right" role="button">Generate Print</button></br></br>
         </div>
         <?php } ?>
         <!-- die cutting -->
@@ -528,6 +528,7 @@
             </div>
                         <button id="btn" class="print-btn_view_die_cutting btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
         </div>
+
         <?php } ?>
         <!-- leaflet cutting -->
         <?php 
@@ -639,11 +640,11 @@
 
                             </form>
 
-                        </div>
+                        </div>          
                     </div>
                 </div>
             </div>
-                        <button id="btn" class="print-btn_leaflet_cutting btn btn-info pull-right" role="button">Generate Print</buttbr><br></br>
+                        <button id="btn" class="print-btn_leaflet_cutting btn btn-info pull-right" role="button">Generate Print</button></br></br>
         </div>
         <?php } ?>
         <!-- pasting -->
@@ -1191,6 +1192,135 @@
                         <button id="btn" class="print-btn_printing btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
         </div>
         <?php } ?>
+     
+         <!-- label_cutting -->
+         <?php 
+            if (isset($label_cutting)) {
+        ?>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-bd print-div_label_cutting table_one">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4 class="product-totle">View label cutting Form</h4><br>
+                            
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <form>
+                                <div class="col-sm-12">
+                                    <div class="panel-body">
+                                        <table class="minimalistBlack" style="width: 100%;">
+                                       
+                                       
+                                        <tbody>
+                                        <tr>
+                                            <td>Date : <u><?php echo date('d M Y', strtotime($label_cutting['created_at'])) ?></u></td>
+                                            <td colspan="2">Shift : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio1" value="G" name="shift" <?php if($label_cutting['shift'] == 'G') echo 'checked' ?>>
+                                                        <label for="inlineradio1"> G </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled id="inlineradio2" value="N" name="shift" <?php if($label_cutting['shift'] == 'N') echo 'checked' ?>>
+                                                        <label for="inlineradio2"> N </label>
+                                                    </div></td>
+                                            
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $label_cutting['WO_no'] ?></u></td>
+                                           <td colspan="2">Job Description : <u><?php echo $label_cutting['Job_Description'] ?></u></td>
+                                            
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>Machine : <u><?php echo $label_cutting['machine_Name'] ?></u></td>
+                                            <td>P.O. No. : <u><?php echo $label_cutting['po_no'] ?></u></td>
+                                            <td>Planned Qty : <u><?php echo $label_cutting['Planned_qty'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Operator : <u><?php echo $label_cutting['operator'] ?></u></td>
+                                            <td colspan="2">Assistant : <u><?php echo $label_cutting['assistant'] ?></u></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Paper sizee : <u><?php echo $label_cutting['paper_size'] ?></u></td>
+                                            <td colspan="">Quantity : <u><?php echo $label_cutting['quantity'] ?></u></td>
+                                            <td colspan="">Conversion : <u><?php echo $label_cutting['conversion'] ?></u></td>
+                                            
+                                        </tr> 
+                                       
+                                        <tr>
+                                            <td>Machine Cleaning : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio3" value="Yes" name="machine_cleaning" <?php if($label_cutting['machine_cleaning'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio3"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio4" value="No" name="machine_cleaning" <?php if($label_cutting['machine_cleaning'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio4"> No </label>
+                                                    </div></td>
+                                            <td colspan="2">Size set : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio5" value="Yes" name="size_set" <?php if($label_cutting['size_set'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio5"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="size" <?php if($label_cutting['size_set'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio6"> No </label>
+                                                    </div></td>
+                                            
+                                        </tr> 
+                                        <tr>
+                                            <td>Start time : <u><?php echo $label_cutting['start_date'] ?></u></td>
+                                            <td>End time : <u><?php echo $label_cutting['end_date'] ?></u></td>
+                                            <td>Total Production : <u><?php echo $label_cutting['total_production'] ?></u></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td colspan="">Waste : <u><?php echo $label_cutting['waste'] ?></u></td>
+                                            <td colspan="2">Remarks : <u><?php echo $label_cutting['remarks'] ?></u></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td colspan="">Packers Name : <u><?php echo $label_cutting['packers_name'] ?></u></td>
+                                            <td colspan="2">Master Carton : <u><?php echo $label_cutting['master_carton'] ?></u></td>
+                                            
+                                        </tr> 
+                                        <tr>
+                                            <td colspan="">Weight : <u><?php echo $label_cutting['weight'] ?></u></td>
+                                            <td colspan="2">Packing Size : <u><?php echo $label_cutting['packing_Size'] ?></u></td>
+                                            
+                                        </tr>
+                                        
+                                        </table>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <address>
+                                                   <label for="example-text-input" class="col-sm-4">Prepared By <small>(Operator)</small> :</label>
+                                                    <e class="aks_value">__________________</e>
+                                                    <br>
+                                                </address>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <address>
+                                                   <label for="example-text-input" class="col-sm-4">Examined By <small>(Incharge)</small> :</label>
+                                                    <e class="aks_value">__________________</e>
+                                                    <br>
+                                                </address>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <button id="btn" class="print-btn_label_cutting btn btn-info pull-right" role="button">Generate Print</button><//br></br>
+        </div>
+        <?php } ?>
+
         <!-- line clearance -->
         <?php 
             if (isset($line_clearance)) {
@@ -1900,6 +2030,8 @@
 <?php } ?>
 
 
+        
+
 
 
 
@@ -2106,6 +2238,7 @@ table.minimalistBlack tfoot td {
         }, 300);
     })
 </script>
+
 <script type="text/javascript">
     $('.print-btn_printing').click(function() {
         w = window.open();
@@ -2125,7 +2258,7 @@ table.minimalistBlack tfoot td {
          w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
          w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
          w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
-        w.document.write('</head>');
+       w.document.write('</head>');
         w.document.write('<body>');
         w.document.write(ht);
         w.document.write('<body>');
@@ -2135,10 +2268,11 @@ table.minimalistBlack tfoot td {
             w.close();
         }, 300);
     })
-</script><script type="text/javascript">
-    $('.print-btn_printing').click(function() {
+</script>
+<script type="text/javascript">
+    $('.print-btn_label_cutting').click(function() {
         w = window.open();
-        var ht = $('.print-div_printing').html()
+        var ht = $('.print-div_label_cutting').html()
         var head = $('head').html()
         w.document.write('<html>');
         w.document.write('<head>');

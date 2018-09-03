@@ -60,11 +60,19 @@ class All_orders extends MY_Controller
 	        $this->data['die_cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 	    }
 	    // leaflet cutting 
-	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'11'));
+	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'8'));
 		if ($flow_data) {
 			$flow = $flow_data['id'];
 		    $this->data['leaflet_cutting'] = $this->all_orders_model->get_row_single('leaflet_cutting',array('plane_id'=>$plane_id,'flow_id'=>$flow));
 	        $this->data['leaflet_cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
+	    }
+
+	    // leaflet cutting 
+	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'11'));
+		if ($flow_data) {
+			$flow = $flow_data['id'];
+		    $this->data['label_cutting'] = $this->all_orders_model->get_row_single('label_cutting',array('plane_id'=>$plane_id,'flow_id'=>$flow));
+	        // $this->data['leaflet_cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 	    }
 	    // pasting
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'15'));

@@ -217,8 +217,28 @@ class Machine_flow extends MY_Controller {
 
     public function label_cutting_start($plane_id,$flow_id)
     {
-        $id = $this->start($flow_id);
+        // $id = $this->start($flow_id);
+        // redirect('label_cutting');
+
+            if ($this->input->post()) {
+                unset($_POST['id']);
+          $data = $this->input->post();
+          $data['plane_id']=$plane_id;
+          $data['flow_id']=$flow_id;
+
+            //echo '<pre>';print_r($data);die;
+            $data['user_id'] = $this->session->userdata('user_id');
+            $id = $this->machine_flow_model->insert('label_cutting',$data);
+            if ($id) {
+         $id = $this->start($flow_id);
         redirect('label_cutting');
+       
+            }
+        }
+        $this->data['title'] = 'Label';
+        $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        $this->load->template('machine_flow/label',$this->data);
+
     }
 
     public function label_cutting_complete($plane_id,$flow_id)
