@@ -276,20 +276,85 @@ class Machine_flow extends MY_Controller {
 
     public function flexo_label_machine_start($plane_id,$flow_id)
     {
+       error_reporting(0);
         if ($this->input->post()) {
-            $data = $this->input->post();
-            //echo '<pre>';print_r($data);die;
-            $data['user_id'] = $this->session->userdata('user_id');
-            $id = $this->machine_flow_model->insert('flexo_label_machine',$data);
-            if ($id) {
-                $id = $this->start($flow_id);
-                redirect('stripping_report');
+
+
+            $data1 = array(
+
+                    'plane_id'=>$plane_id,
+                    'flow_id'=>$flow_id,
+                    'date'=>$_POST['date'],
+                    'shift'=>$_POST['shift'],
+                    'wo_no'=>$_POST['wo_no'],
+                    'job_name'=>$_POST['job_name'],
+                    'machine'=>$_POST['machine'],
+                    'Planned_qty'=>$_POST['Planned_qty'],
+                    'operator'=>$_POST['operator'],
+                    'colors'=>$_POST['colors'],
+                    'process'=>$_POST['process'],
+                    'job_opening'=>$_POST['job_opening'],
+                    'job_closing'=>$_POST['job_closing'],
+                    'output'=>$_POST['output'],
+                    'waste'=>$_POST['waste'],
+                    'job_completed'=>$_POST['job_completed'],
+                    'make_ready'=>$_POST['make_ready'],
+                    'user_id'=>$this->session->userdata('user_id')
+            );
+
+            $id1 = $this->machine_flow_model->insert('flexo_label_machine',$data1);
+            if ($id1) {
+
+                $data2=array(
+  'feeder_set'=>$_POST['feeder_set'],
+  'delivery_set'=>$_POST['delivery_set'],
+  'rotary_set'=>$_POST['rotary_set'],
+  'cylinder_set'=>$_POST['cylinder_set'],
+  'impression_set'=>$_POST['impression_set'],
+  'plate_set'=>$_POST['plate_set'],
+  'doctor_blade_cleaning'=>$_POST['doctor_blade_cleaning'],
+  'flexo_id'=>$id1,
+  'user_id'=>$this->session->userdata('user_id'),
+
+                );
+
+            $id2 = $this->machine_flow_model->insert('flexo_check_list',$data2);
+
+            if ($id2) {
+                for ($i=0; $i < count($_POST['code']) ; $i++) { 
+                    $data3=array(
+
+                          'flexo_id'=>$id1,
+                          'code'=>$_POST['code'][$i],
+                          'froms'=>$_POST['froms'][$i],
+                          'tos'=>$_POST['tos'][$i],
+                          'hours'=>$_POST['hours'][$i],
+                          'counter'=>$_POST['counter'][$i],
+                          'remarks'=>$_POST['remarks'][$i]
+                    );
+            $id2 = $this->machine_flow_model->insert('flexo_label_machine_hourse',$data3);
+                }
+
+                if ($id2) {
+                 $id2 = $this->start($flow_id);
+                 redirect('flexo_label_machine');
+                }
             }
-        }
+
+                // $id = $this->start($flow_id);
+                // redirect('stripping_report');
+            }
+
+         
+            }
+        
+
         $this->data['title'] = 'Flexo Label Machine';
         $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        // print_r($this->data['job']);die();
         $this->load->template('machine_flow/flexo_label_machine',$this->data);
     }
+
 
     public function flexo_label_machine_complete($plane_id,$flow_id)
     {
