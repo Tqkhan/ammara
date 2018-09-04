@@ -274,6 +274,31 @@ class Machine_flow extends MY_Controller {
         redirect('requisition/pending_quantity/'.$wo_id.'/Stripping_report?redirect='.base_url('stripping_report'));
     }
 
+    public function flexo_label_machine_start($plane_id,$flow_id)
+    {
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            //echo '<pre>';print_r($data);die;
+            $data['user_id'] = $this->session->userdata('user_id');
+            $id = $this->machine_flow_model->insert('flexo_label_machine',$data);
+            if ($id) {
+                $id = $this->start($flow_id);
+                redirect('stripping_report');
+            }
+        }
+        $this->data['title'] = 'Flexo Label Machine';
+        $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        $this->load->template('machine_flow/flexo_label_machine',$this->data);
+    }
+
+    public function flexo_label_machine_complete($plane_id,$flow_id)
+    {
+        $id = $this->complete($flow_id);
+        //redirect('leaflet_cutting');
+        $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        redirect('requisition/pending_quantity/'.$wo_id.'/flexo_label_machine?redirect='.base_url('flexo_label_machine'));
+    }
+
     public function leaflet_cutting($plane_id,$flow_id)
     {
         if ($this->input->post()) {
