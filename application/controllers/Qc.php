@@ -99,6 +99,40 @@ class Qc extends MY_Controller {
                 $this->data['wo_no'] = $wo;          // echo
                 $this->load->template('qc/inprocess_inspection_cutting',$this->data);
                 }
-       
+        public function inprocess_inspection_coating($id,$wo)
+    {
+        if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();
+            
+            for ($i=0; $i < count($_POST['time']); $i++) { 
+                
+                $data=array(
+
+
+                  'date'=>date('Y-m-d'),
+                  'wo_no'=>$_POST['wo_no'],
+                  'machine'=>$_POST['machine'],
+                  'time'=>$_POST['time'][$i],
+                  'registration'=>$_POST['registration'][$i],
+                  'uv_shade'=>$_POST['uv_shade'][$i],
+                  'set_off'=>$_POST['set_off'][$i],
+                  'scummy'=>$_POST['scummy'][$i],
+                  'unwanted_marks'=>$_POST['unwanted_marks'][$i],
+                  'uv_gloves_wet'=>$_POST['uv_gloves_wet'][$i],
+                  'uv_gloves_dry'=>$_POST['uv_gloves_dry'][$i],
+                  'remarks'=>$_POST['remarks'][$i]
+
+
+                );
+            $id = $this->qc_model->insert('inprocess_inspection_coating',$data);
+            
+            }             
+            if ($id) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+                $this->data['title'] = 'Inprocess Inspection Coating';
+                $this->data['wo_no'] = $wo;          // echo
+                $this->load->template('qc/inprocess_inspection_coating',$this->data);
+                }
 
 }
