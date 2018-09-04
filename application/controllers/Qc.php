@@ -67,5 +67,39 @@ class Qc extends MY_Controller {
         //echo '<pre>';print_r($this->data);die;
         $this->load->template('qc/view_line_clearance',$this->data);
     }
+    public function inprocess_inspection_cutting($id,$wo)
+    {
+        if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();
+            
+            for ($i=0; $i < count($_POST['time']); $i++) { 
+                
+                $data=array(
+
+                      'date'=>date('Y-m-d'),
+                      'wo_no'=>$_POST['wo_no'],
+                      'machine'=>$_POST['machine'],
+                      'time'=>$_POST['time'][$i],
+                      'material'=>$_POST['material'][$i],
+                      'gsm'=>$_POST['gsm'][$i],
+                      'size'=>$_POST['size'][$i],
+                      'cut_marks'=>$_POST['cutmarks'][$i],
+                      'edges'=>$_POST['edges'][$i],
+                      'stain'=>$_POST['stain'][$i],
+                      'remarks'=>$_POST['remarks'][$i]
+
+                );
+            $id = $this->qc_model->insert('inprocess_inspection_cutting',$data);
+            
+            }             
+            if ($id) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+                $this->data['title'] = 'Inprocess Inspection Cutting';
+                $this->data['wo_no'] = $wo;          // echo
+                '<pre>';print_r($this->data['wo_no']);die;
+                $this->load->template('qc/inprocess_inspection_cutting',$this->data);
+                }
+        
 
 }
