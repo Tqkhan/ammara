@@ -97,9 +97,8 @@ class Qc extends MY_Controller {
                 redirect(base_url('all_orders/view_plane/'.$wo));             }         }
                 $this->data['title'] = 'Inprocess Inspection Cutting';
                 $this->data['wo_no'] = $wo;          // echo
-                '<pre>';print_r($this->data['wo_no']);die;
                 $this->load->template('qc/inprocess_inspection_cutting',$this->data);
                 }
-        
+       
 
 }
