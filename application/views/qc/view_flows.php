@@ -94,6 +94,42 @@
                                                 <a href="<?php echo base_url() ?>qc/view_line_clearance/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>"><img src="<?php echo base_url() ?>assets/record1.png" title="View Line Clearance" alt="Line Clearance" width="25" height="25"></a>
                                                 <?php 
                                                     }
+
+                                                if($f['flow_id']==4){
+                                                    ?>
+                                                    <br>
+                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_cutting/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+
+                                                    <?php
+                                                }
+                                                if($f['flow_id']==7){
+                                                    ?>
+                                                    <br>
+                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_printing/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+
+                                                    <?php
+                                                }
+                                                if($f['flow_id']==13){
+                                                    ?>
+                                                    <br>
+                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_die_cutting/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+
+                                                    <?php
+                                                }
+                                                if($f['flow_id']==15){
+                                                    ?>
+                                                    <br>
+                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_die_cutting/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+
+                                                    <?php
+                                                }
+                                                if($f['flow_id']==20){
+                                                    ?>
+                                                    <br>
+                                                    <a href="<?php echo base_url() ?>qc/quality_inspection_machine_report/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+
+                                                    <?php
+                                                }
                                                 ?>
                                             </td>
                                         </tr>
