@@ -130,6 +130,13 @@
 
                                                     <?php
                                                 }
+                                                if($f['flow_id']==22){
+                                                    ?>
+                                                    <br>
+                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_coating/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+
+                                                    <?php
+                                                }
                                                 ?>
                                             </td>
                                         </tr>
