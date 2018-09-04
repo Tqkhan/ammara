@@ -532,123 +532,7 @@
         </div>
 
         <?php } ?>
-        <!-- leaflet cutting -->
-        <?php 
-            if (isset($leaflet_cutting)) {
-        ?>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-bd print-div_leaflet_cutting table_one">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <h4 class="product-totle">View label & leaflet cutting Form</h4><br>
-                             <small class="product-tital">DOC NO: PRD/FM/001-02A     REV# 00     Date:<?php echo date('d-m-Y', strtotime($leaflet_cutting['created_at'])) ?></small>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <form>
-                                <div class="col-sm-12">
-                                    <div class="panel-body">
-                                        <table class="minimalistBlack" style="width: 100%;">
-                                       
-                                       
-                                        <tbody>
-                                        <tr>
-                                            <td>Date : <u><?php echo date('d M Y', strtotime($leaflet_cutting['created_at'])) ?></u></td>
-                                            <td colspan="2">Shift : <div class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio1" value="G" name="shift" <?php if($leaflet_cutting['shift'] == 'G') echo 'checked' ?>>
-                                                        <label for="inlineradio1"> G </label>
-                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
-                                                        <input type="radio" disabled id="inlineradio2" value="N" name="shift" <?php if($leaflet_cutting['shift'] == 'N') echo 'checked' ?>>
-                                                        <label for="inlineradio2"> N </label>
-                                                    </div></td>
-                                            
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td>W.O # : <u><?php echo $leaflet_cutting_job['WO_no'] ?></u></td>
-                                            <td colspan="2">Job Name : <u><?php echo $leaflet_cutting_job['Job_Description'] ?></u></td>
-                                            
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td>Machine : <u><?php echo $leaflet_cutting_job['machine_Name'] ?></u></td>
-                                            <td>P.O. No. : <u><?php echo $leaflet_cutting_job['PO_No'] ?></u></td>
-                                            <td>Planned Qty : <u><?php echo $leaflet_cutting_job['Planned_qty'] ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Operator : <u><?php echo $leaflet_cutting['operator'] ?></u></td>
-                                            <td colspan="2">Assistant : <u><?php echo $leaflet_cutting['assistant'] ?></u></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>Paper sizee : <u><?php echo $leaflet_cutting['paper'] ?></u></td>
-                                            <td colspan="">Quantity : <u><?php echo $leaflet_cutting['quantity'] ?></u></td>
-                                            <td colspan="">Conversion : <u><?php echo $leaflet_cutting['conversion'] ?></u></td>
-                                            
-                                        </tr> 
-                                       
-                                        <tr>
-                                            <td>Machine Cleaning : <div class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio3" value="Yes" name="cleaning" <?php if($leaflet_cutting['cleaning'] == 'Yes') echo 'checked' ?>>
-                                                        <label for="inlineradio3"> Yes </label>
-                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio4" value="No" name="cleaning" <?php if($leaflet_cutting['cleaning'] == 'No') echo 'checked' ?>>
-                                                        <label for="inlineradio4"> No </label>
-                                                    </div></td>
-                                            <td colspan="2">Size set : <div class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio5" value="Yes" name="size" <?php if($leaflet_cutting['size'] == 'Yes') echo 'checked' ?>>
-                                                        <label for="inlineradio5"> Yes </label>
-                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="size" <?php if($leaflet_cutting['size'] == 'No') echo 'checked' ?>>
-                                                        <label for="inlineradio6"> No </label>
-                                                    </div></td>
-                                            
-                                        </tr> 
-                                        <tr>
-                                            <td>Start time : <u><?php echo $leaflet_cutting_job['start_date'] ?></u></td>
-                                            <td>End time : <u><?php echo $leaflet_cutting_job['end_date'] ?></u></td>
-                                            <td>Total Production : <u><?php echo $leaflet_cutting['production'] ?></u></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td colspan="">Waste : <u><?php echo $leaflet_cutting['waste'] ?></u></td>
-                                            <td colspan="2">Remarks : <u><?php echo $leaflet_cutting['remarks'] ?></u></td>
-                                            
-                                        </tr>
-                                        
-                                        </table>
-                                        <br>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <address>
-                                                   <label for="example-text-input" class="col-sm-4">Prepared By <small>(Operator)</small> :</label>
-                                                    <e class="aks_value">__________________</e>
-                                                    <br>
-                                                </address>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <address>
-                                                   <label for="example-text-input" class="col-sm-4">Examined By <small>(Incharge)</small> :</label>
-                                                    <e class="aks_value">__________________</e>
-                                                    <br>
-                                                </address>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
-
-                        </div>          
-                    </div>
-                </div>
-            </div>
-                        <button id="btn" class="print-btn_leaflet_cutting btn btn-info pull-right" role="button">Generate Print</button></br></br>
-        </div>
-        <?php } ?>
+        
         <!-- pasting -->
         <?php 
             if (isset($pasting)) {
@@ -1194,18 +1078,17 @@
                         <button id="btn" class="print-btn_printing btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
         </div>
         <?php } ?>
-     
-         <!-- label_cutting -->
-         <?php 
-            if (isset($label_cutting)) {
+        <!-- leaflet cutting -->
+        <?php 
+            if (isset($leaflet_cutting)) {
         ?>
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-bd print-div_label_cutting table_one">
+                <div class="panel panel-bd print-div_leaflet_cutting table_one">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h4 class="product-totle">View label cutting Form</h4><br>
-                            
+                            <h4 class="product-totle">View label & leaflet cutting Form</h4><br>
+                             <small class="product-tital">DOC NO: PRD/FM/001-02A     REV# 00     Date:<?php echo date('d-m-Y', strtotime($leaflet_cutting['created_at'])) ?></small>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -1218,76 +1101,66 @@
                                        
                                         <tbody>
                                         <tr>
-                                            <td>Date : <u><?php echo date('d M Y', strtotime($label_cutting['created_at'])) ?></u></td>
+                                            <td>Date : <u><?php echo date('d M Y', strtotime($leaflet_cutting['created_at'])) ?></u></td>
                                             <td colspan="2">Shift : <div class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio1" value="G" name="shift" <?php if($label_cutting['shift'] == 'G') echo 'checked' ?>>
+                                                        <input type="radio" disabled="" id="inlineradio1" value="G" name="shift" <?php if($leaflet_cutting['shift'] == 'G') echo 'checked' ?>>
                                                         <label for="inlineradio1"> G </label>
                                                     </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
-                                                        <input type="radio" disabled id="inlineradio2" value="N" name="shift" <?php if($label_cutting['shift'] == 'N') echo 'checked' ?>>
+                                                        <input type="radio" disabled id="inlineradio2" value="N" name="shift" <?php if($leaflet_cutting['shift'] == 'N') echo 'checked' ?>>
                                                         <label for="inlineradio2"> N </label>
                                                     </div></td>
                                             
                                            
                                         </tr>
                                         <tr>
-                                            <td>W.O # : <u><?php echo $label_cutting['WO_no'] ?></u></td>
-                                           <td colspan="2">Job Description : <u><?php echo $label_cutting['Job_Description'] ?></u></td>
+                                            <td>W.O # : <u><?php echo $leaflet_cutting_job['WO_no'] ?></u></td>
+                                            <td colspan="2">Job Name : <u><?php echo $leaflet_cutting_job['Job_Description'] ?></u></td>
                                             
                                            
                                         </tr>
                                         <tr>
-                                            <td>Machine : <u><?php echo $label_cutting['machine_Name'] ?></u></td>
-                                            <td>P.O. No. : <u><?php echo $label_cutting['po_no'] ?></u></td>
-                                            <td>Planned Qty : <u><?php echo $label_cutting['Planned_qty'] ?></td>
+                                            <td>Machine : <u><?php echo $leaflet_cutting_job['machine_Name'] ?></u></td>
+                                            <td>P.O. No. : <u><?php echo $leaflet_cutting_job['PO_No'] ?></u></td>
+                                            <td>Planned Qty : <u><?php echo $leaflet_cutting_job['Planned_qty'] ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Operator : <u><?php echo $label_cutting['operator'] ?></u></td>
-                                            <td colspan="2">Assistant : <u><?php echo $label_cutting['assistant'] ?></u></td>
+                                            <td>Operator : <u><?php echo $leaflet_cutting['operator'] ?></u></td>
+                                            <td colspan="2">Assistant : <u><?php echo $leaflet_cutting['assistant'] ?></u></td>
                                             
                                         </tr>
                                         <tr>
-                                            <td>Paper sizee : <u><?php echo $label_cutting['paper_size'] ?></u></td>
-                                            <td colspan="">Quantity : <u><?php echo $label_cutting['quantity'] ?></u></td>
-                                            <td colspan="">Conversion : <u><?php echo $label_cutting['conversion'] ?></u></td>
+                                            <td>Paper sizee : <u><?php echo $leaflet_cutting['paper'] ?></u></td>
+                                            <td colspan="">Quantity : <u><?php echo $leaflet_cutting['quantity'] ?></u></td>
+                                            <td colspan="">Conversion : <u><?php echo $leaflet_cutting['conversion'] ?></u></td>
                                             
                                         </tr> 
                                        
                                         <tr>
                                             <td>Machine Cleaning : <div class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio3" value="Yes" name="machine_cleaning" <?php if($label_cutting['machine_cleaning'] == 'Yes') echo 'checked' ?>>
+                                                        <input type="radio" disabled="" id="inlineradio3" value="Yes" name="cleaning" <?php if($leaflet_cutting['cleaning'] == 'Yes') echo 'checked' ?>>
                                                         <label for="inlineradio3"> Yes </label>
                                                     </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio4" value="No" name="machine_cleaning" <?php if($label_cutting['machine_cleaning'] == 'No') echo 'checked' ?>>
+                                                        <input type="radio" disabled="" id="inlineradio4" value="No" name="cleaning" <?php if($leaflet_cutting['cleaning'] == 'No') echo 'checked' ?>>
                                                         <label for="inlineradio4"> No </label>
                                                     </div></td>
                                             <td colspan="2">Size set : <div class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio5" value="Yes" name="size_set" <?php if($label_cutting['size_set'] == 'Yes') echo 'checked' ?>>
+                                                        <input type="radio" disabled="" id="inlineradio5" value="Yes" name="size" <?php if($leaflet_cutting['size'] == 'Yes') echo 'checked' ?>>
                                                         <label for="inlineradio5"> Yes </label>
                                                     </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
-                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="size" <?php if($label_cutting['size_set'] == 'No') echo 'checked' ?>>
+                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="size" <?php if($leaflet_cutting['size'] == 'No') echo 'checked' ?>>
                                                         <label for="inlineradio6"> No </label>
                                                     </div></td>
                                             
                                         </tr> 
                                         <tr>
-                                            <td>Start time : <u><?php echo $label_cutting['start_date'] ?></u></td>
-                                            <td>End time : <u><?php echo $label_cutting['end_date'] ?></u></td>
-                                            <td>Total Production : <u><?php echo $label_cutting['total_production'] ?></u></td>
+                                            <td>Start time : <u><?php echo $leaflet_cutting_job['start_date'] ?></u></td>
+                                            <td>End time : <u><?php echo $leaflet_cutting_job['end_date'] ?></u></td>
+                                            <td>Total Production : <u><?php echo $leaflet_cutting['production'] ?></u></td>
                                             
                                         </tr>
                                         <tr>
-                                            <td colspan="">Waste : <u><?php echo $label_cutting['waste'] ?></u></td>
-                                            <td colspan="2">Remarks : <u><?php echo $label_cutting['remarks'] ?></u></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td colspan="">Packers Name : <u><?php echo $label_cutting['packers_name'] ?></u></td>
-                                            <td colspan="2">Master Carton : <u><?php echo $label_cutting['master_carton'] ?></u></td>
-                                            
-                                        </tr> 
-                                        <tr>
-                                            <td colspan="">Weight : <u><?php echo $label_cutting['weight'] ?></u></td>
-                                            <td colspan="2">Packing Size : <u><?php echo $label_cutting['packing_Size'] ?></u></td>
+                                            <td colspan="">Waste : <u><?php echo $leaflet_cutting['waste'] ?></u></td>
+                                            <td colspan="2">Remarks : <u><?php echo $leaflet_cutting['remarks'] ?></u></td>
                                             
                                         </tr>
                                         
@@ -1315,178 +1188,302 @@
 
                             </form>
 
-                        </div>
+                        </div>          
                     </div>
                 </div>
             </div>
-                        <button id="btn" class="print-btn_label_cutting btn btn-info pull-right" role="button">Generate Print</button><//br></br>
+                        <button id="btn" class="print-btn_leaflet_cutting btn btn-info pull-right" role="button">Generate Print</button></br></br>
         </div>
         <?php } ?>
-
-        <!-- line clearance -->
-        <?php 
-            if (isset($line_clearance)) {
-                foreach ($line_clearance as $data) {
-        ?>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-bd print-div_line_clearance_form_<?php echo $data['flow_name'] ?> table_one">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <h4 class="product-totle">Line Clearance Form (<?php echo $data['flow_name'] ?>)</h4><br>
-                            <small class="product-tital">DOC NO: PRD/FM/001-02A  |    REV# 00   |  Date:<?php echo date('d-m-Y', strtotime($data['created_at'])) ?></small>
+         <!-- label_cutting -->
+        <?php if (isset($label_cutting)) {?>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-bd print-div_label_cutting table_one">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <h4 class="product-totle">View label cutting Form</h4><br>
+                                
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <form>
-                                <div class="col-sm-12">
-                                    <div class="panel-body ">
-                                        <table class="table table-bordered table-hover minimalistBlack" style="width: 100%;">
+                        <div class="panel-body">
+                            <div class="row">
+                                <form>
+                                    <div class="col-sm-12">
+                                        <div class="panel-body">
+                                            <table class="minimalistBlack" style="width: 100%;">
+                                           
+                                           
                                             <tbody>
-                                                <tr>
-                                                    <td>Previous Job No : <u><?php echo $data['previous'] ?></u></td>
-                                                    <td colspan="2">Date : <u><?php echo date('d M Y', strtotime($data['created_at'])) ?></u></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">Crunt Job No : <u><?php echo $wo_no ?></u></td>
-
-                                                </tr>
-                                        </table>
-
-                                        <table class="minimalistBlack table table-bordered table-hover" style="width: 100%;">
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td colspan="">Yes</td>
-                                                    <td colspan="">No</td>
-                                                    <td colspan="">Remarks</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="">Is there any material of previous Job</td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio1" name="material" value="Yes" <?php if($data['material'] == 'Yes') echo 'checked' ?>>
-                                                            <label for="inlineradio1">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio2" name="material" value="No" <?php if($data['material'] == 'No') echo 'checked' ?>>
-                                                            <label for="inlineradio2">  &nbsp;&nbsp; &nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan=""><?php echo $data['material_remarks'] ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="">Is there any printed item of previous Job</td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio3" name="printed" value="Yes" <?php if($data['printed'] == 'Yes') echo 'checked' ?>>
-                                                            <label for="inlineradio3">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio4" name="printed" value="No" <?php if($data['printed'] == 'No') echo 'checked' ?>>
-                                                            <label for="inlineradio4">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan=""><?php echo $data['printed_remarks'] ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="">Is there any document of previous Job</td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio5" name="document" value="Yes" <?php if($data['document'] == 'Yes') echo 'checked' ?>>
-                                                            <label for="inlineradio5">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio6" name="document" value="No" <?php if($data['document'] == 'No') echo 'checked' ?>>
-                                                            <label for="inlineradio6">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan=""><?php echo $data['document_remarks'] ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="">Is there any waste near machine</td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio7" name="waste" value="Yes" <?php if($data['waste'] == 'Yes') echo 'checked' ?>>
-                                                            <label for="inlineradio7">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio8" name="waste" value="No" <?php if($data['waste'] == 'No') echo 'checked' ?>>
-                                                            <label for="inlineradio8">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan=""><?php echo $data['waste_remarks'] ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="">Is there any oil leakage</td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio9" name="oil" value="Yes" <?php if($data['oil'] == 'Yes') echo 'checked' ?>>
-                                                            <label for="inlineradio9">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio10" name="oil" value="No" <?php if($data['oil'] == 'No') echo 'checked' ?>>
-                                                            <label for="inlineradio10">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan=""><?php echo $data['oil_remarks'] ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="">Is the machine & area clean</td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio11" name="clean" value="Yes" <?php if($data['clean'] == 'Yes') echo 'checked' ?>>
-                                                            <label for="inlineradio11">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan="">
-                                                        <div class="radio radio-inline">
-                                                            <input type="radio" disabled id="inlineradio12" name="clean" value="No" <?php if($data['clean'] == 'No') echo 'checked' ?>>
-                                                            <label for="inlineradio12">  &nbsp;&nbsp; </label>
-                                                        </div>
-                                                    </td>
-                                                    <td colspan=""><?php echo $data['clean_remarks'] ?></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <br>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <address>
-                                                   <label for="example-text-input" class="col-sm-4">Checked by</small> :</label>
-                                                    <e class="aks_value">__________________</e>
-                                                    <br>
-                                                </address>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <address>
-                                                   <label for="example-text-input" class="col-sm-4">QC Inspector</small> :</label>
-                                                    <e class="aks_value">__________________</e>
-                                                    <br>
-                                                </address>
+                                            <tr>
+                                                <td>Date : <u><?php echo date('d M Y', strtotime($label_cutting['created_at'])) ?></u></td>
+                                                <td colspan="2">Shift : <div class="radio radio-inline">
+                                                            <input type="radio" disabled="" id="inlineradio1" value="G" name="shift" <?php if($label_cutting['shift'] == 'G') echo 'checked' ?>>
+                                                            <label for="inlineradio1"> G </label>
+                                                        </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                            <input type="radio" disabled id="inlineradio2" value="N" name="shift" <?php if($label_cutting['shift'] == 'N') echo 'checked' ?>>
+                                                            <label for="inlineradio2"> N </label>
+                                                        </div></td>
+                                                
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td>W.O # : <u><?php echo $label_cutting['WO_no'] ?></u></td>
+                                               <td colspan="2">Job Description : <u><?php echo $label_cutting['Job_Description'] ?></u></td>
+                                                
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td>Machine : <u><?php echo $label_cutting['machine_Name'] ?></u></td>
+                                                <td>P.O. No. : <u><?php echo $label_cutting['po_no'] ?></u></td>
+                                                <td>Planned Qty : <u><?php echo $label_cutting['Planned_qty'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Operator : <u><?php echo $label_cutting['operator'] ?></u></td>
+                                                <td colspan="2">Assistant : <u><?php echo $label_cutting['assistant'] ?></u></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>Paper sizee : <u><?php echo $label_cutting['paper_size'] ?></u></td>
+                                                <td colspan="">Quantity : <u><?php echo $label_cutting['quantity'] ?></u></td>
+                                                <td colspan="">Conversion : <u><?php echo $label_cutting['conversion'] ?></u></td>
+                                                
+                                            </tr> 
+                                           
+                                            <tr>
+                                                <td>Machine Cleaning : <div class="radio radio-inline">
+                                                            <input type="radio" disabled="" id="inlineradio3" value="Yes" name="machine_cleaning" <?php if($label_cutting['machine_cleaning'] == 'Yes') echo 'checked' ?>>
+                                                            <label for="inlineradio3"> Yes </label>
+                                                        </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                            <input type="radio" disabled="" id="inlineradio4" value="No" name="machine_cleaning" <?php if($label_cutting['machine_cleaning'] == 'No') echo 'checked' ?>>
+                                                            <label for="inlineradio4"> No </label>
+                                                        </div></td>
+                                                <td colspan="2">Size set : <div class="radio radio-inline">
+                                                            <input type="radio" disabled="" id="inlineradio5" value="Yes" name="size_set" <?php if($label_cutting['size_set'] == 'Yes') echo 'checked' ?>>
+                                                            <label for="inlineradio5"> Yes </label>
+                                                        </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                            <input type="radio" disabled="" id="inlineradio6" value="No" name="size" <?php if($label_cutting['size_set'] == 'No') echo 'checked' ?>>
+                                                            <label for="inlineradio6"> No </label>
+                                                        </div></td>
+                                                
+                                            </tr> 
+                                            <tr>
+                                                <td>Start time : <u><?php echo $label_cutting['start_date'] ?></u></td>
+                                                <td>End time : <u><?php echo $label_cutting['end_date'] ?></u></td>
+                                                <td>Total Production : <u><?php echo $label_cutting['total_production'] ?></u></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td colspan="">Waste : <u><?php echo $label_cutting['waste'] ?></u></td>
+                                                <td colspan="2">Remarks : <u><?php echo $label_cutting['remarks'] ?></u></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td colspan="">Packers Name : <u><?php echo $label_cutting['packers_name'] ?></u></td>
+                                                <td colspan="2">Master Carton : <u><?php echo $label_cutting['master_carton'] ?></u></td>
+                                                
+                                            </tr> 
+                                            <tr>
+                                                <td colspan="">Weight : <u><?php echo $label_cutting['weight'] ?></u></td>
+                                                <td colspan="2">Packing Size : <u><?php echo $label_cutting['packing_Size'] ?></u></td>
+                                                
+                                            </tr>
+                                            
+                                            </table>
+                                            <br>
+                                            <div class="form-group row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <address>
+                                                       <label for="example-text-input" class="col-sm-4">Prepared By <small>(Operator)</small> :</label>
+                                                        <e class="aks_value">__________________</e>
+                                                        <br>
+                                                    </address>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <address>
+                                                       <label for="example-text-input" class="col-sm-4">Examined By <small>(Incharge)</small> :</label>
+                                                        <e class="aks_value">__________________</e>
+                                                        <br>
+                                                    </address>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+
+                                </form>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button id="btn" class="print-btn_line_clearance_form_<?php echo $data['flow_name'] ?> btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
+                            <button id="btn" class="print-btn_label_cutting btn btn-info pull-right" role="button">Generate Print</button><//br></br>
             </div>
-        </div>
+        <?php } ?>
+
+        <!-- line clearance -->
+        <?php if (isset($line_clearance)) {
+                foreach ($line_clearance as $data) {
+        ?>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-bd print-div_line_clearance_form_<?php echo $data['flow_name'] ?> table_one">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <h4 class="product-totle">Line Clearance Form (<?php echo $data['flow_name'] ?>)</h4><br>
+                                <small class="product-tital">DOC NO: PRD/FM/001-02A  |    REV# 00   |  Date:<?php echo date('d-m-Y', strtotime($data['created_at'])) ?></small>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <form>
+                                    <div class="col-sm-12">
+                                        <div class="panel-body ">
+                                            <table class="table table-bordered table-hover minimalistBlack" style="width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Previous Job No : <u><?php echo $data['previous'] ?></u></td>
+                                                        <td colspan="2">Date : <u><?php echo date('d M Y', strtotime($data['created_at'])) ?></u></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">Crunt Job No : <u><?php echo $wo_no ?></u></td>
+
+                                                    </tr>
+                                            </table>
+
+                                            <table class="minimalistBlack table table-bordered table-hover" style="width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="">Yes</td>
+                                                        <td colspan="">No</td>
+                                                        <td colspan="">Remarks</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="">Is there any material of previous Job</td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio1" name="material" value="Yes" <?php if($data['material'] == 'Yes') echo 'checked' ?>>
+                                                                <label for="inlineradio1">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio2" name="material" value="No" <?php if($data['material'] == 'No') echo 'checked' ?>>
+                                                                <label for="inlineradio2">  &nbsp;&nbsp; &nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan=""><?php echo $data['material_remarks'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="">Is there any printed item of previous Job</td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio3" name="printed" value="Yes" <?php if($data['printed'] == 'Yes') echo 'checked' ?>>
+                                                                <label for="inlineradio3">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio4" name="printed" value="No" <?php if($data['printed'] == 'No') echo 'checked' ?>>
+                                                                <label for="inlineradio4">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan=""><?php echo $data['printed_remarks'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="">Is there any document of previous Job</td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio5" name="document" value="Yes" <?php if($data['document'] == 'Yes') echo 'checked' ?>>
+                                                                <label for="inlineradio5">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio6" name="document" value="No" <?php if($data['document'] == 'No') echo 'checked' ?>>
+                                                                <label for="inlineradio6">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan=""><?php echo $data['document_remarks'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="">Is there any waste near machine</td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio7" name="waste" value="Yes" <?php if($data['waste'] == 'Yes') echo 'checked' ?>>
+                                                                <label for="inlineradio7">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio8" name="waste" value="No" <?php if($data['waste'] == 'No') echo 'checked' ?>>
+                                                                <label for="inlineradio8">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan=""><?php echo $data['waste_remarks'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="">Is there any oil leakage</td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio9" name="oil" value="Yes" <?php if($data['oil'] == 'Yes') echo 'checked' ?>>
+                                                                <label for="inlineradio9">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio10" name="oil" value="No" <?php if($data['oil'] == 'No') echo 'checked' ?>>
+                                                                <label for="inlineradio10">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan=""><?php echo $data['oil_remarks'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="">Is the machine & area clean</td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio11" name="clean" value="Yes" <?php if($data['clean'] == 'Yes') echo 'checked' ?>>
+                                                                <label for="inlineradio11">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="">
+                                                            <div class="radio radio-inline">
+                                                                <input type="radio" disabled id="inlineradio12" name="clean" value="No" <?php if($data['clean'] == 'No') echo 'checked' ?>>
+                                                                <label for="inlineradio12">  &nbsp;&nbsp; </label>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan=""><?php echo $data['clean_remarks'] ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <div class="form-group row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <address>
+                                                       <label for="example-text-input" class="col-sm-4">Checked by</small> :</label>
+                                                        <e class="aks_value">__________________</e>
+                                                        <br>
+                                                    </address>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <address>
+                                                       <label for="example-text-input" class="col-sm-4">QC Inspector</small> :</label>
+                                                        <e class="aks_value">__________________</e>
+                                                        <br>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="btn" class="print-btn_line_clearance_form_<?php echo $data['flow_name'] ?> btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
+                </div>
+            </div>
         <?php } } ?>
         
         
@@ -1558,7 +1555,7 @@
                                             </div>        
                                                 </div>
 
-<?php if ($sorting): ?>
+<?php if (isset($sorting)): ?>
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-bd print-div_sorting ">
@@ -1667,7 +1664,7 @@
     </div>
 <?php endif ?>
 
-<?php if ($batch_release) {?>
+<?php if (isset($batch_release)) {?>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-bd print-div ">
@@ -1678,352 +1675,352 @@
                             <small class="product-tital"> DOC NO: PRD/FM/005-01 | REV # 00</small>
                         </div>
                     </div>
-<div class="panel-body">
-    <div class="row">
-        <form>
-            <div class="col-sm-12">
-                <div class="panel-body ">
-
-                    <table class="minimalistBlack" style="width: 100%;">
-
-                        <tbody>
-                            <tr>
-                                <td>W.O # : <u><?php echo $batch_release['wo_id'] ?></u></td>
-                                <td colspan="3">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['created_at'])) ?></u></td>
-
-                            </tr>
-                            <tr>
-                                <td colspan="4">Product Name : <u><?php echo $batch_release['product_name'] ?></u></td>
-
-                            </tr>
-                            <tr>
-                                <td >Order Qty : <u><?php echo $batch_release['quantity'] ?></u></td>
-                                <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
-
-                            </tr>
-                            <tr>
-                                <td >Name Of Machine Operator : <u><?php echo $batch_release['operator'] ?></u></td>
-                                <td colspan="3"> Machine Name : <u><?php echo $batch_release['machine_Name'] ?></u></td>
-                            </tr>
-                           
-                            <tr>
-
-                                <td >Status Of Batch : <u><?php echo $batch_release['status'] ?></u></td>
-                                 <td colspan="3">Finished Quantity : <u><?php echo $batch_release['finish_qty'] ?></u></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <center>Parameters</center>
-                                </th>
-                                <th>
-                                    <center>Standard</center>
-                                </th>
-
-                                <th>
-                                    <center>Status</center>
-                                </th>
-
-                                <th>
-                                    <center>Remarks</center>
-                                </th>
-                            </tr>   
-                            <tr>
-                                <td>
-                                    Grammage
-                                </td>
-
-                                <td>
-                                    Specification
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['grammage_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['grammage_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Color
-                                </td>
-
-                                <td>
-                                    Approved shade card
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['color_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['color_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Design
-                                </td>
-
-                                <td>
-                                    Approved sample
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['design_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['design_remarks'] ?>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    Text
-                                </td>
-
-                                <td>
-                                    Approved text
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['text_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['text_remarks'] ?>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    Scum & Spots
-                                </td>
-
-                                <td>
-                                    As Client Standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['scum_spots_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['scum_spots_remarks'] ?>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    Gloss
-                                </td>
-
-                                <td>
-                                    As per Standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['gloss_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['gloss_remarks'] ?>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    Die Cutting & Embossing
-                                </td>
-
-                                <td>
-                                    As Client Standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['die_cutting_embossing_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['die_cutting_embossing_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Creasing
-                                </td>
-
-                                <td>
-                                    As per standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['creasing_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['creasing_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Stripping
-                                </td>
-
-                                <td>
-                                    As per standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['stripping_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['stripping_remarks'] ?>
-                                </td>
+                <div class="panel-body">
+                    <div class="row">
+                        <form>
+                            <div class="col-sm-12">
+                                <div class="panel-body ">
+
+                                    <table class="minimalistBlack" style="width: 100%;">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>W.O # : <u><?php echo $batch_release['wo_id'] ?></u></td>
+                                                <td colspan="3">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['created_at'])) ?></u></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">Product Name : <u><?php echo $batch_release['product_name'] ?></u></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td >Order Qty : <u><?php echo $batch_release['quantity'] ?></u></td>
+                                                <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td >Name Of Machine Operator : <u><?php echo $batch_release['operator'] ?></u></td>
+                                                <td colspan="3"> Machine Name : <u><?php echo $batch_release['machine_Name'] ?></u></td>
+                                            </tr>
+                                           
+                                            <tr>
+
+                                                <td >Status Of Batch : <u><?php echo $batch_release['status'] ?></u></td>
+                                                 <td colspan="3">Finished Quantity : <u><?php echo $batch_release['finish_qty'] ?></u></td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <center>Parameters</center>
+                                                </th>
+                                                <th>
+                                                    <center>Standard</center>
+                                                </th>
+
+                                                <th>
+                                                    <center>Status</center>
+                                                </th>
+
+                                                <th>
+                                                    <center>Remarks</center>
+                                                </th>
+                                            </tr>   
+                                            <tr>
+                                                <td>
+                                                    Grammage
+                                                </td>
+
+                                                <td>
+                                                    Specification
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['grammage_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['grammage_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Color
+                                                </td>
+
+                                                <td>
+                                                    Approved shade card
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['color_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['color_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Design
+                                                </td>
+
+                                                <td>
+                                                    Approved sample
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['design_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['design_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Text
+                                                </td>
+
+                                                <td>
+                                                    Approved text
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['text_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['text_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Scum & Spots
+                                                </td>
+
+                                                <td>
+                                                    As Client Standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['scum_spots_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['scum_spots_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Gloss
+                                                </td>
+
+                                                <td>
+                                                    As per Standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['gloss_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['gloss_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Die Cutting & Embossing
+                                                </td>
+
+                                                <td>
+                                                    As Client Standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['die_cutting_embossing_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['die_cutting_embossing_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Creasing
+                                                </td>
+
+                                                <td>
+                                                    As per standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['creasing_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['creasing_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Stripping
+                                                </td>
+
+                                                <td>
+                                                    As per standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['stripping_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['stripping_remarks'] ?>
+                                                </td>
 
-                            </tr>
+                                            </tr>
 
-                            <tr>
-                                <td>
-                                    Folding & Gluing
-                                </td>
+                                            <tr>
+                                                <td>
+                                                    Folding & Gluing
+                                                </td>
 
-                                <td>
-                                    As per standard
-                                </td>
+                                                <td>
+                                                    As per standard
+                                                </td>
 
-                                <td>
-                                    <?php echo $batch_release['folding_gluing_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['folding_gluing_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Labeling
-                                </td>
-
-                                <td>
-                                    As per standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['labeling_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['labeling_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Packing
-                                </td>
-
-                                <td>
-                                    As per standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['packing_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['packing_remarks'] ?>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Master Cartons
-                                </td>
-
-                                <td>
-                                    As per standard
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['master_cartons_status'] ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $batch_release['master_cartons_remarks'] ?>
-                                </td>
-
-                            </tr>
-                            
-                            <!-- <tr>
-
-                                <td colspan="3">
-                                    <center>
-                                        <h5>Packing Area</h5></center>
-                                </td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Packer Name : <u><?php echo $batch_release['packer_name'] ?></u></td>
-                                <td colspan="2">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['date'])) ?></u></td>
-
-                            </tr>
-                            <tr>
-
-                                <td colspan="3">Qty per MC : <u><?php echo $batch_release['qty_per_mc'] ?></u></td>
-
-                            </tr>
-                            <tr>
-
-                                <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
-
-                            </tr> -->
-
-                    </table>
-                    <br>
-                    <div class="form-group row">
-                                        <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
-                                            <address>
-                                               <label for="example-text-input" class="col-sm-5">Batch Release By :</label>
-                                                <e class="aks_value">__________________</e></br>
-                                                <small>QA Executive</small>
-                                                <br>
-                                            </address>
-                                        </div>
-                                        <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
-                                            <address>
-                                               <label for="example-text-input" class="col-sm-5">Approved By :</label>
-                                                <e class="aks_value">_________________________</e></br>
-                                                <small>Manager Quality Assurance</small>
-                                                <br>
-                                            </address>
-                                        </div>
-
+                                                <td>
+                                                    <?php echo $batch_release['folding_gluing_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['folding_gluing_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Labeling
+                                                </td>
+
+                                                <td>
+                                                    As per standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['labeling_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['labeling_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Packing
+                                                </td>
+
+                                                <td>
+                                                    As per standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['packing_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['packing_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Master Cartons
+                                                </td>
+
+                                                <td>
+                                                    As per standard
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['master_cartons_status'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $batch_release['master_cartons_remarks'] ?>
+                                                </td>
+
+                                            </tr>
+                                            
+                                            <!-- <tr>
+
+                                                <td colspan="3">
+                                                    <center>
+                                                        <h5>Packing Area</h5></center>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td>Packer Name : <u><?php echo $batch_release['packer_name'] ?></u></td>
+                                                <td colspan="2">Date : <u><?php echo date('d/m/Y', strtotime($batch_release['date'])) ?></u></td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td colspan="3">Qty per MC : <u><?php echo $batch_release['qty_per_mc'] ?></u></td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td colspan="3">Total Cartons : <u><?php echo $batch_release['total_carton'] ?></u></td>
+
+                                            </tr> -->
+
+                                    </table>
+                                    <br>
+                                    <div class="form-group row">
+                                                        <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                                            <address>
+                                                               <label for="example-text-input" class="col-sm-5">Batch Release By :</label>
+                                                                <e class="aks_value">__________________</e></br>
+                                                                <small>QA Executive</small>
+                                                                <br>
+                                                            </address>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                                            <address>
+                                                               <label for="example-text-input" class="col-sm-5">Approved By :</label>
+                                                                <e class="aks_value">_________________________</e></br>
+                                                                <small>Manager Quality Assurance</small>
+                                                                <br>
+                                                            </address>
+                                                        </div>
+
+                                                    </div>
+                                    <div>
                                     </div>
-                    <div>
-                    </div>
 
-        </form>
-        </div>
-        </div>
-    </div>
-</div>
+                        </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <button id="btn" class="print-btn btn btn-info pull-right" role="button">Generate Print</button>
                 
@@ -2033,7 +2030,7 @@
 
                                             </div>
       
-  <?php if ($stripping_report): ?>
+<?php if (isset($stripping_report)): ?>
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-bd print-div_stripping_report ">
