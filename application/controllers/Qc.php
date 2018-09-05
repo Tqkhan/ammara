@@ -205,7 +205,7 @@ class Qc extends MY_Controller {
 
                 // qc Reports
 
-
+                
      public function Corrective_Action_Request($wo)
             {
               error_reporting(0);
@@ -322,6 +322,40 @@ class Qc extends MY_Controller {
                 $this->data['wo_no'] = $wo;          
 
                 $this->load->template('qc/non_comfirmity_report',$this->data);
+                }
+        public function process_procedure($wo)
+        {
+        if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();   
+              $data=array(
+
+              'wo_no'=>$_POST['wo_no'],
+              'ncr_no'=>$_POST['ncr_no'],
+              'name_of_assessor'=>$_POST['name_of_assessor'],
+              'date_of_reporting'=>$_POST['date_of_reporting'],
+              'concerned_depatment_person'=>$_POST['concerned_depatment_person'],
+              'non_coformance_category'=>$_POST['non_coformance_category'],
+              'problem'=>$_POST['problem'],
+              'm_r_nominee_sign'=>$_POST['m_r_nominee_sign'],
+              'root_cause'=>$_POST['root_cause'],
+              'corrective_action'=>$_POST['corrective_action'],
+              'preventive_action'=>$_POST['preventive_action'],
+              'date'=>$_POST['date'],
+              'assessor_auditor'=>$_POST['assessor_auditor'],
+              'comments'=>$_POST['comments'],
+              'date_action_completed'=>$_POST['date_action_completed'],
+              'confirmed_by'=>$_POST['confirmed_by']
+              );
+            $id2 = $this->qc_model->insert('process_procedure',$data);
+            
+                       
+            if ($id2) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+                $this->data['title'] = 'Process Procedure';
+                $this->data['wo_no'] = $wo;          
+
+                $this->load->template('qc/process_procedure',$this->data);
                 }
 
 }
