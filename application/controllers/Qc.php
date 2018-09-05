@@ -201,4 +201,127 @@ class Qc extends MY_Controller {
                 $this->load->template('qc/inprocess_inspection_pasting',$this->data);
                 }
 
+                
+
+                // qc Reports
+
+
+     public function Corrective_Action_Request($wo)
+            {
+              error_reporting(0);
+
+              if ($_POST) {
+
+                $data1=array(
+    'wo_no'=>$_POST['wo_no'],
+    'description'=>$_POST['description'],
+    'type'=>implode(",",$_POST['type']),
+    'client_name'=>$_POST['client_name'],
+    'date_of_reporting'=>$_POST['date_of_reporting'],
+    'source'=>implode(",",$_POST['source']),
+    'process'=>implode(",",$_POST['process']),
+    'priority'=>implode(",",$_POST['priority']),
+    'description_of_non_conformity'=>$_POST['description_of_non_conformity'],
+    'submit_assigned_to'=>$_POST['submit_assigned_to'],
+    'submit_assigned_date'=>$_POST['submit_assigned_date'],
+    'submit_respond_by'=>$_POST['submit_respond_by'],
+    'completed_identified_cause'=>$_POST['completed_identified_cause'],
+    'ca_taken_to_prevent_recurrence'=>$_POST['ca_taken_to_prevent_recurrence'],
+    'date_action_completed'=>$_POST['date_action_completed'],
+    'incharge'=>$_POST['incharge'],
+    'return_effectiveness_verified_by'=>$_POST['return_effectiveness_verified_by'],
+    'retrun_date'=>$_POST['retrun_date'],
+    'return_result'=>$_POST['return_result'],
+    'return_confirmed_by_manager_qa'=>$_POST['return_confirmed_by_manager_qa']
+
+                );
+
+
+                $id = $this->qc_model->insert('corrective_action_request',$data1);
+
+            if ($id) {
+                redirect(base_url('all_orders/view_plane/'.$_POST['wo_no']));             
+              }   
+              }
+
+
+            
+
+
+                $this->data['wo_no'] = $wo;
+                $this->data['title'] = 'Corrective Action Request';
+
+                $this->load->template('qc/Corrective_Action_Request',$this->data);
+              
+            }
+
+
+
+        public function complain_assessment_form($wo)
+        {
+        if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();     
+              $data=array(
+                'wo_no'=>$_POST['wo_no'],
+                'caf_no'=>$_POST['caf_no'],
+                'date'=>$_POST['date'],
+                'description'=>$_POST['description'],
+                'complain'=>$_POST['complain'],
+                'machine'=>$_POST['machine'],
+                'name_of_resposible_workers'=>$_POST['name_of_resposible_workers'],
+                'further_detail'=>$_POST['further_detail'],
+                'qc_personal_name'=>$_POST['qc_personal_name'],
+                'complain_reveiwed_name'=>$_POST['complain_reveiwed_name'],
+                'complain_reveiwed_signature'=>$_POST['complain_reveiwed_signature'],
+                'complain_reveiwed_comments'=>$_POST['complain_reveiwed_comments'],
+                'approved_by_qc_qa'=>$_POST['approved_by_qc_qa'],
+                'remarks'=>$_POST['remarks']
+
+              );
+            $id2 = $this->qc_model->insert('complain_assessment_form',$data);
+            
+                       
+            if ($id2) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+                $this->data['title'] = 'Inprocess Inspection Pasting';
+                $this->data['wo_no'] = $wo;          
+
+                $this->load->template('qc/complain_assessment_form',$this->data);
+                }
+        public function non_comfirmity_report($wo)
+        {
+        if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();   
+              $data=array(
+
+              'wo_no'=>$_POST['wo_no'],
+              'ncr_no'=>$_POST['ncr_no'],
+              'name_of_assessor'=>$_POST['name_of_assessor'],
+              'date_of_reporting'=>$_POST['date_of_reporting'],
+              'concerned_depatment_person'=>$_POST['concerned_depatment_person'],
+              'non_coformance_category'=>$_POST['non_coformance_category'],
+              'problem'=>$_POST['problem'],
+              'm_r_nominee_sign'=>$_POST['m_r_nominee_sign'],
+              'root_cause'=>$_POST['root_cause'],
+              'corrective_action'=>$_POST['corrective_action'],
+              'preventive_action'=>$_POST['preventive_action'],
+              'date'=>$_POST['date'],
+              'assessor_auditor'=>$_POST['assessor_auditor'],
+              'comments'=>$_POST['comments'],
+              'date_action_completed'=>$_POST['date_action_completed'],
+              'confirmed_by'=>$_POST['confirmed_by']
+              );
+            $id2 = $this->qc_model->insert('non_comfirmity_report',$data);
+            
+                       
+            if ($id2) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+                $this->data['title'] = 'Inprocess Inspection Pasting';
+                $this->data['wo_no'] = $wo;          
+
+                $this->load->template('qc/non_comfirmity_report',$this->data);
+                }
+
 }
