@@ -368,6 +368,8 @@ class Qc extends MY_Controller {
 
                 $this->load->template('qc/complain_assessment_form',$this->data);
                 }
+
+
         public function non_comfirmity_report($wo)
         {
         if ($this->input->post()) {
@@ -401,8 +403,83 @@ class Qc extends MY_Controller {
                 $this->data['wo_no'] = $wo;          
 
                 $this->load->template('qc/non_comfirmity_report',$this->data);
-                }
+            }
+
+
         public function process_procedure($wo)
+        {
+          
+          if ($this->input->post()) {
+
+
+            $data1 = array(
+
+        'wo_no'=>$_POST['wo_no'],
+        'date'=>$_POST['date'],
+        'po_no'=>$_POST['po_no'],
+        'challan_number'=>$_POST['challan_number'],
+        'supplier_name'=>$_POST['supplier_name'],
+        'min_no'=>$_POST['min_no']
+            );
+
+            $id1 = $this->qc_model->insert('process_procedure',$data1);
+            if ($id1) {
+              for ($i=0; $i < count($_POST['sr_no']) ; $i++) { 
+                
+
+              $data2=array(
+                'process_procedure_id'=>$id1,
+                'sr_no'=>$_POST['sr_no'][$i],
+                'item_description'=>$_POST['item_description'][$i],
+                'unit'=>$_POST['unit'][$i],
+                'qty_rec'=>$_POST['qty_rec'][$i],
+                'qty_ok'=>$_POST['qty_ok'][$i],
+                'qty_rej'=>$_POST['qty_rej'][$i]
+
+              );
+            $id2 = $this->qc_model->insert('process_procedure_item_desc',$data2);
+            
+            }
+
+            }
+                       
+            if ($id2) {
+
+                $data3=array(
+  'product_release_id'=>$id1,
+  'apperance'=>$_POST['apperance'],
+  'grammage'=>$_POST['grammage'],
+  'thickness'=>$_POST['thickness'],
+  'moisture'=>$_POST['moisture'],
+  'ph'=>$_POST['ph'],
+  'grain_direction'=>$_POST['grain_direction'],
+  'presence_of_insects'=>$_POST['presence_of_insects'],
+  'oil_and_grease_stains'=>$_POST['oil_and_grease_stains'],
+  'shade'=>$_POST['shade'],
+  'strength'=>$_POST['strength'],
+  'stick_ability'=>$_POST['stick_ability'],
+  'miscibility'=>$_POST['miscibility'],
+  'purity'=>$_POST['purity'],
+  'remarks'=>$_POST['remarks']
+
+                );
+            $id3 = $this->qc_model->insert('process_procedure_remarks',$data3);
+            if ($id3) {
+
+                redirect(base_url('all_orders/view_plane/'.$wo));             
+             }
+              }      
+            }
+                $this->data['title'] = 'Process Procedure';
+                $this->data['wo_no'] = $wo;          
+
+                $this->load->template('qc/process_procedure',$this->data);
+                
+            }
+
+
+
+        public function goods_receiving_notes($wo)
         {
         if ($this->input->post()) {
             // echo "<pre>";
@@ -410,31 +487,40 @@ class Qc extends MY_Controller {
               $data=array(
 
               'wo_no'=>$_POST['wo_no'],
-              'ncr_no'=>$_POST['ncr_no'],
-              'name_of_assessor'=>$_POST['name_of_assessor'],
-              'date_of_reporting'=>$_POST['date_of_reporting'],
-              'concerned_depatment_person'=>$_POST['concerned_depatment_person'],
-              'non_coformance_category'=>$_POST['non_coformance_category'],
-              'problem'=>$_POST['problem'],
-              'm_r_nominee_sign'=>$_POST['m_r_nominee_sign'],
-              'root_cause'=>$_POST['root_cause'],
-              'corrective_action'=>$_POST['corrective_action'],
-              'preventive_action'=>$_POST['preventive_action'],
-              'date'=>$_POST['date'],
-              'assessor_auditor'=>$_POST['assessor_auditor'],
-              'comments'=>$_POST['comments'],
-              'date_action_completed'=>$_POST['date_action_completed'],
-              'confirmed_by'=>$_POST['confirmed_by']
+              'grn_no'=>$_POST['grn_no'],
+              'grn_date'=>$_POST['grn_date'],
+              'supplier_name'=>$_POST['supplier_name'],
+              'requisition_no'=>$_POST['requisition_no'],
+              'po_no'=>$_POST['po_no'],
+              'delivery_note_no'=>$_POST['delivery_note_no']
               );
-            $id2 = $this->qc_model->insert('process_procedure',$data);
+            $id1 = $this->qc_model->insert('goods_receiving_notes',$data);
             
-                       
+          if ($id1) {
+
+              for ($i=0; $i < count($_POST['unit']) ; $i++) { 
+              $data2=array(
+               'goods_receiving_notes_id'=>$id1,
+               'item_description'=>$_POST['item_description'][$i],
+               'unit'=>$_POST['unit'][$i],
+               'qty'=>$_POST['qty'][$i],
+               'remarks'=>$_POST['remarks'][$i]  
+
+
+           );
+           $id2 = $this->qc_model->insert('goods_receiving_notes_item_desc',$data2);
+            
+            }
+
+
             if ($id2) {
                 redirect(base_url('all_orders/view_plane/'.$wo));             }         }
-                $this->data['title'] = 'Process Procedure';
+              }
+                $this->data['title'] = 'Inprocess Inspection Pasting';
                 $this->data['wo_no'] = $wo;          
 
-                $this->load->template('qc/process_procedure',$this->data);
-                }
+                $this->load->template('qc/goods_receiving_notes',$this->data);
+            }
+
 
 }
