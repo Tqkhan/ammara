@@ -169,6 +169,36 @@ class Qc extends MY_Controller {
                 $this->data['wo_no'] = $wo;          // echo
                 $this->load->template('qc/inprocess_inspection_die_cutting',$this->data);
                 } 
-        
+        public function inprocess_inspection_pasting($id,$wo)
+        {
+        if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();
+            
+            for ($i=0; $i < count($_POST['time']); $i++) { 
+                
+                $data=array(
+                    'date'=>date('Y-m-d'),
+                    'wo_id'=>$_POST['wo_no'],
+                    'machine'=>$_POST['machine'],
+                    'time'=>$_POST['time'][$i],
+                    'creasing'=>$_POST['creasing'][$i],
+                    'glue_position'=>$_POST['glue_position'][$i],
+                    'gluing'=>$_POST['gluing'][$i],
+                    'stickiness'=>$_POST['stickiness'][$i],
+                    'scratches'=>$_POST['scratches'][$i],
+                    'color_rub'=>$_POST['color_rub'][$i],
+                    'counting'=>$_POST['counting'][$i],
+                    'remarks'=>$_POST['remarks'][$i]
+                );
+            $id = $this->qc_model->insert('inprocess_inspection_pasting',$data);
+            
+            }             
+            if ($id) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+                $this->data['title'] = 'Inprocess Inspection Pasting';
+                $this->data['wo_no'] = $wo;          // echo
+                $this->load->template('qc/inprocess_inspection_pasting',$this->data);
+                }
 
 }
