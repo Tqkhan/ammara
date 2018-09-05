@@ -119,7 +119,7 @@
                                                 if($f['flow_id']==15){
                                                     ?>
                                                     <br>
-                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_die_cutting/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+                                                    <a href="<?php echo base_url() ?>qc/inprocess_inspection_pasting/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
 
                                                     <?php
                                                 }
