@@ -102,6 +102,86 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/printing_complete',$this->data);
     }
 
+
+    public function coating($plane_id,$flow_id)
+    {
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            $data['user_id'] = $this->session->userdata('user_id');
+            $id = $this->machine_flow_model->insert('coating',$data);
+            if ($id) {
+                $id = $this->start($flow_id);
+                redirect('coating_plane');
+            }
+        }
+        $this->data['title'] = 'coating Machine';
+        $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        $this->load->template('machine_flow/coating_machine',$this->data);
+    }
+
+    public function coating_complete($plane_id,$flow_id)
+    {
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            $start = array(
+                'operator' => $data['operator'],
+                'assistant' => $data['assistant'],
+                'process' => $data['process'],
+                'opening' => $data['opening'],
+                'closing' => $data['closing'],
+                'output' => $data['output'],
+                'waste' => $data['waste'] 
+            );
+            unset($data['operator']);
+            unset($data['assistant']);
+            unset($data['process']);
+            unset($data['opening']);
+            unset($data['closing']);
+            unset($data['output']);
+            unset($data['waste']);
+            $this->machine_flow_model->update('coating',$start,array('plane_id'=>$plane_id,'flow_id'=>$flow_id));
+
+            
+            $code = $data['code'];
+            $from = $data['from'];
+            $to = $data['to'];
+            $hours = $data['hours'];
+            $counter = $data['counter'];
+            $remarks = $data['remarks'];
+            unset($data['code']);
+            unset($data['from']);
+            unset($data['to']);
+            unset($data['hours']);
+            unset($data['counter']);
+            unset($data['remarks']);
+            //echo '<pre>';print_r($data);die;
+            $data['user_id'] = $this->session->userdata('user_id');
+            $id = $this->machine_flow_model->insert('coating_complete',$data);
+            if ($id) {
+                for ($i=0; $i < sizeof($code); $i++) { 
+                    $data = array(
+                        'code'=>$code[$i],
+                        'froms'=>$from[$i],
+                        'tos'=>$to[$i],
+                        'hours'=>$hours[$i],
+                        'counter'=>$counter[$i],
+                        'remarks'=>$remarks[$i],
+                        'coating_id'=>$id,
+                    );
+                    $this->machine_flow_model->insert('coating_hourse',$data);
+                }
+                $id = $this->complete($flow_id);
+                //redirect('coating_plane');
+                $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+                redirect('requisition/pending_quantity/'.$wo_id.'/coating?redirect='.base_url('coating_plane'));
+            }
+        }
+        $this->data['title'] = 'Coating Machine';
+        $this->data['job'] = $this->machine_flow_model->get_job($plane_id,$flow_id);
+        $this->data['detail'] = $this->machine_flow_model->get_row_single('coating',array('plane_id'=>$plane_id,'flow_id'=>$flow_id));
+        $this->load->template('machine_flow/coating_complete',$this->data);
+    }
+
     public function store_start($plane_id,$flow_id)
     {
         $id = $this->start($flow_id);
