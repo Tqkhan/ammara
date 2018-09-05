@@ -112,7 +112,7 @@ class MY_Model extends CI_Model
         $this->db->select('fl.id as flow_id,m.machine_name,fl.Name,f.start_date,f.end_date,p.WO_no,p.Job_Description,count(off.id) as submit,count(ofs.id) as start, pf.Name as parent,f.id, count(lc.id) as clearance')
                  ->from('production_plan p')
                  ->join('production_flow f', 'f.plane_id = p.id')
-                 ->join('machines m', 'm.id = f.machine')
+                 ->join('machines m', 'm.id = f.machine','left')
                  ->join('line_clearance lc', 'lc.flow_id = f.id', 'left')
                  ->join('flows fl', 'fl.id = f.type')
                  ->join('flows pf', 'pf.id = f.parent_id', 'left')
