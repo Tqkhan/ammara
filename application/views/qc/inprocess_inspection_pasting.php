@@ -114,7 +114,7 @@
                                         <table class="table table-striped table table-bordered table-hover" id='Tableadd'>
                                             <thead>
                                                 <tr>
-                                                    <th colspan="10"><center>Die glue_position Checking Parameters</center></th>
+                                                    <th colspan="10"><center>Pasting  Checking Parameters</center></th>
                                                     <th rowspan="2">Remarks</th>
                                                 </tr>
                                                 <tr>
