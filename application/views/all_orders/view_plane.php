@@ -544,6 +544,79 @@
                                             </tbody>
                                         </table>
                                         <br>
+
+
+<?php if (isset($inprocess_inspection_die_cutting)) { ?>
+   <div class="form-group row">
+       <div class="form-group col-lg-12">
+           <table class="minimalistBlack" style="width: 100%;">
+               <tr>
+                    <th colspan="11"><center>Die Cutting Checking Parameters</center></th>
+                    <th rowspan="2">Remarks</th>
+                </tr>
+                <tr>
+                    <th colspan="1">W.O No</th>
+                    <th colspan="1">Machine</th>
+                    <th colspan="1">Time</th>
+                    <th colspan="1">Position</th>
+                    <th colspan="1">Cutting</th>
+                    <th colspan="1">Creasing</th>
+                    <th colspan="1">Bead</th>
+                    <th colspan="1">Perforation</th>
+                    <th colspan="1">Ear lock</th>
+                    <th colspan="1">Pasting Fold</th>
+                    <th colspan="1">Embose</th>
+                </tr>
+               <tbody>
+                    <?php 
+                        foreach ($inprocess_inspection_die_cutting as $dc) {
+                    ?>
+                       <tr>
+                            <td>
+                                <?php echo $dc['wo_no']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['machine']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['time']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['position']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['cutting']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['creasing']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['bead']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['perforation']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['ear_lock']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['pasting_fold']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['embose']; ?>
+                            </td>
+                            <td>
+                                <?php echo $dc['remarks']; ?>
+                            </td>
+                            
+                        </tr>
+                    <?php }  ?>
+               </tbody>
+           </table>
+       </div>
+   </div>   
+<?php } ?>
+                                        <br>
                                         <div class="form-group row">
                                             <table class="minimalistBlack" style="width: 100%;">
                                                 <tbody>
@@ -589,14 +662,8 @@
                                             
                                         </div>
                                         <div>
-                                              <?php 
-                                              if (isset($inprocess_inspection_die_cutting)) {
-                                                  
-                                            echo "<pre>";
-                                            print_r($inprocess_inspection_die_cutting);
-                                              }
 
-                                             ?>
+                                             
                                         </div>
                                     </div>
                                 </div>
@@ -606,7 +673,7 @@
                     </div>
                 </div>
             </div>
-                        <button id="btn" class="print-btn_view_die_cutting btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
+                        <button id="btn" class="print-btn_die_cutting btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
         </div>
 
         <?php } ?>
@@ -773,6 +840,75 @@
                                             </tbody>
                                         </table>
                                         <br>
+
+
+<?php if (isset($inprocess_inspection_pasting)) { ?>
+   <div class="form-group row">
+       <div class="form-group col-lg-12">
+           <table class="minimalistBlack" style="width: 100%;">
+               <tr>
+                    <th colspan="10"><center>Pasting  Checking Parameters</center></th>
+                    <th rowspan="2">Remarks</th>
+                </tr>
+                <tr>
+                    <th colspan="1">W.O No</th>
+                    <th colspan="1">Machine</th>
+                    <th colspan="1">Time</th>
+                    <th colspan="1">Creasing2222</th>
+                    <th colspan="1">Glue Position</th>
+                    <th colspan="1">Gluing</th>
+                    <th colspan="1">Stickiness</th>
+                    <th colspan="1">Scratches</th>
+                    <th colspan="1">Color Rub</th>
+                    <th colspan="1">Counting</th>
+                </tr>
+               <tbody>
+                    <?php 
+                        foreach ($inprocess_inspection_pasting as $pasting) {
+                    ?>
+                       <tr>
+                            <td>
+                                <?php echo $pasting['wo_id']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['machine']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['time']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['creasing']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['glue_position']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['gluing']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['stickiness']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['scratches']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['color_rub']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['counting']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pasting['remarks']; ?>
+                            </td>
+                            
+                        </tr>
+                    <?php }  ?>
+               </tbody>
+           </table>
+       </div>
+   </div>   
+<?php } ?>
+                                        <br>
                                         <div class="form-group row">
                                             <table class="minimalistBlack" style="width: 100%;">
                                                 <tbody>
@@ -818,14 +954,6 @@
                                             
                                         </div>
                                         <div>
-                                           <?php 
-                                              if (isset($inprocess_inspection_pasting)) {
-                                                  
-                                            echo "<pre>";
-                                            print_r($inprocess_inspection_pasting);
-                                              }
-
-                                             ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1492,14 +1620,74 @@
                                             
                                         </div>
                                         <div>
-                                              <?php 
-                                              if (isset($inprocess_inspection_coating)) {
-                                                  
-                                            echo "<pre>";
-                                            print_r($inprocess_inspection_coating);
-                                              }
+                                              
+                             <?php if (isset($inprocess_inspection_coating)) { ?>
+                                <div class="form-group row">
+                                    <div class="form-group col-lg-12">
+                                        <table class="minimalistBlack" style="width: 100%;">
+                                            <tr>
+                                                 <th colspan="10"><center>Checking Parameters</center></th>
+                                                 <th rowspan="2">Remarks</th>
+                                             </tr>
+                                            <tr>
+                                                 <th colspan="1">W.O No</th>
+                                                 <th colspan="1">Machine</th>
+                                                 <th colspan="1">Time</th>
+                                                 <th colspan="1">Registration</th>
+                                                 <th colspan="1">UV Shade</th>
+                                                 <th colspan="1">Set Off</th>
+                                                 <th colspan="1">Scummy</th>
+                                                 <th colspan="1">Un wanted Marks</th>
+                                                 <th colspan="1">UV Closs (Wet)</th>
+                                                 <th colspan="1">UV Closs (Dry)</th>
+                                             </tr>
+                                            <tbody>
+                                                 <?php 
+                                                     foreach ($inprocess_inspection_coating as $iicoating) {
+                                                 ?>
+                                                    <tr>
+                                                         <td>
+                                                            <?php echo $iicoating['wo_no']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['machine']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['time']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['registration']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['uv_shade']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['set_off']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['scummy']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['unwanted_marks']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['uv_gloves_wet']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['uv_gloves_dry']; ?>
+                                                         </td>
+                                                         <td>
+                                                             <?php echo $iicoating['remarks']; ?>
+                                                         </td>
+                                                         
+                                                     </tr>
+                                                 <?php }  ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>   
+                             <?php } ?>
 
-                                             ?>
                                         </div>
                                     </div>
                                 </div>
@@ -2563,49 +2751,314 @@
 <?php endif ?>
         
     </div>
+    <!-- qc reports -->
+    <div class="content-header">
+        <div class="header-icon">
+            <i class="pe-7s-note2"></i>
+        </div>
+        <div class="header-title">
+            <h1>QC Reports</h1>
+            <small></small>
+        </div>
+    </div>
+    <?php if (isset($goods_receiving_notes)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_goods_recevied_report ">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">View Goods Receiving Notes Report</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $goods_receiving_notes['wo_no'] ?></u></td>
+                                            <td colspan="2">GRN # : <u><?php echo $goods_receiving_notes['grn_no'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">Date : <u><?php echo $goods_receiving_notes['grn_date'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">Supplier's Name : <u><?php echo $goods_receiving_notes['supplier_name'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="">Requisition #  : <u><?php echo $goods_receiving_notes['requisition_no'] ?></u>  </td>
+                                            <td>
+                                                po_no : <u><?php echo $goods_receiving_notes['po_no'] ?></u>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> P.O Date : : <u><?php echo $goods_receiving_notes['po_date'] ?></u></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td colspan="3">Delivery Note No  : <u><?php echo $goods_receiving_notes['delivery_note_no'] ?></u></td>
+
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                                <br>
+                                <?php if (isset($goods_receiving_notes_item_desc)) { ?>
+                                   <div class="form-group row">
+                                       <div class="form-group col-lg-12">
+                                           <table class="minimalistBlack" style="width: 100%;">
+                                               <tr>
+                                                    <th colspan="3">Item Description</th>
+                                                    <th colspan="1">Unit</th>
+                                                    <th colspan="1">Qty</th>
+                                                    <th colspan="3">Remarks</th>
+                                                </tr>
+                                               <tbody>
+                                                    <?php 
+                                                        foreach ($goods_receiving_notes_item_desc as $goods) {
+                                                    ?>
+                                                       <tr>
+                                                           <td colspan="3">
+                                                            <?php echo $goods['item_description']; ?>
+                                                           </td>
+                                                           <td>
+                                                            <?php echo $goods['unit']; ?>
+                                                           </td>
+                                                           <td>
+                                                            <?php echo $goods['qty']; ?>
+                                                           </td>
+                                                           <td colspan="3">
+                                                            <?php echo $goods['remarks']; ?>
+                                                           </td>
+                                                           
+                                                       </tr>
+                                                    <?php }  ?>
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </div>   
+                                <?php } ?>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Recevied By</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                            </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_goods_recevied_report btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+    <?php if (isset($process_procedure)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_process_procedure_report ">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Process Procedure</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                
+                                <?php if (isset($process_procedure)) { ?>
+                                   <div class="form-group row">
+                                       <div class="form-group col-lg-12">
+                                           <table class="minimalistBlack" style="width: 100%;">
+                                               <tr>
+                                                    <th colspan="7">Name : <e class=""><?php echo $process_procedure['supplier_name']; ?></e> </th>
+                                                    <th>MIN No : <e class=""><?php echo $process_procedure['min_no']; ?></e></th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2">P.O # : <e class=""><?php echo $process_procedure['po_no']; ?></e> </th>
+                                                    <th colspan="3">Date : <e class=""><?php echo $process_procedure['date']; ?></e></th>
+                                                    <th colspan="3">Challan Number : <e class=""><?php echo $process_procedure['challan_number']; ?></e> </th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="1">Sr No:</th>
+                                                    <th colspan="3">Item Description</th>
+                                                   
+                                                    <th colspan="1">Unit</th>
+                                                    <th colspan="1">Qty Rec</th>
+                                                    <th colspan="1">Qty ok</th>
+                                                    <th colspan="1">Qty Rej</th>
+                                                </tr>
+                                               <tbody>
+                                                    <?php 
+                                                        foreach ($process_procedure_item_desc as $pp) {
+                                                    ?>
+                                                       <tr>
+                                                            <td>
+                                                                <?php echo $pp['sr_no'] ?>
+                                                            </td>
+                                                            <td colspan="3">
+                                                                <?php echo $pp['item_description'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $pp['unit'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $pp['qty_rec'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $pp['qty_ok'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $pp['qty_rej'] ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php }  ?>
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </div>   
+                                <?php } ?>
+                                <br>
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $process_procedure_remarks['apperance'] ?></u></td>
+                                            <td colspan="2">grammage  : <u><?php echo $process_procedure_remarks['grammage'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">thickness : <u><?php echo $process_procedure_remarks['thickness'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">moisture : <u><?php echo $process_procedure_remarks['moisture'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">ph  : <u><?php echo $process_procedure_remarks['ph'] ?></u>  </td>
+                                            <td>
+                                                po_no : <u><?php echo $process_procedure_remarks['po_no'] ?></u>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> grain_direction : : <u><?php echo $process_procedure_remarks['grain_direction'] ?></u></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>presence_of_insects  : <u><?php echo $process_procedure_remarks['presence_of_insects'] ?></u></td>
+                                            <td>oil_and_grease_stains  : <u><?php echo $process_procedure_remarks['oil_and_grease_stains'] ?></u></td>
+                                            <td>shade  : <u><?php echo $process_procedure_remarks['shade'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td>strength  : <u><?php echo $process_procedure_remarks['strength'] ?></u></td>
+                                            <td>stick_ability  : <u><?php echo $process_procedure_remarks['stick_ability'] ?></u></td>
+                                            <td>miscibility  : <u><?php echo $process_procedure_remarks['miscibility'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="2">purity  : <u><?php echo $process_procedure_remarks['purity'] ?></u></td>
+                                            <td>remarks  : <u><?php echo $process_procedure_remarks['remarks'] ?></u></td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Recevied By <small>Sorter Incharge</small></label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Verifide By<small> Quality Controller</small></label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_process_procedure_report btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+    <br>
+    <br>
+    <br>
     <button id="btn" class="print-btn_all btn btn-info pull-left" role="button">Generate Print Full</button><br><br></br>
-</div>    </div>
-</div>    </div>
+                </div>    
+            </div>
+        </div>
+
+     </div>
 </div>
 
 <!-- cutting css -->
 <style type="text/css">
     table.minimalistBlack {
-  
-  width: 100%;
-  height: 200px;
-  text-align: left;
-  border-collapse: collapse;
-}
-table.minimalistBlack td, table.minimalistBlack th {
-  border: 1px solid #000000;
-  padding: 5px 4px;
-}
-table.minimalistBlack tbody td {
-  font-size: 13px;
-}
-table.minimalistBlack thead {
-  background: #CFCFCF;
-  background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-  background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-  background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-  border-bottom: 3px solid #000000;
-}
-table.minimalistBlack thead th {
-  font-size: 15px;
-  font-weight: bold;
-  color: #000000;
-  text-align: left;
-}
-table.minimalistBlack tfoot {
-  font-size: 14px;
-  font-weight: bold;
-  color: #000000;
-  border-top: 3px solid #000000;
-}
-table.minimalistBlack tfoot td {
-  font-size: 14px;
-}
+      
+      width: 100%;
+      height: 200px;
+      text-align: left;
+      border-collapse: collapse;
+    }
+    table.minimalistBlack td, table.minimalistBlack th {
+      border: 1px solid #000000;
+      padding: 5px 4px;
+    }
+    table.minimalistBlack tbody td {
+      font-size: 13px;
+    }
+    table.minimalistBlack thead {
+      background: #CFCFCF;
+      background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+      background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+      background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+      border-bottom: 3px solid #000000;
+    }
+    table.minimalistBlack thead th {
+      font-size: 15px;
+      font-weight: bold;
+      color: #000000;
+      text-align: left;
+    }
+    table.minimalistBlack tfoot {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000000;
+      border-top: 3px solid #000000;
+    }
+    table.minimalistBlack tfoot td {
+      font-size: 14px;
+    }
 </style>
 <script type="text/javascript">
     $('.print-btn_all').click(function() {
@@ -2761,11 +3214,41 @@ table.minimalistBlack tfoot td {
         }, 300);
     })
 </script>
+<script type="text/javascript">
+    $('.print-btn_view_cutting').click(function() {
+        w = window.open();
+        var ht = $('.print-div_view_cutting').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
 
 <script type="text/javascript">
-    $('.print-btn_printing').click(function() {
+    $('.print-btn_die_cutting').click(function() {
         w = window.open();
-        var ht = $('.print-div_printing').html()
+        var ht = $('.print-div_view_die_cutting').html()
         var head = $('head').html()
         w.document.write('<html>');
         w.document.write('<head>');
@@ -2976,6 +3459,66 @@ table.minimalistBlack tfoot td {
     $('.print-btn_stripping_report').click(function() {
         w = window.open();
         var ht = $('.print-div_stripping_report').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_goods_recevied_report').click(function() {
+        w = window.open();
+        var ht = $('.print-div_goods_recevied_report').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_process_procedure_report').click(function() {
+        w = window.open();
+        var ht = $('.print-div_process_procedure_report').html()
         var head = $('head').html()
         w.document.write('<html>');
         w.document.write('<head>');

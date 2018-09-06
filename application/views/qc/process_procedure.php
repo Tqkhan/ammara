@@ -273,9 +273,9 @@
 
                                             </tr>
                                             <tr>
-                                                <td colspan="3"></td>
-                                                <td colspan="3">
-                                                    <input class="form-control" type="" value="" id="">
+                                                <td colspan="3" rowspan="2"></td>
+                                                <td colspan="3" >
+                                                    
                                                 </td>
                                                 <td colspan="3">
                                                     Miscibility
@@ -287,9 +287,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="3"></td>
-                                                <td colspan="3">
-                                                    <input class="form-control" type="" value="" id="">
-                                                </td>
+                                              
                                                 <td colspan="3">
                                                     Purity
                                                 </td>
@@ -298,17 +296,7 @@
                                                 </td>
 
                                             </tr>
-                                            <tr>
-                                                <td colspan="3"></td>
-                                                <td colspan="3">
-                                                    <input class="form-control" type="" value="" id="">
-                                                </td>
-                                                <td colspan="3"></td>
-                                                <td colspan="3">
-                                                    <input class="form-control" type="" value="" id="">
-                                                </td>
-
-                                            </tr>
+                                            
 
                                         </thead>
                                     </table>
