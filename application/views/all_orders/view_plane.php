@@ -2938,7 +2938,7 @@
                                 <table class="minimalistBlack" style="width: 100%;">
                                     <tbody>
                                         <tr>
-                                            <td>W.O # : <u><?php echo $process_procedure_remarks['apperance'] ?></u></td>
+                                            <td>apperance : <u><?php echo $process_procedure_remarks['apperance'] ?></u></td>
                                             <td colspan="2">grammage  : <u><?php echo $process_procedure_remarks['grammage'] ?></u></td>
 
                                         </tr>
@@ -3008,6 +3008,297 @@
         </div>
     </div>
         <button id="btn" class="print-btn_process_procedure_report btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+    <?php if (isset($rejection_report)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_rejection_report ">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Rejection Report</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $rejection_report['wo_no'] ?></u></td>
+                                            <td colspan="2">date  : <u><?php echo $rejection_report['date'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">po_no : <u><?php echo $rejection_report['po_no'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">product_name : <u><?php echo $rejection_report['product_name'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="">customer_name  : <u><?php echo $rejection_report['customer_name'] ?></u>  </td>
+                                            <td>
+                                                sorter_name : <u><?php echo $rejection_report['sorter_name'] ?></u>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> good_qty : : <u><?php echo $rejection_report['good_qty'] ?></u></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>time_consumed_to  : <u><?php echo $rejection_report['time_consumed_to'] ?></u></td>
+                                            <td>time_consumed_from  : <u><?php echo $rejection_report['time_consumed_from'] ?></u></td>
+                                            <td>type_of_rejection  : <u><?php echo $rejection_report['type_of_rejection'] ?></u></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <?php if (isset($rejection_report_parameter)) { ?>
+                                   <div class="form-group row">
+                                       <div class="form-group col-lg-12">
+                                           <table class="minimalistBlack" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr#</th>
+                                                    <th>Reason For Rejection</th>
+                                                    <th>Write Yes Or No</th>
+                                                    <th>Reject Qty</th>
+                                                    <th>Remarks</th>
+                                                </tr>
+                                            </thead>
+                                               <tbody>
+                                                   <tr>
+                                                       <td>
+                                                           1
+                                                       </td>
+                                                       <td>
+                                                           Colour Variation
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['color_variation_accept']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['color_variation_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['color_variation_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           2
+                                                       </td>
+                                                       <td>
+                                                           Stains
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['stains_accept']?>
+                                                       </td>
+                                                       <td>
+                                                          <?php echo $rejection_report_parameter['stains_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['stains_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           3
+                                                       </td>
+                                                       <td>
+                                                           Bur
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['bur_accept']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['bur_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['bur_remarks']?>
+                                                       </td>
+                                                   </tr>
+
+                                                   <tr>
+
+                                                       <td>
+                                                           4
+                                                       </td>
+                                                       <td>
+                                                           Over Glueing
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['over_glueing_accept']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['over_glueing_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['over_glueing_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           5
+                                                       </td>
+                                                       <td>
+                                                           Spots
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['sport_accept']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['sport_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['sport_reject_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                 
+
+                                                   <td>
+                                                           6
+                                                       </td>
+                                                       <td>
+                                                           Edges
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['edges_accept']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['edges_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['edges_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+
+                                                       <td>
+                                                           7
+                                                       </td>
+                                                       <td>
+                                                           Cutting Out
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['cutting_out_accept']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['cutting_out_reject_qty']?>
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['cutting_out_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           8
+                                                       </td>
+                                                       <td>
+                                                           Print un Smooth
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['print_un_smooth_accept']?> 
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['print_un_smooth_reject_qty']?> 
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['print_un_smooth_remarks']?>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+
+                                                       <td>
+                                                           9
+                                                       </td>
+                                                       <td>
+                                                           Scum
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['scum_accept']?>
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['scum_reject_qty']?>   
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['scum_remarks']?>   
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           10
+                                                       </td>
+                                                       <td>
+                                                           Cutting Hard
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['cutting_hard_accept']?>   
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['cutting_hard_reject_qty']?>   
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['cutting_hard_remarks']?>   
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           11
+                                                       </td>
+                                                       <td>
+                                                           Cracking
+                                                       </td>
+                                                       <td>
+                                                           <?php echo $rejection_report_parameter['cracking_accept']?>
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['cracking_reject_qty']?> 
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $rejection_report_parameter['cracking_remarks']?>   
+                                                       </td>
+                                                   </tr>
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </div>   
+                                <?php } ?>
+                                
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Sorter Sign </label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Checked By<small>QC Executive</small></label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_rejection_report btn btn-info pull-right" role="button">Generate Print</button>
     <div style="height: 60px;"></div>
     <?php endif ?>
     <br>
@@ -3519,6 +3810,36 @@
     $('.print-btn_process_procedure_report').click(function() {
         w = window.open();
         var ht = $('.print-div_process_procedure_report').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_rejection_report').click(function() {
+        w = window.open();
+        var ht = $('.print-div_rejection_report').html()
         var head = $('head').html()
         w.document.write('<html>');
         w.document.write('<head>');
