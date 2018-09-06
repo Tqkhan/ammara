@@ -288,6 +288,70 @@
                                         
                                         </table>
                                         <br>
+
+
+                                        <?php if (isset($inprocess_inspection_cutting)) { ?>
+                                           <div class="form-group row">
+                                               <div class="form-group col-lg-12">
+                                                   <table class="minimalistBlack" style="width: 100%;">
+                                                       <tr>
+                                                           <td colspan="9"><center>Checking Parameters For Board &amp; Paper Cutting</center></td>
+                                                           <td rowspan="2">Remarks</td>
+                                                       </tr>
+                                                       <tr>
+                                                           <td colspan="1">W.O No</td>
+                                                           <td colspan="1">Machine</td>
+                                                           <td colspan="1">Time</td>
+                                                           <td colspan="1">Material</td>
+                                                           <td colspan="1">GSM</td>
+                                                           <td colspan="1">Size</td>
+                                                           <td colspan="1"> Cut Mark</td>
+                                                           <td colspan="1">Edges</td>
+                                                           <td colspan="1">Stain</td>
+                                                       </tr>
+                                                       <tbody>
+                                                            <?php 
+                                                                foreach ($inprocess_inspection_cutting as $iic) {
+                                                            ?>
+                                                               <tr>
+                                                                   <td>
+                                                                       <?php  echo $iic['wo_no']; ?>
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['machine']; ?>
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['time']; ?>
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['material']; ?>
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['gsm']; ?> 
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['size']; ?>
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['cut_marks']; ?> 
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['edges']; ?> 
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['stain']; ?> 
+                                                                   </td>
+                                                                   <td>
+                                                                       <?php  echo $iic['remarks']; ?> 
+                                                                   </td>
+                                                               </tr>
+                                                            <?php }  ?>
+                                                       </tbody>
+                                                   </table>
+                                               </div>
+                                           </div>   
+                                        <?php } ?>
+                                        <br>
                                         <div class="form-group row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <address>
@@ -307,14 +371,7 @@
                                         </div>
 
                                         <div>
-                                            <?php 
-                                              if (isset($inprocess_inspection_cutting)) {
-                                                  
-                                            echo "<pre>";
-                                            print_r($inprocess_inspection_cutting);
-                                              }
-
-                                             ?>
+                                           
                                         </div>
                                     </div>
                                 </div>
