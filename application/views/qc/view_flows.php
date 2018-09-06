@@ -126,7 +126,7 @@
                                                 if($f['flow_id']==20){
                                                     ?>
                                                     <br>
-                                                    <a href="<?php echo base_url() ?>qc/quality_inspection_machine_report/<?php echo $f["id"] ?>/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
+                                                    <a href="<?php echo base_url() ?>qc/quality_inspection_machine_report/<?php echo $f["WO_no"] ?>?machine=<?php echo $f['machine_name']; ?>">Inprocess Inpection</a>
 
                                                     <?php
                                                 }
