@@ -171,7 +171,7 @@
                                                     <input class="form-control" type="number" value="" id="" name="oil_stains_reject_qty">
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" id="" rows="1" name="oil_remarks"></textarea>
+                                                    <textarea class="form-control" id="" rows="1" name="oil_stains_remarks"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -179,23 +179,23 @@
                                                     3
                                                 </td>
                                                 <td>
-                                                    Ghousting
+                                                    Ghosting
                                                 </td>
                                                 <td>
                                                     <div class="radio radio-info radio-inline">
-                                                        <input type="radio" id="inlineRadio23" value="yes" name="ghousting_accept" >
+                                                        <input type="radio" id="inlineRadio23" value="yes" name="ghosting_accept" >
                                                         <label for="inlineRadio23"> Yes </label>
                                                     </div>
                                                     <div class="radio radio-info radio-inline">
-                                                        <input type="radio" id="inlineRadio23" value="no" name="ghousting_accept" >
+                                                        <input type="radio" id="inlineRadio23" value="no" name="ghosting_accept" >
                                                         <label for="inlineRadio23"> No </label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="number" value="" id="" name="ghousting_reject_qty">
+                                                    <input class="form-control" type="number" value="" id="" name="ghosting_reject_qty">
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" id="" rows="1" name="ghousting_remarks"></textarea>
+                                                    <textarea class="form-control" id="" rows="1" name="ghosting_remarks"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -257,19 +257,19 @@
                                                 </td>
                                                 <td>
                                                     <div class="radio radio-info radio-inline">
-                                                        <input type="radio" id="inlineRadio9" value="yes" name="sport_accept">
+                                                        <input type="radio" id="inlineRadio9" value="yes" name="spots_accept">
                                                         <label for="inlineRadio9"> Yes </label>
                                                     </div>
                                                     <div class="radio radio-info radio-inline">
-                                                        <input type="radio" id="inlineRadio10" value="no" name="sport_accept">
+                                                        <input type="radio" id="inlineRadio10" value="no" name="spots_accept">
                                                         <label for="inlineRadio10"> No </label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="number" value="" id="" name="sport_reject_qty">
+                                                    <input class="form-control" type="number" value="" id="" name="spots_reject_qty">
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" id="" rows="1" name="sport_reject_remarks"></textarea>
+                                                    <textarea class="form-control" id="" rows="1" name="spots_reject_remarks"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -376,7 +376,7 @@
                                                     <input class="form-control" type="number" value="" id="" name="cracking_reject_qty">
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" id="" rows="1" name="print_un_smooth_remarks"></textarea>
+                                                    <textarea class="form-control" id="" rows="1" name="cracking_remarks"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
