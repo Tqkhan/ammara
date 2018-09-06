@@ -49,7 +49,13 @@ class All_orders extends MY_Controller
 			$flow = $flow_data['id'];
 			$this->data['cutting_data'] = $this->all_orders_model->get_row_single('cutting',array('plane_id'=>$plane_id,'flow_id'=>$flow));
 	        $this->data['cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
+
+	        $this->data['inprocess_inspection_cutting'] = $this->machine_flow_model->get_row_single('inprocess_inspection_cutting',['wo_no'=>$id]);
+
+
 		}
+
+
 		// die cutting
 		$flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'13'));
 		if ($flow_data) {
@@ -58,6 +64,9 @@ class All_orders extends MY_Controller
 	        $this->data['die_cutting_complete'] = $this->all_orders_model->get_row_single('die_cutting_complete',array('die_cutting_id'=>$this->data['die_cutting']['id']));
 	        $this->data['die_cutting_hourse'] = $this->all_orders_model->get_rows('die_cutting_hourse',array('die_cutting_id'=>$this->data['die_cutting_complete']['id']));
 	        $this->data['die_cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
+
+	        $this->data['inprocess_inspection_die_cutting'] = $this->machine_flow_model->get_row_single('inprocess_inspection_die_cutting',['wo_no'=>$id]);
+
 	    }
 	    // leaflet cutting 
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'8'));
@@ -87,6 +96,8 @@ class All_orders extends MY_Controller
 	        $this->data['pasting_complete'] = $this->all_orders_model->get_row_single('pasting_complete',array('pasting_id'=>$this->data['pasting']['id']));
 	        $this->data['pasting_hourse'] = $this->all_orders_model->get_rows('pasting_hourse',array('pasting_id'=>$this->data['pasting_complete']['id']));
 	        $this->data['pasting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
+	    
+	        $this->data['inprocess_inspection_pasting'] = $this->machine_flow_model->get_row_single('inprocess_inspection_pasting',['wo_id'=>$id]);
 	    }
 	    // printing
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'7'));
@@ -96,6 +107,18 @@ class All_orders extends MY_Controller
 	        $this->data['printing_complete'] = $this->all_orders_model->get_row_single('printing_complete',array('print_id'=>$this->data['printing']['id']));
 	        $this->data['printing_hourse'] = $this->all_orders_model->get_rows('printing_hourse',array('printing_id'=>$this->data['printing_complete']['id']));
 	        $this->data['printing_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
+	        // $this->data['inprocess_inspection_printing'] = $this->machine_flow_model->get_row_single('inprocess_inspection_printing',['wo_id'=>$id]);
+		}
+	    // Coating
+	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'22'));
+		if ($flow_data) {
+			$flow = $flow_data['id'];
+			$this->data['coating'] = $this->all_orders_model->get_row_single('coating',array('plane_id'=>$plane_id,'flow_id'=>$flow));
+	        $this->data['coating_complete'] = $this->all_orders_model->get_row_single('coating_complete',array('print_id'=>$this->data['coating']['id']));
+	        $this->data['coating_hourse'] = $this->all_orders_model->get_rows('coating_hourse',array('coating_id'=>$this->data['coating_complete']['id']));
+	        $this->data['coating_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
+	        
+	        $this->data['inprocess_inspection_coating'] = $this->machine_flow_model->get_row_single('inprocess_inspection_coating',['wo_no'=>$id]);
 		}
 	    // sorting
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'10'));

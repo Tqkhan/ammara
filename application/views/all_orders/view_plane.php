@@ -305,6 +305,17 @@
                                             </div>
                                             
                                         </div>
+
+                                        <div>
+                                            <?php 
+                                              if (isset($inprocess_inspection_cutting)) {
+                                                  
+                                            echo "<pre>";
+                                            print_r($inprocess_inspection_cutting);
+                                              }
+
+                                             ?>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -519,6 +530,16 @@
                                         
                                             </table>
                                             
+                                        </div>
+                                        <div>
+                                              <?php 
+                                              if (isset($inprocess_inspection_die_cutting)) {
+                                                  
+                                            echo "<pre>";
+                                            print_r($inprocess_inspection_die_cutting);
+                                              }
+
+                                             ?>
                                         </div>
                                     </div>
                                 </div>
@@ -738,6 +759,16 @@
                                         
                                             </table>
                                             
+                                        </div>
+                                        <div>
+                                           <?php 
+                                              if (isset($inprocess_inspection_pasting)) {
+                                                  
+                                            echo "<pre>";
+                                            print_r($inprocess_inspection_pasting);
+                                              }
+
+                                             ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1067,6 +1098,14 @@
                                             </table>
                                             
                                         </div>
+                                         <?php 
+                                              if (isset($inprocess_inspection_printing)) {
+                                                  
+                                            echo "<pre>";
+                                            print_r($inprocess_inspection_printing);
+                                              }
+
+                                             ?>
                                     </div>
                                 </div>
 
@@ -1076,6 +1115,344 @@
                 </div>
             </div>
                         <button id="btn" class="print-btn_printing btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
+        </div>
+        <?php } ?>
+        <!-- coating -->
+        <?php 
+            if (isset($coating)) {
+        ?>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-bd print-div_coating table_one">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                          <h4 class="product-totle">BATCH MANUFACTURING REPORT <small>(coating)</small></h4><br>
+                            <small class="product-tital">DOC NO: PRD/FM/001-02A   |   REV# 00    |  Date:<?php echo date('d-m-Y', strtotime($coating['created_at'])) ?></small>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <form>
+                                <div class="col-sm-12">
+                                    <div class="panel-body">
+                                        <table class="minimalistBlack" style="width: 100%;">
+                                       
+                                       
+                                        <tbody>
+                                        <tr>
+                                            <td>Date : <u><?php echo date('d M Y', strtotime($coating['created_at'])) ?></u></td>
+                                            <td colspan="2">Shift : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio1" value="option1">
+                                                        <label for="inlineradio1"> G </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio2" value="option2">
+                                                        <label for="inlineradio2"> N </label>
+                                                    </div></td>
+                                            
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $coating_job['WO_no'] ?></u></td>
+                                            <td colspan="2">Job Name : <u><?php echo $coating_job['Job_Description'] ?></u></td>
+                                            
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>Machine : <u><?php echo $coating_job['machine_Name'] ?></u></td>
+                                            <td>P.O. No. : <u><?php echo $coating_job['PO_No'] ?></u></td>
+                                            <td>Planned Qty : <u><?php echo $coating_job['Planned_qty'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Operator : <u><?php echo $coating['operator'] ?></u></td>
+                                            <td colspan="2">Assistant : <u><?php echo $coating['assistant'] ?></u></td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <?php 
+                                                $colors = explode(',', $coating_job["colors"]);
+                                            ?>
+                                            <td colspan="3">Colour(s) : &nbsp;<div class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox17" value="option17"<?php
+                                                            $key = array_search('Black', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox17"> Black </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox18" value="option18"<?php
+                                                            $key = array_search('Cyan', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox18"> Cyan </label>
+                                                    </div><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox19" value="option19"<?php
+                                                            $key = array_search('Magenta', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox19"> Magenta </label>
+                                                    </div><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox20" value="option20"<?php
+                                                            $key = array_search('Yellow', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox20"> Yellow </label>
+                                                    </div><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox21" value="option21"<?php
+                                                            $key = array_search('SPL1', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox21"> SPL </label>
+                                                    </div><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox22" value="option22"<?php
+                                                            $key = array_search('SPL2', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox22"> SPL </label>
+                                                    </div><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox23" value="option23"<?php
+                                                            $key = array_search('SPL3', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox23"> SPL </label>
+                                                    </div><div style="margin-left: 11px;" class="checkbox checkbox-inline">
+                                                        <input type="checkbox" disabled="" id="inlineCheckbox24" value="option24"<?php
+                                                            $key = array_search('SPL4', $colors);
+                                                            if ($key >= -1) { 
+                                                                if (array_key_exists($key,$colors)) {
+                                                                    echo 'checked'; 
+                                                                } 
+                                                            } 
+                                                            ?>>
+                                                        <label for="inlineCheckbox24"> SPL </label>
+                                                    </div></td>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td colspan="3">Process : <div class="radio radio-inline">
+                                                        <input type="radio" disabled=""  id="inlineradio3" name="process" value="Cutting" <?php if($coating['process'] == 'coating') echo 'checked' ?>>
+                                                        <label for="inlineradio3"> coating </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio4" name="process" value="Coating" <?php if($coating['process'] == 'Coating') echo 'checked' ?>>
+                                                        <label for="inlineradio4"> Embossing </label>
+                                                    </div></td>
+                                           
+                                            
+                                        </tr> 
+                                        <tr>
+                                            <td>Job Counter <small>Opening</small> : <u><?php echo $coating['opening'] ?></u></td>
+                                            <td>Job Counter <small>Closing</small> : <u><?php echo $coating['closing'] ?></u></td>
+                                            <td>Job Counter <small>Waste</small> : <u><?php echo $coating['waste'] ?></u></td>
+                                           
+                                            
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td>Make Ready : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio5" value="Yes" name="ready" <?php if($coating_complete['ready'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio5"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="ready" <?php if($coating_complete['ready'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio6"> No </label>
+                                                    </div></td>
+                                            <td colspan="2">Job Completed : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio7" value="Yes" name="completed" <?php if($coating_complete['completed'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio7"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio8" value="No" name="completed" <?php if($coating_complete['completed'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio8"> No </label>
+                                                    </div></td>
+                                            
+                                            
+                                        </tr> 
+
+                                        <tr>
+                                            <td>Feeder Set : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio9" value="Yes" name="feeder" <?php if($coating_complete['feeder'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio9"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio10" value="No" name="feeder" <?php if($coating_complete['feeder'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio10"> No </label>
+                                                    </div></td>
+                                            <td colspan="2">Check Paper Specs : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio11" value="Yes" name="specs" <?php if($coating_complete['specs'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio11"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio12" value="No" name="specs" <?php if($coating_complete['specs'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio12"> No </label>
+                                                    </div></td>
+                                            
+                                        </tr> 
+
+                                        <tr>
+                                            <td>Delivery set : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio13" value="Yes" name="delivery" <?php if($coating_complete['delivery'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio13"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio14" value="No" name="delivery" <?php if($coating_complete['delivery'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio14"> No </label>
+                                                    </div></td>
+                                            <td colspan="2">Impression set : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio15" value="Yes" name="impression" <?php if($coating_complete['impression'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio15"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="impression" <?php if($coating_complete['impression'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio16"> No </label>
+                                                    </div></td>
+                                            
+                                        </tr> 
+
+
+                                        <tr>
+                                            <td>Cleaning : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio13" value="Yes" name="cleaning" <?php if($coating_complete['cleaning'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio13"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio14" value="No" name="cleaning" <?php if($coating_complete['cleaning'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio14"> No </label>
+                                                    </div></td>
+                                            <td colspan="2">Gauge set : <div class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio15" value="Yes" name="gauge" <?php if($coating_complete['gauge'] == 'Yes') echo 'checked' ?>>
+                                                        <label for="inlineradio15"> Yes </label>
+                                                    </div></e><e class="aks_value"><div style="margin-left: 11px;" class="radio radio-inline">
+                                                        <input type="radio" disabled="" id="inlineradio6" value="No" name="gauge" <?php if($coating_complete['gauge'] == 'No') echo 'checked' ?>>
+                                                        <label for="inlineradio16"> No </label>
+                                                    </div></td>
+                                            
+                                        </tr> 
+
+                                        
+                                        <tr>
+                                            <td colspan="3">Remarks : ______________________________________________________</td>
+                                            
+                                        </tr>
+                                        
+                                        </table>
+                                        
+                                        <br>
+                                        <table class="table table-bordered table-hover" cellpadding="10" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th rowspan="2"><center>Code</center></th>
+                                                    <th colspan="3"><center>Time</center></th>
+                                                    <th rowspan="2"><center>Counter</center></th>
+                                                    <th rowspan="2"><center>Remarks</center></th>
+                                                    
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <th><center>From</center></th>
+                                                    <th><center>To</center></th>
+                                                    <th><center>Hours</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                 <?php 
+                                                    foreach ($coating_hourse as $d) {
+                                                ?>
+                                                <tr>
+                                                    <th><?php echo $d['code'] ?></th>
+                                                    <td><?php echo $d['froms'] ?></td>
+                                                    <td><?php echo $d['tos'] ?></td>
+                                                    <td><?php echo $d['hours'] ?></td>
+                                                    <td><?php echo $d['counter'] ?></td>
+                                                    <td><?php echo $d['remarks'] ?></td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <div class="form-group row">
+                                            <table class="minimalistBlack" style="width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr> <tr style="visibility: hidden;">
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr><tr style="visibility: hidden;">
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr><tr style="visibility: hidden;">
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr><tr style="visibility: hidden;">
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr><tr style="visibility: hidden;">
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr><tr style="visibility: hidden;">
+                                            <td colspan="">Prepared By <small>(Operator) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Incharge) : ___________</td>
+                                            <td colspan="">Prepared By <small>(Manager) : ___________</td>
+                                            
+                                        </tr>
+                                                </tbody>
+                                        
+                                            </table>
+                                            
+                                        </div>
+                                        <div>
+                                              <?php 
+                                              if (isset($inprocess_inspection_coating)) {
+                                                  
+                                            echo "<pre>";
+                                            print_r($inprocess_inspection_coating);
+                                              }
+
+                                             ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <button id="btn" class="print-btn_coating btn btn-info pull-right" role="button">Generate Print</button><br><br><br>
         </div>
         <?php } ?>
         <!-- leaflet cutting -->
