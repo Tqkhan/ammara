@@ -347,9 +347,13 @@
                         <div class="row">
                                 <div class="col-sm-12">
                                     <div class="panel-body">
+
                                         
                                       <div class=row>
-                                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 statistic-box  border"  style=" box-shadow: 10px 10px 5px #888888; background-color: #fcfdff ">
+                                            Start Date : <b><?php echo $work_orders["PO_Date"] ?> </b>
+                                            &nbsp;&nbsp;&nbsp; Delivery Date :  <b><?php echo $work_orders["Delivery_Date"] ?></b> 
+                                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 statistic-box  border"  style=" box-shadow: 10px 10px 5px #888888; background-color: #fcfdff; color:black;">
+
                                                 <div id="chart_div3"></div>
                                           </div>
                                       </div>  
