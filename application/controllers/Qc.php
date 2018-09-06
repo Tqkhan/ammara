@@ -201,9 +201,47 @@ class Qc extends MY_Controller {
                 $this->load->template('qc/inprocess_inspection_pasting',$this->data);
                 }
 
-                
+               
 
                 // qc Reports
+
+
+           
+             public function investigation_report($wo)
+             {
+
+              if ($this->input->post()) {
+            // echo "<pre>";
+        // print_r($this->input->post());die();
+                $data=array(
+                  'wo_no'=>$_POST['wo_no'],
+                  'complain_received_from'=>$_POST['complain_received_from'],
+                  'date_investigation_began'=>$_POST['date_investigation_began'],
+                  'nature_of_complain'=>$_POST['nature_of_complain'],
+                  'background_to_the_investigation'=>$_POST['background_to_the_investigation'],
+                  'description_of_work'=>$_POST['description_of_work'],
+                  'the_investigation_process'=>$_POST['the_investigation_process'],
+                  'persons_interviewed'=>$_POST['persons_interviewed'],
+                  'summary_of_technical_findings'=>$_POST['summary_of_technical_findings'],
+                  'summary_of_witness_evidence'=>$_POST['summary_of_witness_evidence'],
+                  'secondary_root_cause'=>$_POST['secondary_root_cause'],
+                  'primary_root_cause'=>$_POST['primary_root_cause'],
+                  'other_relevant_information'=>$_POST['other_relevant_information'],
+                  'recommendation'=>$_POST['recommendation'],
+                  'funther_details_on_recommendation'=>$_POST['funther_details_on_recommendation'],
+                  'investigation_complete_on'=>$_POST['investigation_complete_on']
+
+
+                );
+            $id = $this->qc_model->insert('investigation_report',$data);
+            
+                       
+            if ($id) {
+                redirect(base_url('all_orders/view_plane/'.$wo));             }         }
+              $this->data['title'] = 'Investigation Report';
+                $this->data['wo_no'] = $wo;        
+              $this->load->template('qc/investigation_report',$this->data);
+             }
 
             public function rejection_report($wo)
             {
@@ -285,6 +323,8 @@ class Qc extends MY_Controller {
 
                     $this->load->template('qc/rejection_report',$this->data);
                }
+
+
                public function quality_inspection_machine_report($wo)
             {
                 if ($this->input->post()) {
@@ -312,47 +352,47 @@ class Qc extends MY_Controller {
                       'color_variation_accept'=>$_POST['color_variation_accept'],
                       'color_variation_reject_qty'=>$_POST['color_variation_reject_qty'],
                       'color_variation_remarks'=>$_POST['color_variation_remarks'],
-                      'stains_accept'=>$_POST['stains_accept'],
-                      'stains_reject_qty'=>$_POST['stains_reject_qty'],
-                      'stains_remarks'=>$_POST['stains_remarks'],
+                      'oil_stains_accept'=>$_POST['oil_stains_accept'],
+                      'oil_stains_reject_qty'=>$_POST['oil_stains_reject_qty'],
+                      'oil_stains_remarks'=>$_POST['oil_stains_remarks'],
+                      'ghosting_accept'=>$_POST['ghosting_accept'],
+                      'ghosting_reject_qty'=>$_POST['ghosting_reject_qty'],
+                      'ghosting_remarks'=>$_POST['ghosting_remarks'],
                       'bur_accept'=>$_POST['bur_accept'],
                       'bur_reject_qty'=>$_POST['bur_reject_qty'],
                       'bur_remarks'=>$_POST['bur_remarks'],
-                      'over_glueing_accept'=>$_POST['over_glueing_accept'],
-                      'over_glueing_reject_qty'=>$_POST['over_glueing_reject_qty'],
-                      'over_glueing_remarks'=>$_POST['over_glueing_remarks'],
-                      'sport_accept'=>$_POST['sport_accept'],
-                      'sport_reject_qty'=>$_POST['sport_reject_qty'],
-                      'sport_reject_remarks'=>$_POST['sport_reject_remarks'],
+                      'spots_accept'=>$_POST['spots_accept'],
+                      'spots_reject_qty'=>$_POST['spots_reject_qty'],
+                      'spots_remarks'=>$_POST['spots_reject_remarks'],
                       'edges_accept'=>$_POST['edges_accept'],
                       'edges_reject_qty'=>$_POST['edges_reject_qty'],
                       'edges_remarks'=>$_POST['edges_remarks'],
                       'cutting_out_accept'=>$_POST['cutting_out_accept'],
                       'cutting_out_reject_qty'=>$_POST['cutting_out_reject_qty'],
                       'cutting_out_remarks'=>$_POST['cutting_out_remarks'],
-                      'print_un_smooth_accept'=>$_POST['print_un_smooth_accept'],
-                      'print_un_smooth_reject_qty'=>$_POST['print_un_smooth_reject_qty'],
-                      'print_un_smooth_remarks'=>$_POST['print_un_smooth_remarks'],
                       'scum_accept'=>$_POST['scum_accept'],
                       'scum_reject_qty'=>$_POST['scum_reject_qty'],
                       'scum_remarks'=>$_POST['scum_remarks'],
-                      'cutting_hard_accept'=>$_POST['cutting_hard_accept'],
-                      'cutting_hard_reject_qty'=>$_POST['cutting_hard_reject_qty'],
-                      'cutting_hard_remarks'=>$_POST['cutting_hard_remarks'],
                       'cracking_accept'=>$_POST['cracking_accept'],
                       'cracking_reject_qty'=>$_POST['cracking_reject_qty'],
-                      'cracking_remarks'=>$_POST['cracking_remarks']
+                      'cracking_remarks'=>$_POST['cracking_remarks'],
+                      'dark_background_accept'=>$_POST['dark_background_accept'],
+                      'dark_background_reject_qty'=>$_POST['dark_background_reject_qty'],
+                      'dark_background_remarks'=>$_POST['dark_background_remarks'],
+                      'light_background_accept'=>$_POST['light_background_accept'],
+                      'light_background_reject_qty'=>$_POST['light_background_reject_qty'],
+                      'light_background_remarks'=>$_POST['light_background_remarks']
                   );
 
-
-
-                $id2 = $this->qc_model->insert('quality_inspection_machine_report_parameter',$data2);
+                  
+                $id2 = $this->qc_model->insert('quality_inspection_machine_report_parameters',$data2);
                   if ($id2) {
                     redirect(base_url('all_orders/view_plane/'.$wo));             
                   }         
                 }
                     
                   }
+
 
                   $sql="select work_orders.*,item.Description from work_orders inner join item on (item.id=work_orders.Item_Code) where work_orders.id=".$wo;
 
