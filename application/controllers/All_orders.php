@@ -50,7 +50,7 @@ class All_orders extends MY_Controller
 			$this->data['cutting_data'] = $this->all_orders_model->get_row_single('cutting',array('plane_id'=>$plane_id,'flow_id'=>$flow));
 	        $this->data['cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 
-	        $this->data['inprocess_inspection_cutting'] = $this->machine_flow_model->get_row_single('inprocess_inspection_cutting',['wo_no'=>$id]);
+	        $this->data['inprocess_inspection_cutting'] = $this->machine_flow_model->get_rows('inprocess_inspection_cutting',['wo_no'=>$id]);
 
 
 		}
@@ -65,7 +65,7 @@ class All_orders extends MY_Controller
 	        $this->data['die_cutting_hourse'] = $this->all_orders_model->get_rows('die_cutting_hourse',array('die_cutting_id'=>$this->data['die_cutting_complete']['id']));
 	        $this->data['die_cutting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 
-	        $this->data['inprocess_inspection_die_cutting'] = $this->machine_flow_model->get_row_single('inprocess_inspection_die_cutting',['wo_no'=>$id]);
+	        $this->data['inprocess_inspection_die_cutting'] = $this->machine_flow_model->get_rows('inprocess_inspection_die_cutting',['wo_no'=>$id]);
 
 	    }
 	    // leaflet cutting 
@@ -97,7 +97,7 @@ class All_orders extends MY_Controller
 	        $this->data['pasting_hourse'] = $this->all_orders_model->get_rows('pasting_hourse',array('pasting_id'=>$this->data['pasting_complete']['id']));
 	        $this->data['pasting_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 	    
-	        $this->data['inprocess_inspection_pasting'] = $this->machine_flow_model->get_row_single('inprocess_inspection_pasting',['wo_id'=>$id]);
+	        $this->data['inprocess_inspection_pasting'] = $this->machine_flow_model->get_rows('inprocess_inspection_pasting',['wo_id'=>$id]);
 	    }
 	    // printing
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'7'));
@@ -107,7 +107,7 @@ class All_orders extends MY_Controller
 	        $this->data['printing_complete'] = $this->all_orders_model->get_row_single('printing_complete',array('print_id'=>$this->data['printing']['id']));
 	        $this->data['printing_hourse'] = $this->all_orders_model->get_rows('printing_hourse',array('printing_id'=>$this->data['printing_complete']['id']));
 	        $this->data['printing_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
-	        // $this->data['inprocess_inspection_printing'] = $this->machine_flow_model->get_row_single('inprocess_inspection_printing',['wo_id'=>$id]);
+	        // $this->data['inprocess_inspection_printing'] = $this->machine_flow_model->get_rows('inprocess_inspection_printing',['wo_id'=>$id]);
 		}
 	    // Coating
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'22'));
@@ -118,7 +118,7 @@ class All_orders extends MY_Controller
 	        $this->data['coating_hourse'] = $this->all_orders_model->get_rows('coating_hourse',array('coating_id'=>$this->data['coating_complete']['id']));
 	        $this->data['coating_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
 	        
-	        $this->data['inprocess_inspection_coating'] = $this->machine_flow_model->get_row_single('inprocess_inspection_coating',['wo_no'=>$id]);
+	        $this->data['inprocess_inspection_coating'] = $this->machine_flow_model->get_rows('inprocess_inspection_coating',['wo_no'=>$id]);
 		}
 	    // sorting
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'10'));
@@ -134,6 +134,58 @@ class All_orders extends MY_Controller
 		$this->data['profing'] = $this->all_orders_model->get_row_single('printing_report',array('order_id'=>$id));
 		$this->data['batch_release'] = $this->all_orders_model->get_batch_release($id);
 		$this->data['wo_no'] = $id;
+
+
+		// QC Forms Data Start
+
+		$this->data['complain_assessment_form'] = $this->all_orders_model->get_row_single('complain_assessment_form',array('wo_no'=>$id));
+
+		$this->data['non_comfirmity_report'] = $this->all_orders_model->get_row_single('non_comfirmity_report',array('wo_no'=>$id));
+
+		$this->data['corrective_action_request'] = $this->all_orders_model->get_row_single('corrective_action_request',array('wo_no'=>$id));
+
+		$this->data['investigation_report'] = $this->all_orders_model->get_row_single('investigation_report',array('wo_no'=>$id));
+
+
+		$this->data['rejection_report'] = $this->all_orders_model->query_single_result("Select * from rejection_report where wo_no=".$id);
+
+		$rejection_report=$this->data['rejection_report']['id'];
+		if ($rejection_report) {
+			$this->data['rejection_report_parameters']=$this->all_orders_model->query_single_result("select * from rejection_report_parameters where rejection_report_id=".$rejection_report);
+		}
+
+		$this->data['quality_inspection_machine_report'] = $this->all_orders_model->query_single_result("Select * from quality_inspection_machine_report where wo_no=".$id);
+
+		$quality_inspection_machine_report=$this->data['quality_inspection_machine_report']['id'];
+		if ($quality_inspection_machine_report) {
+
+			$this->data['quality_inspection_machine_report_parameters']=$this->all_orders_model->query_single_result("select * from quality_inspection_machine_report_parameters where quality_inspection_machine_report_id=".$quality_inspection_machine_report);
+		}
+
+	
+		$this->data['goods_receiving_notes']=$this->all_orders_model->query_single_result("Select * from goods_receiving_notes where wo_no=".$id);
+
+		$goods_receiving_notes=$this->data['goods_receiving_notes']['id'];
+		if ($goods_receiving_notes) {
+			$this->data['goods_receiving_notes_item_desc']=$this->all_orders_model->query_result("select * from goods_receiving_notes_item_desc where goods_receiving_notes_id=".$goods_receiving_notes);
+		}
+
+
+		$this->data['process_procedure'] = $this->all_orders_model->query_single_result("Select * from process_procedure where wo_no=".$id);
+		$process_procedure=$this->data['process_procedure']['id'];
+		if ($process_procedure) {
+			$this->data['process_procedure_item_desc']=$this->all_orders_model->query_result("select * from process_procedure_item_desc where process_procedure_id=".$process_procedure);
+			$this->data['process_procedure_remarks']=$this->all_orders_model->query_single_result("select * from process_procedure_remarks where product_release_id=".$process_procedure);
+		}
+
+
+
+
+
+
+		// QC Forms Data End
+
+
   //    echo "<pre>";
 		// print_r($this->data);die();
 		$this->load->template('all_orders/view_plane',$this->data);
