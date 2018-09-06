@@ -151,7 +151,7 @@ class All_orders extends MY_Controller
 
 		$rejection_report=$this->data['rejection_report']['id'];
 		if ($rejection_report) {
-			$this->data['rejection_report_parameters']=$this->all_orders_model->query_single_result("select * from rejection_report_parameters where rejection_report_id=".$rejection_report);
+			$this->data['rejection_report_parameter']=$this->all_orders_model->query_single_result("select * from rejection_report_parameter where rejection_report_id=".$rejection_report);
 		}
 
 		$this->data['quality_inspection_machine_report'] = $this->all_orders_model->query_single_result("Select * from quality_inspection_machine_report where wo_no=".$id);
