@@ -169,6 +169,92 @@ class Qc extends MY_Controller {
                 $this->data['wo_no'] = $wo;          // echo
                 $this->load->template('qc/inprocess_inspection_die_cutting',$this->data);
                 } 
+
+
+
+                public function inprocess_inspection_printing($wo)
+            {
+                if ($this->input->post()) {
+            
+                   $data=array(
+                    'date'=>$_POST['date'],
+                    'wo_no'=>$_POST['wo_no'],
+                    'job_name'=>$_POST['job_name'],
+                    'colours'=>$_POST['colours'],
+                    'machine'=>$_POST['machine'],
+                    'start_time'=>$_POST['start_time'],
+                    'end_time'=>$_POST['end_time']
+                  );
+                $id = $this->qc_model->insert('inprocess_inspection_printing',$data);
+                
+                           
+                if ($id) {
+
+                  for ($i=0; $i < count($_POST['standard_frequency_hourly']); $i++) { 
+                   
+
+                  $data2=array(
+                      'wo_no'=>$_POST['wo_no'],
+                      'inprocess_inspection_printing_id'=>$id,
+                      'standard_frequency_hourly'=>$_POST['standard_frequency_hourly'][$i],
+                      'colours_density'=>$_POST['colours_density'][$i],
+                      'col1'=>$_POST['col1'][$i],
+                      'col2'=>$_POST['col2'][$i],
+                      'col3'=>$_POST['col3'][$i],
+                      'col4'=>$_POST['col4'][$i],
+                      'col5'=>$_POST['col5'][$i],
+                      'col6'=>$_POST['col6'][$i],
+                      'col7'=>$_POST['col7'][$i],
+                      'col8'=>$_POST['col8'][$i],
+                      'col9'=>$_POST['col9'][$i],
+                      'col10'=>$_POST['col10'][$i],
+                      'standard_frequency_remarks'=>$_POST['standard_frequency_remarks'][$i],
+                      'col1_min'=>$_POST['col1_min'][$i],
+                      'col2_min'=>$_POST['col2_min'][$i],
+                      'col3_min'=>$_POST['col3_min'][$i],
+                      'col4_min'=>$_POST['col4_min'][$i],
+                      'col5_min'=>$_POST['col5_min'][$i],
+                      'col6_min'=>$_POST['col6_min'][$i],
+                      'col7_min'=>$_POST['col7_min'][$i],
+                      'col8_min'=>$_POST['col8_min'][$i],
+                      'col9_min'=>$_POST['col9_min'][$i],
+                      'col10_min'=>$_POST['col10_min'][$i],
+                      'col1_max'=>$_POST['col1_max'][$i],
+                      'col2_max'=>$_POST['col2_max'][$i],
+                      'col3_max'=>$_POST['col3_max'][$i],
+                      'col4_max'=>$_POST['col4_max'][$i],
+                      'col5_max'=>$_POST['col5_max'][$i],
+                      'col6_max'=>$_POST['col6_max'][$i],
+                      'col7_max'=>$_POST['col7_max'][$i],
+                      'col8_max'=>$_POST['col8_max'][$i],
+                      'col9_max'=>$_POST['col9_max'][$i],
+                      'col10_max'=>$_POST['col10_max'][$i],
+                      'colors_density_remarks'=>$_POST['colors_density_remarks'][$i]
+                  );
+
+
+
+                $id2 = $this->qc_model->insert('inprocess_inspection_printing_frequencies',$data2);
+
+            }
+                  if ($id2) {
+
+
+                    redirect(base_url('all_orders/view_plane/'.$wo));             
+                  }         
+                }
+                    
+                  }
+
+                
+
+                  
+
+                    $this->data['title'] = 'Inprocess Inspection Printing';
+                    $this->data['wo_no'] = $wo;          
+
+                    $this->load->template('qc/inprocess_inspection_printing',$this->data);
+               }
         public function inprocess_inspection_pasting($id,$wo)
         {
         if ($this->input->post()) {
