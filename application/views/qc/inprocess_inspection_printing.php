@@ -21,7 +21,7 @@
                 <div class="panel panel-bd ">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h4>Inprocess Inspection Coating</h4><span class="remov">X</span>
+                            <h4>Inprocess Inspection Coating</h4>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -341,7 +341,7 @@
                 '<input class="" style="width:50px;" type="number" value="" id="" name="col9_max[]" size=""></td><td colspan="">' +
                 '<input class="" style="width:50px;" type="number" value="" id="" name="col10_min[]" size=""></td><td colspan="2">' +
                 '<input class="" style="width:50px;" type="number" value="" id="" name="col10_max[]" size=""></td><td colspan="2">' +
-                '<textarea class="form-control" id="" rows="1" name="colors_density_remarks[]"></textarea></td></tr></tbody></table> <span class="remov">X</span>');
+                '<textarea class="form-control" id="" rows="1" name="colors_density_remarks[]"></textarea></td></tr></tbody></table>');
             newtableadd.appendTo(".Tableadd");
             counter++;
         });
