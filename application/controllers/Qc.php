@@ -172,7 +172,7 @@ class Qc extends MY_Controller {
 
 
 
-                public function inprocess_inspection_printing($wo)
+                public function inprocess_inspection_printing($id,$wo)
             {
                 if ($this->input->post()) {
             
