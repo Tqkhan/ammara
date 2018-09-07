@@ -38,7 +38,7 @@
                                         <div class="form-group col-lg-6">
                                             <label for="" class="col-sm-4">Machine</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" data-id="" name="machine" id="machine1" placeholder="" value="<?php echo $_GET['machine'] ?>" readonly>
+                                                <input type="text" class="form-control" data-id="" name="machine" id="machine1" placeholder="" value="<?php echo $_GET['machine'] ?>" >
                                             </div>
                                         </div>
                                     </div>
