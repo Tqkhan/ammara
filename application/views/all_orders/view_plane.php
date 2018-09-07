@@ -2874,7 +2874,7 @@
                     <div class="panel-title">
                         <h4 class="product-totle">Process Procedure</h4>
                         <br>
-                        <small class="product-tital"></small>
+                        <small class="product-tital">Material Inspection Note</small>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -2887,7 +2887,7 @@
                                        <div class="form-group col-lg-12">
                                            <table class="minimalistBlack" style="width: 100%;">
                                                <tr>
-                                                    <th colspan="7">Name : <e class=""><?php echo $process_procedure['supplier_name']; ?></e> </th>
+                                                    <th colspan="7">Supplier Name : <e class=""><?php echo $process_procedure['supplier_name']; ?></e> </th>
                                                     <th>MIN No : <e class=""><?php echo $process_procedure['min_no']; ?></e></th>
                                                 </tr>
                                                 <tr>
@@ -2935,6 +2935,7 @@
                                    </div>   
                                 <?php } ?>
                                 <br>
+                                <h3>Remarks By Qality Controller</h3>
                                 <table class="minimalistBlack" style="width: 100%;">
                                     <tbody>
                                         <tr>
@@ -3299,6 +3300,447 @@
         </div>
     </div>
         <button id="btn" class="print-btn_rejection_report btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+    <?php if (isset($non_comfirmity_report)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_non_comfirmity_report ">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Non Comfirmity Report</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $non_comfirmity_report['wo_no'] ?></u></td>
+                                            <td colspan="2">ncr_no  : <u><?php echo $non_comfirmity_report['ncr_no'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">name_of_assessor : <u><?php echo $non_comfirmity_report['name_of_assessor'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">date_of_reporting : <u><?php echo $non_comfirmity_report['date_of_reporting'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="">concerned_depatment_person  : <u><?php echo $non_comfirmity_report['concerned_depatment_person'] ?></u>  </td>
+                                            <td>
+                                                location : <u><?php echo $non_comfirmity_report['location'] ?></u>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> non_coformance_category : : <u><?php echo $non_comfirmity_report['non_coformance_category'] ?></u></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>problem  : <u><?php echo $non_comfirmity_report['problem'] ?></u></td>
+                                            <td>m_r_nominee_sign  : <u><?php echo $non_comfirmity_report['m_r_nominee_sign'] ?></u></td>
+                                            <td>root_cause  : <u><?php echo $non_comfirmity_report['root_cause'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td>corrective_action  : <u><?php echo $non_comfirmity_report['corrective_action'] ?></u></td>
+                                            <td>preventive_action  : <u><?php echo $non_comfirmity_report['preventive_action'] ?></u></td>
+                                            <td>date  : <u><?php echo $non_comfirmity_report['date'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="2">assessor_auditor  : <u><?php echo $non_comfirmity_report['assessor_auditor'] ?></u></td>
+                                            <td>comments  : <u><?php echo $non_comfirmity_report['comments'] ?></u></td>
+                                            
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">date_action_completed </label>
+                                                <e class="aks_value"><?php echo $non_comfirmity_report['date_action_completed'] ?></e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Confirmed By</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_non_comfirmity_report btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+    <?php if (isset($complain_assessment_form)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_complain_assessment_form ">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Complain Assessment Form</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $complain_assessment_form['wo_no'] ?></u></td>
+                                            <td colspan="2">caf_no  : <u><?php echo $complain_assessment_form['caf_no'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <center>Section 1 complain <small>Details</small></center>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">date : <u><?php echo $complain_assessment_form['date'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">description : <u><?php echo $complain_assessment_form['description'] ?></u></td>
+
+                                       
+                                            <td colspan="">complain  : <u><?php echo $complain_assessment_form['complain'] ?></u>  </td>
+                                           
+                                        </tr>
+                                        <tr>
+                                             <td>
+                                                machine : <u><?php echo $complain_assessment_form['machine'] ?></u>
+                                            </td>
+                                            <td colspan=""> name_of_resposible_workers : : <u><?php echo $complain_assessment_form['name_of_resposible_workers'] ?></u></td>
+                                             <td>further_detail  : <u><?php echo $complain_assessment_form['further_detail'] ?></u></td>
+                                        </tr>
+
+                                      
+                                        <tr>
+                                             <td>qc_personal_name  : <u><?php echo $complain_assessment_form['qc_personal_name'] ?></u></td>
+                                            <td>root_cause  : <u><?php echo $complain_assessment_form['root_cause'] ?></u></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <center>Section 2 complain <small>Reviwed By</small></center>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>complain_reveiwed_name  : <u><?php echo $complain_assessment_form['complain_reveiwed_name'] ?></u></td>
+                                            <td>complain_reveiwed_signature  : <u><?php echo $complain_assessment_form['complain_reveiwed_signature'] ?></u></td>
+                                            <td>complain_reveiwed_comments  : <u><?php echo $complain_assessment_form['complain_reveiwed_comments'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <center>Section 3  <small>Fainal Assement</small></center>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="2">approved_by_qc_qa  : <u><?php echo $complain_assessment_form['approved_by_qc_qa'] ?></u></td>
+                                            <td>remarks  : <u><?php echo $complain_assessment_form['remarks'] ?></u></td>
+                                            
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Signature & Date:</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_complain_assessment_form btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+    <?php if (isset($investigation_report)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_investigation_report ">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Investigation Report</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                          <tr>
+                                            <td colspan="3">
+                                              WO # : <?php echo $investigation_report['wo_no']?>
+                                            </td>
+                                          </tr>
+                                               <td rowspan="4">
+                                                  <strong>Introduction:</strong>
+                                              </td>
+                                              <td rowspan="1">
+                                                 <?php echo $investigation_report['complain_received_from']?>
+                                              </td>
+                                             
+                                          </tr>
+                                          <tr>
+                                               <td rowspan="1">
+                                                  <?php echo $investigation_report['date_investigation_began']?>
+                                              </td>
+                                              
+                                          </tr>
+                                          <tr>
+                                              <td rowspan="1">
+                                                  <?php echo $investigation_report['nature_of_complain']?>
+                                              </td>
+                                              
+                                          </tr>
+                                          <tr>
+                                            <td rowspan="1">
+                                                  <?php echo $investigation_report['background_to_the_investigation']?>
+                                              </td>
+                                          </tr><tr>
+                                              <td rowspan="1"><strong>Description Of Work</strong></td>
+                                              <td>
+                                                   <?php echo $investigation_report['description_of_work']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td rowspan="2">
+                                                  <strong>Process Of Investigation</strong>
+                                              </td>
+                                              <td>
+                                                 <?php echo $investigation_report['the_investigation_process']?>
+                                              </td>
+
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                 <?php echo $investigation_report['persons_interviewed']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td rowspan="5">
+                                                  <strong>The Investigation Finding:</strong>
+                                              </td>
+                                              <td>
+                                                  <?php echo $investigation_report['summary_of_technical_findings']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                 <?php echo $investigation_report['summary_of_witness_evidence']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                 <?php echo $investigation_report['secondary_root_cause']?> 
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                 <?php echo $investigation_report['primary_root_cause']?>
+                                              </td>
+                                          </tr>
+                                         
+                                          <tr>
+                                              <td>
+                                                 <?php echo $investigation_report['other_relevant_information']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td rowspan="2">
+                                                  <strong>Conclusion:If Required</strong>
+                                              </td>
+                                              <td>
+                                                <?php echo $investigation_report['recommendation']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                  <?php echo $investigation_report['funther_details_on_recommendation']?>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td rowspan="1">
+                                                  <strong>Investigation Completed On: </strong>
+                                              </td>
+                                              <td>
+                                                  <?php echo $investigation_report['investigation_complete_on']?>
+                                              </td>
+                                          </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Signature & Date:</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_investigation_report btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
+     <?php if (isset($corrective_action_request)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_corrective_action_request">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Corrective Action Request</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>W.O # : <u><?php echo $corrective_action_request['wo_no'] ?></u></td>
+                                            <td colspan="2">description  : <u><?php echo $corrective_action_request['description'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">type : <u><?php echo $corrective_action_request['type'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">client_name : <u><?php echo $corrective_action_request['client_name'] ?></u></td>
+
+                                       
+                                            <td colspan="">date_of_reporting  : <u><?php echo $corrective_action_request['date_of_reporting'] ?></u>  </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> source : : <u><?php echo $corrective_action_request['source'] ?></u></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>process  : <u><?php echo $corrective_action_request['process'] ?></u></td>
+                                            <td colspan="">priority  : <u><?php echo $corrective_action_request['priority'] ?></u></td>
+                                           
+                                            <td>description_of_non_conformity  : <u><?php echo $corrective_action_request['description_of_non_conformity'] ?></u></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><center>Stop Here Submit to</center></td>
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td>submit_assigned_to  : <u><?php echo $corrective_action_request['submit_assigned_to'] ?></u></td>
+                                            <td>submit_assigned_date  : <u><?php echo $corrective_action_request['submit_assigned_date'] ?></u></td>
+                                            <td colspan="">submit_respond_by  : <u><?php echo $corrective_action_request['submit_respond_by'] ?></u></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><center>To be completed by the Assignee</center></td>
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td colspan="">completed_identified_cause  : <u><?php echo $corrective_action_request['completed_identified_cause'] ?></u></td>
+                                            <td colspan="2">ca_taken_to_prevent_recurrence  : <u><?php echo $corrective_action_request['ca_taken_to_prevent_recurrence'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td>date_action_completed  : <u><?php echo $corrective_action_request['date_action_completed'] ?></u></td>
+                                              <td colspan="2">incharge  : <u><?php echo $corrective_action_request['incharge'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><center>Stop Here! retrun to Manager QA</center></td>
+                                        </tr>
+                                        <tr>
+
+                                          
+                                            <td>return_effectiveness_verified_by  : <u><?php echo $corrective_action_request['return_effectiveness_verified_by'] ?></u></td>
+                                            <td colspan="2">retrun_date  : <u><?php echo $corrective_action_request['retrun_date'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td colspan="3">return_result  : <u><?php echo $corrective_action_request['return_result'] ?></u></td>
+                                            
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Confirmed by manager QA:</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_corrective_action_request btn btn-info pull-right" role="button">Generate Print</button>
     <div style="height: 60px;"></div>
     <?php endif ?>
     <br>
@@ -3840,6 +4282,126 @@
     $('.print-btn_rejection_report').click(function() {
         w = window.open();
         var ht = $('.print-div_rejection_report').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_non_comfirmity_report').click(function() {
+        w = window.open();
+        var ht = $('.print-div_non_comfirmity_report').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_investigation_report').click(function() {
+        w = window.open();
+        var ht = $('.print-div_investigation_report').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_complain_assessment_form').click(function() {
+        w = window.open();
+        var ht = $('.print-div_complain_assessment_form').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_corrective_action_request').click(function() {
+        w = window.open();
+        var ht = $('.print-div_corrective_action_request').html()
         var head = $('head').html()
         w.document.write('<html>');
         w.document.write('<head>');
