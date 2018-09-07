@@ -501,6 +501,7 @@ class Qc extends MY_Controller {
               'name_of_assessor'=>$_POST['name_of_assessor'],
               'date_of_reporting'=>$_POST['date_of_reporting'],
               'concerned_depatment_person'=>$_POST['concerned_depatment_person'],
+              'location'=>$_POST['location'],
               'non_coformance_category'=>$_POST['non_coformance_category'],
               'problem'=>$_POST['problem'],
               'm_r_nominee_sign'=>$_POST['m_r_nominee_sign'],
