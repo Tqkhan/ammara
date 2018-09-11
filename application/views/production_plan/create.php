@@ -116,6 +116,7 @@
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Quantity</label>
                                         <div class="col-sm-9">
                                             <?php 
+                                            error_reporting(0);
                                                 $ups = $order['conversion']; 
                                                 $ups = explode('/', $ups);
                                                 $ups = $ups[sizeof($ups) - 1];
