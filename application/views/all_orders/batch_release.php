@@ -1,12 +1,5 @@
 
 
-<?php 
-// echo "<pre>";
-
-// print_r($order);
-// die();
-
- ?>
 
 <div class="control-sidebar-bg"></div>
 <!-- Page Content -->
