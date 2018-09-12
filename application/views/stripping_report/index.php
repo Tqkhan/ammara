@@ -90,7 +90,7 @@
                                                             }
                                                             else{
                                                         ?>
-                                                        <a href="<?php echo base_url() ?>stripping_report/view_machine/<?php echo $o["id"] ?>/<?php echo $o['flow_id'] ?>"><img src="<?php echo base_url() ?>assets/icons/view_detail.png" title="View Detail" alt="View Detail" width="25" height="25"></a>
+                                                       <!--  <a href="<?php echo base_url() ?>stripping_report/view_machine/<?php echo $o["id"] ?>/<?php echo $o['flow_id'] ?>"><img src="<?php echo base_url() ?>assets/icons/view_detail.png" title="View Detail" alt="View Detail" width="25" height="25"></a> -->
                                                         <?php
                                                                 if ($o['submit'] == 0) {
                                                         ?>
