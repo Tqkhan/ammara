@@ -39,7 +39,7 @@
 										<table id="dataTableExample2" class="table table-bordered table-striped table-hover">
 											<thead>
 												<tr>
-													<th>Id</th><th>Client Name</th><th>Detail</th><th>Order Margin</th><th>Contact Person</th><th>Contact Number</th><th>Email</th><th>Address</th><th>Company Name</th><?php 
+													<th>Sr #</th><th>Client Name</th><th>Detail</th><th>Order Margin</th><th>Contact Person</th><th>Contact Number</th><th>Email</th><th>Address</th><th>Company Name</th><?php 
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
 													?>
 													<th>Action</th>
@@ -48,10 +48,13 @@
 											</thead>
 										    <tbody>
 										    	<?php
+										    	$i= 0;
+                                    
 										    		foreach ($clients as $module) {
+										    			$i++;
 										    	?>
 												<tr>
-													<td><?php echo $module["id"] ?></td><td><?php echo $module["client_Name"] ?></td><td><?php echo $module["Detail"] ?></td><td><?php echo $module["order_Margin"] ?></td><td><?php echo $module["Contact_Person"] ?></td><td><?php echo $module["Contact_Number"] ?></td><td><?php echo $module["Email"] ?></td><td><?php echo $module["Address"] ?></td><td><?php echo $module["Company_Name"] ?></td><?php 
+													<td><?php echo $i ?></td><td><?php echo $module["client_Name"] ?></td><td><?php echo $module["Detail"] ?></td><td><?php echo $module["order_Margin"] ?></td><td><?php echo $module["Contact_Person"] ?></td><td><?php echo $module["Contact_Number"] ?></td><td><?php echo $module["Email"] ?></td><td><?php echo $module["Address"] ?></td><td><?php echo $module["Company_Name"] ?></td><?php 
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
 													?>
 													<td>
