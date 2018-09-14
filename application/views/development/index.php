@@ -10,12 +10,12 @@
                             <i class="pe-7s-box1"></i>
                         </div>
                         <div class="header-title">
-                            <h1>Development Jobs</h1>
+                            <h1>View Work_orders</h1>
                             <small> </small>
                             <ol class="breadcrumb">
                                 <li><a href="<?php echo base_url() ?>"><i class="pe-7s-home"></i> Home</a></li>
 
-                                <li class="active">View Development Jobs</li>
+                                <li class="active">View Work_orders</li>
                             </ol>
                         </div>
                     </div> <!-- /. Content Header (Page header) -->
@@ -25,7 +25,7 @@
                             <div class="panel panel-bd">
                                 <div class="panel-heading">
                                     <div class="panel-title">
-                                        <h4>View Development Jobs</h4>
+                                        <h4>View Work_orders</h4>
                                     </div>
                                 </div>
                                 <div class="panel-body">

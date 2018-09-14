@@ -10,12 +10,12 @@
 							<i class="pe-7s-box1"></i>
 						</div>
 						<div class="header-title">
-							<h1>View Work orders</h1>
+							<h1>View Work_orders</h1>
 							<small> </small>
 							<ol class="breadcrumb">
 								<li><a href="<?php echo base_url() ?>"><i class="pe-7s-home"></i> Home</a></li>
 
-								<li class="active">View Work orders</li>
+								<li class="active">View Work_orders</li>
 							</ol>
 						</div>
 					</div> <!-- /. Content Header (Page header) -->
@@ -25,11 +25,11 @@
 							<div class="panel panel-bd">
 								<div class="panel-heading">
 									<div class="panel-title">
-										<h4>View Work orders</h4>
+										<h4>View Work_orders</h4>
 										<?php 
 											if ($permission["created"] == "1") {
 										?>
-										<a href="<?php echo base_url("work_orders/create") ?>"><button class="btn btn-info pull-right">Add Work orders</button></a>
+										<a href="<?php echo base_url("work_orders/create") ?>"><button class="btn btn-info pull-right">Add Work_orders</button></a>
 										<?php } ?>
 									</div>
 								</div>
@@ -75,7 +75,7 @@
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
 													?>
 													<td>
-														<a href="<?php echo base_url() ?>work_orders/view_plane/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/view_plan.png" title="View Plan" alt="View Plan" width="25" height="25"></a>
+														<a href="<?php echo base_url() ?>work_orders/view_plane/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/view_plan.png" title="View Plane" alt="View Plane" width="25" height="25"></a>
 														<?php 
 															if ($permission["edit"] == "1") {
 														?>

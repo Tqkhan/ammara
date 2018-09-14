@@ -10,11 +10,11 @@
                 <i class="pe-7s-note2"></i>
             </div>
             <div class="header-title">
-                <h1>Add Work orders</h1>
+                <h1>Add Work_orders</h1>
                 <small></small>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo base_url() ?>"><i class="pe-7s-home"></i> Home</a></li>
-                    <li class="active">Add Work orders</li>
+                    <li class="active">Add Work_orders</li>
                 </ol>
             </div>
         </div>
@@ -27,7 +27,7 @@
                     <div class="panel panel-bd ">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <h4>Add Work orders</h4>
+                                <h4>Add Work_orders</h4>
                             </div>
                         </div>
                         <div class="panel-body">

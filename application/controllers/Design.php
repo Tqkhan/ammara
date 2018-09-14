@@ -19,7 +19,7 @@ class Design extends MY_Controller {
         {
             redirect('home');
         }
-        $this->data['title'] = 'Design Jobs';
+        $this->data['title'] = 'Work Orders';
         if ( $this->permission['view_all'] == '1'){
             $this->data['orders'] = $this->Design_model->get_item();
         }
@@ -40,15 +40,15 @@ class Design extends MY_Controller {
             $data = $this->input->post();
             $data['order_id'] = $id;
             $data['user_id'] = $this->session->userdata('user_id');
-            $config['upload_path']          = './uploads/work_order/';
-            $config['allowed_types']        = 'gif|jpg|jpeg|png';
-            $config['max_size']             = 4100;
-            $config['max_width']            = 41024;
-            $config['max_height']           = 4768;
+            $config['upload_path']          = './uploads/work_order';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('file'))
             {
-                $data['file'] = '/uploads/work_order/'.$this->upload->data('file_name');
+                $data['file'] = '/uploads/'.$this->upload->data('file_name');
             }
             $id = $this->Design_model->insert('design_report',$data);
             if ($id) {
