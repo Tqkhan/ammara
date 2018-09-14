@@ -107,7 +107,14 @@ class All_orders extends MY_Controller
 	        $this->data['printing_complete'] = $this->all_orders_model->get_row_single('printing_complete',array('print_id'=>$this->data['printing']['id']));
 	        $this->data['printing_hourse'] = $this->all_orders_model->get_rows('printing_hourse',array('printing_id'=>$this->data['printing_complete']['id']));
 	        $this->data['printing_job'] = $this->machine_flow_model->get_job($plane_id,$flow);
-	        // $this->data['inprocess_inspection_printing'] = $this->machine_flow_model->get_rows('inprocess_inspection_printing',['wo_id'=>$id]);
+
+	        $this->data['inprocess_inspection_printing'] = $this->machine_flow_model->get_row_single('inprocess_inspection_printing',['wo_no'=>$id]);
+
+	        $inprocess_inspection_printing=$this->data['inprocess_inspection_printing']['id'];
+	        if ($inprocess_inspection_printing) {
+	        	
+			$this->data['inprocess_inspection_printing_frequencies']=$this->all_orders_model->query_result("select * from inprocess_inspection_printing_frequencies where inprocess_inspection_printing_id=".$inprocess_inspection_printing);
+	        }
 		}
 	    // Coating
 	    $flow_data = $this->all_orders_model->get_row_single('production_flow',array('plane_id'=>$plane_id,'type'=>'22'));
@@ -304,7 +311,7 @@ class All_orders extends MY_Controller
 
 
    			$this->all_orders_model->insert('batch_release_parameters',$batch_release_parameter);
-								print_r($batch_release_parameter);die();
+								// print_r($batch_release_parameter);die();
 
 			}
 			if ($batch_id) {
