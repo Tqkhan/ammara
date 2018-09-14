@@ -87,6 +87,7 @@
                                             <td>
                                             	<a href="<?php echo base_url() ?>qc/view_flows/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/view_flows.png" title="View Flows" alt="View Flows" width="25" height="25"></a>
                                                 <a target="_blank" href="<?php echo base_url() ?>all_orders/view_plane/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/view_plan.png" title="View Plan" alt="View Plan" width="25" height="25"></a>
+                                                <a target="_blank" href="<?php echo base_url() ?>qc/qc_reports/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/edit.png" title="QC Forms" alt="QC Forms" width="25" height="25"></a>
                                             </td>
                                         </tr>
                                     <?php } ?>
