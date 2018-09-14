@@ -1281,6 +1281,655 @@
                                                 </tbody>
                                         
                                             </table>
+<table class="minimalistBlack" style="width: 100%;">
+    <?php if (isset($inprocess_inspection_printing)) { ?>
+    <tr>
+        <td colspan="5"> Date :  <?php echo $inprocess_inspection_printing['date'] ?></td>
+        <td colspan="8"> W.O No  :  <?php echo $inprocess_inspection_printing['wo_no'] ?></td>
+        <td colspan="5"> Job Name  :  <?php echo $inprocess_inspection_printing['job_name'] ?></td>
+        <td colspan="7"> Colours  :  <?php echo $inprocess_inspection_printing['colours'] ?></td>
+    </tr>
+    <tr>
+        <td colspan="8"> Machine :  <?php echo $inprocess_inspection_printing['machine'] ?></td>
+        <td colspan="8"> Start Time  :  <?php echo $inprocess_inspection_printing['start_time'] ?></td>
+        <td colspan="8"> End Time  :  <?php echo $inprocess_inspection_printing['end_time'] ?></td>
+    </tr>
+     <?php } ?>
+    <tr>
+        <th colspan="3">Standard Frequency Hourly</th>
+        <th colspan="2">9 - 10</th>
+        <th colspan="2">10 - 11</th>
+        <th colspan="2">11 - 12</th>
+        <th colspan="2">12 - 1</th>
+        <th colspan="2">1 - 2</th>
+        <th colspan="2">2 - 3</th>
+        <th colspan="2">3 - 4</th>
+        <th colspan="2">4 - 5</th>
+        <th colspan="2">5 - 6</th>
+        <th colspan="2">6 - 7</th>
+        <th colspan="2">Remarks</th>
+    </tr>
+    <tbody>
+
+        <?php if (isset($inprocess_inspection_printing_frequencies)) { ?>
+            <?php 
+                foreach ($inprocess_inspection_printing_frequencies as $dp) {
+            ?>
+                                             
+                    <?php echo $dp['standard_frequency_hourly']; ?>
+                    <?php echo $dp['col1']; ?>
+                    <?php if ($dp['standard_frequency_hourly']=="GSM") {
+                       ?>
+                        <tr class="append-education">
+                            <td colspan="3">
+                                GSM
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col1']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col2']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col3']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col4']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col5']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col6']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col7']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col8']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col9']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col10']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['standard_frequency_remarks']; ?>
+                            </td>
+                        </tr> 
+                       <?php
+                    }else{
+                        ?>
+                        <tr class="append-education">
+                            <td colspan="3">
+                                GSM
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                        ?>
+                        <?php if($dp['standard_frequency_hourly']=="Registeration"){ ?>
+                        <tr class="append-education">
+                            <td colspan="3">
+                                Registeration
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col1']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col2']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col3']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col4']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col5']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col6']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col7']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col8']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col9']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['col10']; ?>
+                            </td>
+                            <td colspan="2">
+                              <?php echo $dp['standard_frequency_remarks']; ?>
+                            </td>
+                        </tr> 
+                    <?php
+                        } ?>
+                       
+                       
+                      
+                        <tr class="append-education">
+                            <td colspan="3">
+                                Registeration
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                            <td colspan="2">
+                             
+                            </td>
+                        </tr> 
+                   
+            <?php } ?>  
+        <?php } ?>     
+                <tr class="append-education">
+                    <td colspan="3">
+                        Text Reading/Misprinting
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr> 
+                <tr class="append-education">
+                    <td colspan="3">
+                        Registeration
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr> 
+                <tr class="append-education">
+                    <td colspan="3">
+                        Ink Shade
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr> 
+                <tr class="append-education">
+                    <td colspan="3">
+                        Set Off
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr> 
+                <tr class="append-education">
+                    <td colspan="3">
+                        Scummy
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr> 
+                <tr class="append-education">
+                    <td colspan="3">
+                        Unwanted Marks
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr>
+                <tr class="append-education">
+                    <td colspan="3">
+                        Gloss
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr>
+                <tr class="append-education">
+                    <td colspan="3">
+                        Other
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                    <td colspan="2">
+                      <?php  ?>
+                    </td>
+                </tr>
+              
+          
+        
+    </tbody>
+    <tbody class="append-educationmin">
+        <tr>
+            <td colspan="3"> <small>Colors (Delta E / Density)</small></td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="">
+                <small>Min</small>
+            </td>
+            <td colspan="">
+                <small>Max</small>
+            </td>
+            <td colspan="3">Remarks</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>125 
+            </td>
+            <td>
+               <?php  ?> 5454ss
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td>
+               <?php  ?>
+            </td>
+            <td colspan="3"> 
+               <?php  ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
                                             
                                         </div>
                                          <?php 
@@ -1288,6 +1937,14 @@
                                                   
                                             echo "<pre>";
                                             print_r($inprocess_inspection_printing);
+                                              }
+
+                                             ?>
+                                             <?php 
+                                              if (isset($inprocess_inspection_printing_frequencies)) {
+                                                  
+                                            echo "<pre>";
+                                            print_r($inprocess_inspection_printing_frequencies);
                                               }
 
                                              ?>
