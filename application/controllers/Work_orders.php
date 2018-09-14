@@ -16,7 +16,7 @@
 			{
 				redirect('home');
 			}
-			$this->data['title'] = 'Work_orders';
+			$this->data['title'] = 'Work orders';
 			if ( $this->permission['view_all'] == '1'){
 				$this->data['work_orders'] = $this->Work_orders_model->get_item();
 			}
@@ -58,7 +58,7 @@
 			{
 				redirect('home');
 			}
-			$this->data['title'] = 'Work Order Plane';
+			$this->data['title'] = 'Work Order Plan';
 			$this->data['plane'] = $this->Work_orders_model->get_plane($id);
 			//print_r($this->data['plane']);die;
 			$this->load->template('work_orders/plane',$this->data);
@@ -69,7 +69,7 @@
 			{
 				redirect('home');
 			}
-			$this->data['title'] = 'Edit Work_orders';
+			$this->data['title'] = 'Edit Work orders';
 			$this->data['work_orders'] = $this->Work_orders_model->get_row_single('work_orders',array('id'=>$id));
 			$this->data['clients'] = $this->Work_orders_model->all_rows('clients');
 			$this->data['item'] = $this->Work_orders_model->get_rows('item',array('Client'=>$this->data['work_orders']['Client']));

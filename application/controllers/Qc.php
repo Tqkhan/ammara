@@ -42,6 +42,7 @@ class Qc extends MY_Controller {
         //echo '<pre>';print_r($this->data['flows']);die;
         $this->load->template('qc/view_flows',$this->data);
     }
+    
     public function qc_reports($wo)
     {
         
@@ -50,7 +51,6 @@ class Qc extends MY_Controller {
         // print_r($wo);die();
         $this->load->template('qc/qc_reports',$this->data);
     }
-
     public function line_clearance($id,$wo)
     {
         if ($this->input->post()) {
