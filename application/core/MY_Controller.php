@@ -80,7 +80,7 @@ class MY_Controller extends CI_Controller {
 
     public function create_module($module_name,$fileds,$tablename)
     {
-    	$file = $_SERVER['DOCUMENT_ROOT'].'/factory/application/models/'.ucfirst($module_name).'.php';
+    	$file = $_SERVER['DOCUMENT_ROOT'].'/ammara/application/models/'.ucfirst($module_name).'.php';
 		if(!is_file($file)){
 		    $contents = '<?php
 		    ';
@@ -127,7 +127,7 @@ class MY_Controller extends CI_Controller {
 
     public function create_controller($controller_name,$module_name,$tablename,$fileds)
     {
-    	$file = $_SERVER['DOCUMENT_ROOT'].'/factory/application/controllers/'.ucfirst($controller_name).'.php';
+    	$file = $_SERVER['DOCUMENT_ROOT'].'/ammara/application/controllers/'.ucfirst($controller_name).'.php';
 		if(!is_file($file)){
 		    $contents = '<?php
 		    ';
@@ -332,7 +332,7 @@ class MY_Controller extends CI_Controller {
 
     public function create_folder($url)
     {
-    	$directoryName = $_SERVER['DOCUMENT_ROOT'].'/factory/application/views/'.$url;
+    	$directoryName = $_SERVER['DOCUMENT_ROOT'].'/ammara/application/views/'.$url;
 		if(!is_dir($directoryName)){
 		    mkdir($directoryName, 0755);
 		}
@@ -340,7 +340,7 @@ class MY_Controller extends CI_Controller {
 
     public function create_main_view($controller_name,$module_name,$tablename,$fileds)
     {
-    	$file = $_SERVER['DOCUMENT_ROOT'].'/factory/application/views/'.$controller_name.'/index.php';
+    	$file = $_SERVER['DOCUMENT_ROOT'].'/ammara/application/views/'.$controller_name.'/index.php';
 		if(!is_file($file)){
 		    include 'create_index.php';
 		    $contents = str_replace("%","$",$contents);
@@ -353,7 +353,7 @@ class MY_Controller extends CI_Controller {
 
     public function create_create_view($controller_name,$module_name,$tablename,$fileds)
     {
-    	$file = $_SERVER['DOCUMENT_ROOT'].'/factory/application/views/'.$controller_name.'/create.php';
+    	$file = $_SERVER['DOCUMENT_ROOT'].'/ammara/application/views/'.$controller_name.'/create.php';
 		if(!is_file($file)){
 		    include 'create_create.php';
 		    $contents = str_replace("%","$",$contents);
@@ -366,7 +366,7 @@ class MY_Controller extends CI_Controller {
 
     public function create_edit_view($controller_name,$module_name,$tablename,$fileds)
     {
-    	$file = $_SERVER['DOCUMENT_ROOT'].'/factory/application/views/'.$controller_name.'/edit.php';
+    	$file = $_SERVER['DOCUMENT_ROOT'].'/ammara/application/views/'.$controller_name.'/edit.php';
 		if(!is_file($file)){
 		    include 'create_edit.php';
 		    $contents = str_replace("%","$",$contents);
