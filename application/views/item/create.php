@@ -35,7 +35,7 @@
 
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Item Code<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="Item_Code" type="text" value="" id="example-text-input" placeholder="" required="">
+                                    <input class="form-control" name="Item_Code" type="text" id="example-text-input" placeholder="" required="" value="<?php echo $plus_one.'-'.date('y');?>">
                                 </div>
 
                             </div>
@@ -63,11 +63,12 @@
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Work Type<span class="required">*</span></label>
                                 <div class="col-sm-9">
                                     <select class="form-control" name="Work_Type" required="">
-                                        <option>Select Work Type</option>
-                                        <option value="Package Carton">Package Carton</option>
-                                        <option value="LeafLet">LeafLet</option>
-                                        <option value="Labels">Labels</option>
-                                        <option value="Sticker Labels">Sticker Labels</option>
+                                        <option value="">Select Work Type</option>
+                                        <?php foreach ($work_type as $wt) {?>
+                                           <option value="<?php echo $wt["name"] ?>">
+                                               <?php echo $wt["name"] ?>
+                                           </option>
+                                           <?php } ?>
                                     </select>
                                 </div>
 
@@ -85,6 +86,7 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Card Type<span class="required">*</span></label>
                                 <div class="col-sm-9">
@@ -92,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Size<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Board Size<span class="required">*</span></label>
                                 <div class="col-sm-9">
                                     <input class="form-control" name="size" type="text" value="" id="example-text-input" placeholder="" required="">
                                 </div>
@@ -116,7 +118,17 @@
                                     <input class="form-control" name="conversion" type="text" value="" id="example-text-input" placeholder="" required="">
                                 </div>
                             </div>
-
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Remarks<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="remarks" rows="1" ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-3 col-form-label">File</label>
+                                <div class="col-sm-9"><input class="form-control" name="file" type="file" value="" id="example-text-input" placeholder="" required="">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Colors<span class="required">*</span></label>
                                 <div class="col-sm-9">

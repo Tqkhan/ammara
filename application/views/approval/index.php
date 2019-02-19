@@ -86,7 +86,7 @@
                                                         <?php 
                                                             if ($module['approval'] == 0) {
                                                         ?>
-                                                        <a href="<?php echo base_url() ?>approval/approve/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/approve.png" title="Approve" alt="Approve" width="25" height="25"></a>
+                                                        <a href="<?php echo base_url() ?>approval/report_submit/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/approve.png" title="Approve" alt="Approve" width="25" height="25"></a>
                                                         <?php 
                                                             }
                                                             else{

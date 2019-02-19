@@ -48,6 +48,8 @@
 													<th>Batch No</th>
 													<th>Delivery Date</th>
 													<th>Delivery Status</th>
+													<th>Status</th>
+													<th>Description</th>
 													<th>Instruction Remarks</th>
 													<?php 
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
@@ -70,6 +72,8 @@
 													<td><?php echo $module["Batch_No"] ?></td>
 													<td><?php echo $module["Delivery_Date"] ?></td>
 													<td><?php echo $module["Delivery_Status"] ?></td>
+													<td><?php echo $module["status"] ?></td>
+													<td><?php echo $module["description"] ?></td>
 													<td><?php echo $module["Instruction_Remarks"] ?></td>
 													<?php 
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){

@@ -37,5 +37,34 @@ class Approval extends MY_Controller {
             redirect('approval');
         }
     }
+    public function report_submit($id)
+    {
+        if ($this->permission['edit'] == '0') 
+        {
+            redirect('home');
+        }
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            $data['order_id'] = $id;
+            $data['user_id'] = $this->session->userdata('user_id');
+            $config['upload_path']          = './uploads/work_order/';
+            $config['allowed_types']        = 'gif|jpg|jpeg|png';
+            $config['max_size']             = 4100;
+            $config['max_width']            = 41024;
+            $config['max_height']           = 4768;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('file'))
+            {
+                $data['file'] = '/uploads/work_order/'.$this->upload->data('file_name');
+            }
+            $this->approval_model->update('work_orders',array('approval'=>'1'),array('id'=>$id));
+            $id = $this->approval_model->insert('approval_report',$data);
+            if ($id) {
+                redirect('design');
+            }
+        }
+        $this->data['title'] = 'Submit Report';
+        $this->load->template('approval/report',$this->data);
+    }
 
 }

@@ -139,6 +139,7 @@ class All_orders extends MY_Controller
 		$this->data['development'] = $this->all_orders_model->get_row_single('development_report',array('order_id'=>$id));
 		$this->data['design'] = $this->all_orders_model->get_row_single('design_report',array('order_id'=>$id));
 		$this->data['profing'] = $this->all_orders_model->get_row_single('printing_report',array('order_id'=>$id));
+		$this->data['approval'] = $this->all_orders_model->get_row_single('approval_report',array('order_id'=>$id));
 		$this->data['batch_release'] = $this->all_orders_model->get_batch_release($id);
 		$this->data['wo_no'] = $id;
 

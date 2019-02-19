@@ -33,9 +33,15 @@ class Item extends MY_Controller{
 		{
 			redirect('home');
 		}
+
+		$this->data['item'] = $this->Item_model->get_last_record('item');
+		$this->data['plus_one'] = $this->data['item']['id'] + 1;
+		// print_r($plus_one);die();
+
 		$this->data['title'] = 'Create Item';
 		$this->data['table_clients'] = $this->Item_model->all_rows('clients');
 		$this->data['features'] = $this->Item_model->all_rows('feature');
+		$this->data['work_type'] = $this->Item_model->all_rows('work_type');
 		$this->load->template('item/create',$this->data);
 	}
 
@@ -45,14 +51,30 @@ class Item extends MY_Controller{
 		{
 			redirect('home');
 		}
-		$data = $this->input->post();
-		$data['features'] = implode(',', $data['features']);
-		$data['colors'] = implode(',', $data['colors']);
-		$data['user_id'] = $this->session->userdata('user_id');
-		$id = $this->Item_model->insert('item',$data);
-		if ($id) {
-			redirect('item');
+		if ($this->input->post()) {
+		    $data = $this->input->post();
+		    $config['upload_path']          = './uploads/item';
+		    $config['allowed_types']        = 'gif|jpg|jpeg|png';
+		    $config['max_size']             = 4100;
+		    $config['max_width']            = 41024;
+		    $config['max_height']           = 4768;
+		    $this->load->library('upload', $config);
+		    if ($this->upload->do_upload('file'))
+		    {
+		        $data['file'] = '/uploads/item/'.$this->upload->data('file_name');
+		    }
+		   $data = $this->input->post();
+		   $data['features'] = implode(',', $data['features']);
+		   $data['colors'] = implode(',', $data['colors']);
+		   $data['file'] =  $this->upload->data('file_name');
+		   $data['user_id'] = $this->session->userdata('user_id');
+		   $id = $this->Item_model->insert('item',$data);
+			if ($id) {
+				redirect('item');
+			}
 		}
+		
+		
 	}
 
 	public function edit($id)

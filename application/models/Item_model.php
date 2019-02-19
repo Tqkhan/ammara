@@ -26,4 +26,10 @@ class Item_model extends MY_Model
     			 ->group_by('b.id');
     	return $this->db->get()->result_array();
     }
+    public function get_last_record($table)     
+    {   
+        $query = $this->db->query("SELECT * FROM $table  ORDER BY id DESC LIMIT 1");            
+        $result = $query->row_array();          
+        return $result;     
+    }
 }

@@ -155,7 +155,23 @@
 
                                     </div>
                                 </div>
+                                <div class="form-group row">
 
+                                    <div class="form-group col-lg-6">
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">Create Date</label>
+                                        <div class="col-sm-9">
+                                           <textarea class="form-control" name="description" rows="1"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">Create Date</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" name="create_date" type="date" value="" id="example-text-input" placeholder="">
+                                        </div>
+
+                                    </div>
+                                </div>
                                 <div class="form-group row">
 
                                     <div class="col-sm-12">

@@ -2823,6 +2823,18 @@
                                                                    
                                                             </tr>
                                                             <?php } ?>
+                                                            <?php 
+                                                                if (isset($approval)) {
+                                                            ?>
+                                                            <tr>
+                                                                <td>Approval</td>
+                                                                <td><?php echo $approval['remarks'] ?></td>
+                                                                <td><?php if ($approval['file']) {?><a download href="<?php echo base_url($approval['file']) ?>">View Attechment</a><?php } ?></td>
+                                                                
+                                                               
+                                                                   
+                                                            </tr>
+                                                            <?php } ?>
                                                            
                                                         </tbody>
                                                     </table>

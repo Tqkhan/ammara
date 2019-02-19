@@ -34,30 +34,30 @@
                         </div>
                         <div class="panel-body">
 
+                           
                             <div class="form-group row">
+                                <div class="form-group row">
 
-                                <div class="form-group col-lg-6">
-                                    <label for="example-text-input" class="col-sm-3 col-form-label">Date</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" name="Date" type="date" value="<?php echo date('Y-m-d') ?>" id="example-text-input" readonly="" placeholder="">
+                                    <div class="form-group col-lg-6">
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">Date</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" name="Date" type="date" value="<?php echo date('Y-m-d') ?>" id="example-text-input" readonly="" placeholder="">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">WO#</label>
+                                        <div class="col-sm-9">
+                                            <!-- <select class="form-control" name="WO_no" >
+                                                <option>Select WO#</option><?php foreach ($table_work_orders as $t) {?>
+                                                    <option value="<?php echo $t["id"] ?>"><?php echo $t["Description"] ?></option>
+                                               <?php } ?></select> -->
+                                            <input type="text" name="WO_no" class="form-control" value="<?php echo $order['id'] ?>" readonly>
+                                        </div>
+
                                     </div>
 
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <label for="example-text-input" class="col-sm-3 col-form-label">WO#</label>
-                                    <div class="col-sm-9">
-                                        <!-- <select class="form-control" name="WO_no" >
-                                            <option>Select WO#</option><?php foreach ($table_work_orders as $t) {?>
-                                                <option value="<?php echo $t["id"] ?>"><?php echo $t["Description"] ?></option>
-                                           <?php } ?></select> -->
-                                        <input type="text" name="WO_no" class="form-control" value="<?php echo $order['id'] ?>" readonly>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="form-group row">
-
+                                </div>    
                                 
 
                                 <div class="form-group row">
@@ -85,14 +85,14 @@
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Board Name</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="Board_Name" type="text" id="example-text-input" value="<?php echo $order['type'] ?>" readonly placeholder="">
+                                            <input class="form-control" name="Board_Name" type="text" id="example-text-input" value="<?php echo $order['type'] ?>"  placeholder="">
                                         </div>
 
                                     </div>
                                      <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Gsm</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="Gsm" type="text" value="<?php echo $order['gsm'] ?>" readonly id="example-text-input" placeholder="">
+                                            <input class="form-control" name="Gsm" type="text" value="<?php echo $order['gsm'] ?>"  id="example-text-input" placeholder="">
                                         </div>
 
                                     </div>
@@ -108,7 +108,7 @@
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Board Size</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="Board_Size" type="text" readonly id="example-text-input" value="<?php echo $order['size'] ?>" placeholder="">
+                                            <input class="form-control" name="Board_Size" type="text" id="example-text-input" value="<?php echo $order['size'] ?>" placeholder="">
                                         </div>
 
                                     </div>
@@ -156,7 +156,7 @@
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Conversion</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="Conversion" type="text" value="<?php echo $order['conversion'] ?>" id="example-text-input" placeholder="" readonly>
+                                            <input class="form-control" name="Conversion" type="text" value="<?php echo $order['conversion'] ?>" id="example-text-input" placeholder="" >
                                         </div>
 
                                     </div>
@@ -220,7 +220,7 @@
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Ups</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="Ups" type="text" readonly id="example-text-input" value="<?php echo $order['ups'] ?>" placeholder="">
+                                            <input class="form-control" name="Ups" type="text"  id="example-text-input" value="<?php echo $order['ups'] ?>" placeholder="">
                                         </div>
 
                                     </div>
