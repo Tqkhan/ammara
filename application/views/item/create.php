@@ -35,7 +35,7 @@
 
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Item Code<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="Item_Code" type="text" id="example-text-input" placeholder="" required="" value="<?php echo $plus_one.'-'.date('y');?>">
+                                    <input class="form-control" name="Item_Code" type="text" id="example-text-input" placeholder="" required="" value="ACP-<?php echo $plus_one.'-'.date('y');?>">
                                 </div>
 
                             </div>
@@ -74,9 +74,9 @@
 
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Features<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Features </label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" multiple="" name="features[]" required="">
+                                    <select class="form-control" multiple="" name="features[]">
                                         <option>Select Features</option>
                                         <?php foreach ($features as $f) {?>
                                             <option value="<?php echo $f["id"] ?>">
@@ -88,49 +88,49 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Card Type<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Card Type </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="type" type="text" value="" id="example-text-input" placeholder="" required="">
+                                    <input class="form-control" name="type" type="text" value="" id="example-text-input" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Board Size<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Board Size </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="size" type="text" value="" id="example-text-input" placeholder="" required="">
+                                    <input class="form-control" name="size" type="text" value="" id="example-text-input" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Ups<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Ups </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="ups" type="text" value="" id="example-text-input" placeholder="" required="">
+                                    <input class="form-control" name="ups" type="text" value="" id="example-text-input" placeholder="">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Gsm<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Gsm </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="gsm" type="text" value="" id="example-text-input" placeholder="" required="">
+                                    <input class="form-control" name="gsm" type="text" value="" id="example-text-input" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Conversion<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Conversion </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="conversion" type="text" value="" id="example-text-input" placeholder="" required="">
+                                    <input class="form-control" name="conversion" type="text" value="" id="example-text-input" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Remarks<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Remarks </label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" name="remarks" rows="1" ></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">File</label>
-                                <div class="col-sm-9"><input class="form-control" name="file" type="file" value="" id="example-text-input" placeholder="" required="">
+                                <div class="col-sm-9"><input class="form-control" name="file" type="file" value="" id="example-text-input" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">Colors<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Colors </label>
                                 <div class="col-sm-9">
                                     <div class="checkbox checkbox-info checkbox-inline">
                                         <input type="checkbox" id="inlineCheckbox1" value="Black" name="colors[]">
@@ -168,25 +168,25 @@
                             </div>
 
                             <div class="form-group row SPL1" style="display: none">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL1<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL1 </label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" name="spl1"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row SPL2" style="display: none">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL2<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL2 </label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" name="spl2"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row SPL3" style="display: none">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL3<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL3 </label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" name="spl3"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row SPL4" style="display: none">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL4<span class="required">*</span></label>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">SPL4 </label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" name="spl4"></textarea>
                                 </div>

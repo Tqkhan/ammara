@@ -56,6 +56,9 @@
 div#chart_div3 {
     opacity:  0;
 }
+.dropdown-menu{
+    z-index: 99999;
+}
 </style>
 <!-- /.Navbar  Static Side -->
 <div class="control-sidebar-bg"></div>
@@ -220,14 +223,17 @@ div#chart_div3 {
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Start Date</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control start" name="start_date[]" type="datetime-local" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" required="">
+                                            <input type='text' class="form-control start datetimepicker_start" id='' name="start_date[]" required="" />
+                                            <!-- <input class="form-control start" name="start_date[]" type="datetime-local" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" required=""> -->
                                         </div>
 
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">End Date</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control end" name="end_date[]" type="datetime-local" value="" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" required="">
+                                            <input class="form-control end datetimepicker_end" name="end_date[]" type="text" value="" id="" placeholder="" required="">
+
+                                            <!-- <input class="form-control end" name="end_date[]" type="datetime-local" value="" id="example-text-input" placeholder="" min="<?php echo date('Y-m-d\TH:i') ?>" required=""> -->
                                         </div>
 
                                     </div>
@@ -374,7 +380,9 @@ $("body").click(function () {
         $(html).find(".delet").html("<a class='btn btn-danger remove'><i class='fa fa-trash-o' aria-hidden='true'></i> </a> " + ' <a class="btn btn-success add-sub"><strong> + </strong> </a>');
         $(".add-div").last().after(html);
         $(".add-div").last().find('input,select').val('')
-        get_machines()
+        get_machines();
+        $('.datetimepicker_start').datetimepicker();
+        $('.datetimepicker_end').datetimepicker();
     });
     $("body").on("click", ".remove", function() {
         $(this).parents(".add-div").remove();

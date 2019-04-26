@@ -113,7 +113,7 @@
 
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <label for="example-text-input" class="col-sm-3 col-form-label">Quantity</label>
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">Sheet Quantity</label>
                                         <div class="col-sm-9">
                                             <?php 
                                             error_reporting(0);

@@ -40,17 +40,32 @@ class Product_release extends MY_Controller
         if ($this->permission['created'] == '0') {
             redirect('home');
         }
-        $data            = $this->input->post();
-        $product_id = $data['product_id'];
-        $quantity = $data['quantity'];
-        unset($data['quantity']);
-        unset($data['product_id']);
-        $data['user_id'] = $this->session->userdata('user_id');
-        $id              = $this->Product_release_model->insert('product_release', $data);
+        // echo "<pre>";
+        // print_r($_POST);
+        // die;
+        // $data            = $this->input->post();
+        $product_id = $this->input->post('product_id');
+        $quantity = $this->input->post('quantity');
+        // unset($data['quantity']);
+        // unset($data['product_id']);
+
+        $data = array(
+            'Date'=>$this->input->post('Date'),
+            'Reference_No'=>$this->input->post('Reference_No'),
+            'Store'=>$this->input->post('Store'),
+            'Status'=>$this->input->post('Status'),
+            'Note'=>$this->input->post('Note'),
+            'user_id'=>$this->session->userdata('user_id'),
+        );
+
+
+
+        // $data['user_id'] = $this->session->userdata('user_id');
+        $id = $this->Product_release_model->insert('product_release', $data);
         if ($id) {
         	for ($i=0; $i < sizeof($product_id); $i++) { 
                 $r = 0;
-                if ($data['Status'] == 'Complete') {
+                if ($this->input->post('Status') == 'Complete') {
                     $r = $quantity[$i];
                 }
         		$product[] = array(

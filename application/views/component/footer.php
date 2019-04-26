@@ -42,7 +42,14 @@
 
 
 
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+        <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('.datetimepicker_start').datetimepicker();
+                $('.datetimepicker_end').datetimepicker();
+            });
+        </script>
 
 
 

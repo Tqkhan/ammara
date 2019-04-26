@@ -37,6 +37,7 @@ class Purchases extends MY_Controller
     }
     public function insert()
     {
+
         if ($this->permission['created'] == '0') {
             redirect('home');
         }
@@ -44,16 +45,18 @@ class Purchases extends MY_Controller
         $product_id = $data['product_id'];
         $quantity = $data['quantity'];
         $price = $data['price'];
+        $grand_total = $data['grand_total'];
         unset($data['quantity']);
         unset($data['product_id']);
         unset($data['price']);
+        unset($data['grand_total']);
         //echo '<pre>';print_r($data);die;
         $data['user_id']         = $this->session->userdata('user_id');
         $config['upload_path']   = './uploads/';
         $config['allowed_types'] = 'doc|docs|pdf|xlx|xlsx';
-        $config['max_size']      = 1000;
-        $config['max_width']     = 1024;
-        $config['max_height']    = 768;
+        $config['max_size']      = 45000;
+        $config['max_width']     = 45024;
+        $config['max_height']    = 40768;
         $this->load->library('upload', $config);
         
         if ($this->upload->do_upload('Attach_Document')) {
@@ -61,22 +64,27 @@ class Purchases extends MY_Controller
         }
         $id = $this->Purchases_model->insert('purchases', $data);
         if ($id) {
-        	for ($i=0; $i < sizeof($product_id); $i++) { 
+            for ($i=0; $i < sizeof($product_id); $i++) { 
                 $r = 0;
                 if ($data['Status'] == 'Received') {
                     $r = $quantity[$i];
                 }
-        		$product[] = array(
-        			'product_id'=>$product_id[$i],
-        			'quantity'=>$quantity[$i],
+                $product[] = array(
+                    'product_id'=>$product_id[$i],
+                    'quantity'=>$quantity[$i],
                     'price'=>$price[$i],
-        			'purchase_id'=>$id,
+                    'purchase_id'=>$id,
                     'received_quantity'=>$r,
-        		);
+                );
                 $this->Purchases_model->update('product', array('Product_Cost'=>$price[$i]), array('id' => $product_id[$i]));
-        	}
-        	$this->Purchases_model->insert_batch('purchase_product',$product);
-            redirect('purchases');
+            }
+            $this->Purchases_model->insert_batch('purchase_product',$product);
+            redirect('purchases');             
+
+           
+              
+           
+            
         }
     }
     public function edit($id)
@@ -102,9 +110,9 @@ class Purchases extends MY_Controller
         unset($data['id']);
         $config['upload_path']   = './uploads/';
         $config['allowed_types'] = 'doc|docs|pdf|xlx|xlsx';
-        $config['max_size']      = 1000;
-        $config['max_width']     = 1024;
-        $config['max_height']    = 768;
+        $config['max_size']      = 45000;
+        $config['max_width']     = 45024;
+        $config['max_height']    = 40768;
         
         $this->load->library('upload', $config);
         
@@ -131,7 +139,7 @@ class Purchases extends MY_Controller
 
     public function change_status($id,$status)
     {
-    	$id = $this->Purchases_model->update('purchases', array('Status'=>$status), array(
+        $id = $this->Purchases_model->update('purchases', array('Status'=>$status), array(
             'id' => $id
         ));
         if ($id) {
@@ -172,5 +180,16 @@ class Purchases extends MY_Controller
             $data = $this->Purchases_model->get_rows('product', array('Category' => $parent,'Sub_Category' => $id));
         }
         echo json_encode($data);
+    }
+    
+    public function get_product_qty()
+    {
+        $expenseID = $this->input->post('p_id'); 
+
+        $this->data['get_row_vendor_data'] = $this->Purchases_model->get_row_single('product',array('id'=>$expenseID));
+
+        // print_r($this->data['get_row_vendor_data']['Product_Cost']);
+                echo ' '.$this->data['get_row_vendor_data']['Product_Cost'].' ';
+    
     }
 }

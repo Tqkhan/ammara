@@ -111,7 +111,7 @@
 															}
 															else {
 														?>
-		                                                panding
+		                                                Pending
 		                                                <?php } ?>
 	                                                </td>
 	                                                <?php 

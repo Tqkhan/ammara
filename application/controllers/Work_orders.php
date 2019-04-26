@@ -33,7 +33,7 @@
 				redirect('home');
 			}
 			$this->data['clients'] = $this->Work_orders_model->all_rows('clients');
-			$this->data['title'] = 'Create Work_orders';$this->load->template('work_orders/create',$this->data);
+			$this->data['title'] = 'Create Work Orders';$this->load->template('work_orders/create',$this->data);
 		}
 		public function insert()
 		{
@@ -105,4 +105,15 @@
 			$item = $this->Work_orders_model->get_rows('item',array('Client'=>$id));
 			echo json_encode($item);
 		}
+
+		
+		public function get_item_desc()
+		 {
+		  $id = $this->input->post('id');
+		   $item_description =  $this->Work_orders_model->get_row_single('item',array('id'=>$id));
+		 	 echo $item_description['Description'];
+
+		 
+
+		 }
 	}

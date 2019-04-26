@@ -139,6 +139,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Product Name (Product Code)</th>
+                                                    <th>Gramage</th>
                                                     <th>Net Unit Cost</th>
                                                     <th>Quantity</th>
                                                     <th>Subtotal (USD)</th>
@@ -151,6 +152,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>Total</th>
+                                                    <th></th>
                                                     <th></th>
                                                     <th class="qty">0.00</th>
                                                     <th class="total">0.00</th>
@@ -192,14 +194,15 @@
         $('[name="quantity[]"]').each(function() {
             con = con + parseInt($(this).val())
         })
-        $('.qty').text(con+'.00')
+        $('.qty').text(con+'')
     }
     function count_total() {
         var con = 0;
         $('.sub_total').each(function() {
             con = con + parseInt($(this).text())
         })
-        $('.total').text(con+'.00')
+        $('.total').text(con+'.00');
+        $('.grand_total').val(con);
     }
     function add_qty() {
         $('[name="quantity[]"]').keyup(function() {
@@ -259,23 +262,55 @@
                 console.log(res)
                 $('.change-product option').not('option:first').remove()
                 for (var i = 0; i < res.length; i++) {
-                    $('.change-product').append('<option value="'+res[i]['id']+'">'+res[i]['Product_Name']+'</option>')
+                    $('.change-product').append('<option value="'+res[i]['id']+'" data-amount="'+res[i]['Product_Cost']+'" data-gramage="'+res[i]['gramage']+'">'+res[i]['Product_Name']+'</option>')
                 }
                 product = res;
             }
         });
     })
+    /*test*/
+
     $('.change-product').change(function() {
+        var p_id = $('.change-product').val();
+         $.ajax({
+         
+               url: '<?php echo base_url();?>/purchases/get_product_qty',
+         
+               data: { p_id:p_id },
+         
+               type: 'POST',
+         
+         
+         
+               success:function(resp)
+               {    
+                // alert(resp)
+         
+                   $('.cost').val(resp);
+                   $('.ak_field').html(resp);
+                   // alert(resp);
+         
+               }
+         
+         
+           });
+        // $('.cost').val('jhlkhj');
         var id = $(this).val()
+        var name = $(this).children("option:selected").html();
+        var id_product = $(this).children("option:selected").attr("data-amount");
+        var id_gramage = $(this).children("option:selected").attr("data-gramage");
+        var singleValues = $( "#singleValues" ).val();
+
         // res = JSON.search( product, '//*[id="'+id+'"]' );
         res=product.filter(id=>id);
         var data = res[0]
         app.append('<tr>')
         app.append('</tr>')
-        app.find('tr').last().append('<td>'+data['Product_Name']+'</td>')
-        app.find('tr').last().append('<td><e class="net_cost" style="display:none">'+data['Product_Cost']+'</e><input type="number" name="price[]" class="form-control" value="'+data['Product_Cost']+'"></td>')
+        app.find('tr').last().append('<td>'+name+'</td>')
+        app.find('tr').last().append('<td>'+id_gramage+'</td>')
+        app.find('tr').last().append('<td><e class="net_cost">'+ id_product +'</e><input type="hidden" name="price[]" class="form-control" value='+ id_product +'></td>')
         app.find('tr').last().append('<td><input type="hidden" name="product_id[]" value="'+id+'"><input type="number" class="form-control" name="quantity[]" value="1"></td>')
-        app.find('tr').last().append('<td class="sub_total">'+data['Product_Cost']+'</td>')
+        app.find('tr').last().append('<td class="sub_total">'+ id_product +'</td>')
         app.find('tr').last().append('<td><i class="fa fa-trash-o remove" data-id="'+data['id']+'"></i></td>')
         count_qty()
         count_total()

@@ -55,7 +55,6 @@
                                             <select class="form-control" name="Item_Code">
                                                 <option>Select Item</option>
                                             </select>
-                                            <!-- <input class="form-control" name="Item_Code" type="text" value="" id="example-text-input" placeholder=""> -->
                                         </div>
 
                                     </div>
@@ -63,6 +62,13 @@
 
                                 <div class="form-group row">
 
+                                    <div class="form-group col-lg-6">
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">Item Description</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control get_item_desc" name="get_item_desc" type="text" value="" id="example-text-input" placeholder="">
+                                        </div>
+
+                                    </div>
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Quantity</label>
                                         <div class="col-sm-9">
@@ -70,6 +76,10 @@
                                         </div>
 
                                     </div>
+                                    
+                                </div>
+
+                                <div class="form-group row">
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">PO No</label>
                                         <div class="col-sm-9">
@@ -77,10 +87,6 @@
                                         </div>
 
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">PO Date</label>
                                         <div class="col-sm-9">
@@ -88,6 +94,10 @@
                                         </div>
 
                                     </div>
+                                    
+                                </div>
+
+                                <div class="form-group row">
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Batch No</label>
                                         <div class="col-sm-9">
@@ -95,10 +105,6 @@
                                         </div>
 
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Delivery Date</label>
                                         <div class="col-sm-9">
@@ -108,6 +114,12 @@
 
                                     </div>
                                     
+                                    
+                                    
+                                </div>
+
+                                <div class="form-group row">
+
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Delivery Status</label>
                                         <div class="col-sm-9">
@@ -126,12 +138,6 @@
                                         </div>
 
                                     </div>
-                                    
-                                </div>
-
-                                <div class="form-group row">
-
-                                    
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Instruction Remarks</label>
                                         <div class="col-sm-9">
@@ -140,6 +146,9 @@
 
                                     </div>
 
+                                    
+                                </div>
+                                <div class="form-group row">
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-9">
@@ -154,16 +163,16 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="form-group row">
-
                                     <div class="form-group col-lg-6">
-                                        <label for="example-text-input" class="col-sm-3 col-form-label">Create Date</label>
+                                        <label for="example-text-input" class="col-sm-3 col-form-label">Description</label>
                                         <div class="col-sm-9">
-                                           <textarea class="form-control" name="description" rows="1"></textarea>
+                                           <input class="form-control" name="description" type="text" value="" id="example-text-input" placeholder="">
                                         </div>
 
                                     </div>
+                                    
+                                </div>
+                                <div class="form-group row">
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Create Date</label>
                                         <div class="col-sm-9">
@@ -171,6 +180,7 @@
                                         </div>
 
                                     </div>
+                                    
                                 </div>
                                 <div class="form-group row">
 
@@ -211,11 +221,29 @@ $('[name="Client"]').change(function() {
             $('[name="Item_Code"]').empty()
             $('[name="Item_Code"]').append('<option>Select Item</option>')
             for (var i = 0; i < res.length; i++) {
-                $('[name="Item_Code"]').append('<option value="'+res[i].id+'">'+res[i].Item_Code+'</option>')
+                $('[name="Item_Code"]').append('<option value="'+res[i].id+'">'+res[i].Item_Code+' ('+res[i].Description+')</option>')
             }
         }
     });
-})
+});
+$('[name="Item_Code"]').on('change' , function(){
+   var id = $(this).val();
+   // alert(id);
+     $.ajax({
+         url: '<?php echo base_url() ?>work_orders/get_item_desc',
+         data: { id:id },
+         type: 'POST',
+         success:function(resp)
+         {
+             $('.get_item_desc').val(resp);
+             $(function() {
+               $("#standard").customselect();
+             });
+             // alert(resp);
+         }
+
+     });
+});
 </script>
 
 
