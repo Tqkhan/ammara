@@ -30,6 +30,9 @@ class Requisition extends MY_Controller
 
     public function insert()
     {
+        // echo "<pre>";
+        // print_r($_POST);
+        // die();
     	$data            = $this->input->post();
         $product_id = $data['product_id'];
         $quantity = $data['quantity'];

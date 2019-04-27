@@ -251,19 +251,21 @@ function get_single_difrreance($date,$end=null)
             <!-- /.Navigation -->
             <div class="sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                   <ul class="nav" id="side-menu">
-                      <li class="nav-heading "> <span>Main Navigation&nbsp;&nbsp;&nbsp;&nbsp;------</span></li>
+                    <ul class="nav" id="side-menu">
+
+                      <!--<li class="nav-heading " style="background-color: #ccc;" > <span>Main Navigation&nbsp;&nbsp;&nbsp;&nbsp;------</span></li>-->
+
                       <?php
                         if ($menus != null || $menus != '') : ?>
                             <?php foreach ($menus as $me) : ?>
                             <li>
-                                <a href="<?php echo base_url(); ?><?php echo $me['url'] ?>" title="<?php echo $me['name'] ?>" class="material-ripple"><i class="material-icons"><?php echo $me['icon'] ?></i><?php echo $me['name'] ?>
+                                <a href="<?php echo base_url(); ?>/<?php echo $me['url'] ?>" title="<?php echo $me['name'] ?>" class="material-ripple"><i class="material-icons"><?php echo $me['icon'] ?></i><?php echo $me['name'] ?><?php if ( isset( $me['children'] ) && $me['children'] != NULL ): ?><span class="fa arrow"></span> <?php endif ?>
                                 </a>
 
                                 <?php if ( isset( $me['children'] ) && $me['children'] != NULL ): ?>
                                         <ul class="nav nav-second-level">
                                     <?php foreach ( $me['children'] as $sub_menu ): ?>
-                                            <li><a href="<?php echo base_url($sub_menu['url']) ?>" title="<?php echo $sub_menu['name'] ?>"><?php echo $sub_menu['name'] ?></a></li>
+                                            <li><a href="<?php echo base_url() ?>/<?php echo $sub_menu['url'] ?>" title="<?php echo $sub_menu['name'] ?>"><?php echo $sub_menu['name'] ?></a></li>
                                     <?php endforeach ?>
                                         </ul>
                                 <?php endif ?>

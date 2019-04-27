@@ -65,7 +65,7 @@
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Item Description</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control get_item_desc" name="get_item_desc" type="text" value="" id="example-text-input" placeholder="">
+                                            <input class="form-control get_item_desc" name="" type="text" value="" id="example-text-input" placeholder="">
                                         </div>
 
                                     </div>

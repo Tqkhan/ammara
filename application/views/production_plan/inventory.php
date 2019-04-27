@@ -215,6 +215,7 @@
                                                 <?php foreach ($products as $p) {?>
                                                 <tr>
                                                     <td><?php echo $p['Product_Name'] ?></td>
+                                                    <td><?php echo $p['gramage'] ?></td>
                                                     <td class="net_cost"><?php echo $p['Product_Cost'] ?></td>
                                                     <td><input type="hidden" name="product_id[]" value="<?php echo $p['id'] ?>"><input type="number" class="form-control" name="quantity[]" value="1"></td>
                                                     <td class="stock_qty">0</td>
@@ -229,7 +230,7 @@
                                                     <th>Total</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th class="qty">0.00</th>
+                                                    <th class="qty">0</th>
                                                     <th></th>
                                                     <th></th>
                                                     <th class="total">0.00</th>
@@ -272,7 +273,7 @@
         $('[name="quantity[]"]').each(function() {
             con = con + parseInt($(this).val())
         })
-        $('.qty').text(con+'.00')
+        $('.qty').text(con+' ')
     }
     function count_total() {
         var con = 0;

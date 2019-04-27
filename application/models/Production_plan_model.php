@@ -82,7 +82,7 @@ public function get_production_plan($id = null)
 
 	public function get_products($id)
 	{
-		$this->db->select('p.id,p.Product_Name,p.Product_Cost,p.Product_Unit,c.Name')
+		$this->db->select('p.id,p.Product_Name,p.gramage,p.Product_Cost,p.Product_Unit,c.Name')
 				 ->from('product p')
 				 ->join('bom b','b.product_id = p.id')
 				 ->join('work_orders w', 'w.Item_Code = b.item_id')
