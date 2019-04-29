@@ -27,7 +27,7 @@ class Dispatch_model extends MY_Model{
 
 	public function get_slip($id)
 	{
-		$this->db->select('w.id,c.client_Name,c.Address,i.Description,br.qty_per_mc,br.total_carton,now() as date,i.Item_code,w.created_at,PO_No,dc.created_at as mfg_date,dc.delivery_challan')
+		$this->db->select('w.id,c.client_Name,c.Address,i.Description,br.qty_per_mc,br.total_carton,now() as date,i.Item_code,w.created_at,PO_No,dc.created_at as mfg_date,dc.delivery_challan,dc.line_no')
 				 ->from('work_orders w')
 				 ->join('clients c', 'c.id = w.Client')
 				 ->join('item i', 'i.id = w.Item_Code')

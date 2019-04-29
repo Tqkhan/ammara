@@ -45,9 +45,10 @@
                                                     <option value="non_comfirmity_report">Non Comfirmity Report</option>
                                                     <option value="complain_assessment_form">Complain Assessment Form</option>
                                                     <option value="rejection_report">Rejection Report</option>
+                                                    <option value="material_inspection_note">Material Inspection Note</option>
                                                 </select>
                                             </div>
-                                            <button class="col-lg-2 btn">submit</button>
+                                            <button class="col-lg-2 btn btn-primary pull-right">submit</button>
                                        </form>
                                         </div>
                                        <script type="text/javascript">
@@ -75,6 +76,9 @@
                                            }
                                             else if (action=='rejection_report') {
                                               $("#search-form").attr("action", "<?php echo base_url() ?>qc/rejection_report/<?php echo $wo_no ?>");
+                                           }
+                                           else if (action=='material_inspection_note') {
+                                              $("#search-form").attr("action", "<?php echo base_url() ?>qc/material_inspection_note/<?php echo $wo_no ?>");
                                            }   
                                        });
                                        </script>

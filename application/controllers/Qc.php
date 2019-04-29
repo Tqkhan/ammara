@@ -736,5 +736,57 @@ class Qc extends MY_Controller {
                 $this->load->template('qc/goods_receiving_notes',$this->data);
             }
 
+        public function material_inspection_note($wo)
+        {
+        if ($this->input->post()) {
+            // echo "<pre>";
+            // print_r($_POST);
+            // die();   
+              $data=array(
+                'wo_no'=>$wo,
+                'Supplier_Name' => $_POST['Supplier_Name'],
+                'min_no' => $_POST['min_no'],
+                'Challan_Number' => $_POST['Challan_Number'],
+                'Appearance' => $_POST['Appearance'],
+                'Grammage' => $_POST['Grammage'],
+                'Thickness' => $_POST['Thickness'],
+                'Moisture' => $_POST['Moisture'],
+                'Grain_Direction' => $_POST['Grain_Direction'],
+                'Presence_of_Insects' => $_POST['Presence_of_Insects'],
+                'Oil_and_Grease_Stains' => $_POST['Oil_and_Grease_Stains'],
+                'Shade' => $_POST['Shade'],
+                'Strength' => $_POST['Strength'],
+                'Stick_ability' => $_POST['Stick_ability'],
+                'Miscibility' => $_POST['Miscibility'],
+                'Purity' => $_POST['Purity'],
+                'status' => $_POST['status'],
+                'date' => date('Y-m-d'),
+               
+               );
+              $id = $this->qc_model->insert('material_inspection_note',$data);
+              for ($i=0; $i < count($_POST['s_no']); $i++) { 
+                $data2=array(
+                  'wo_no'=>$wo,
+                  'material_inspection_note_id'=>$id,
+                  's_no'=>$_POST['s_no'][$i],
+                  'item_desc'=>$_POST['item_desc'][$i],
+                  'unit'=>$_POST['unit'][$i],
+                  'qty_rec'=>$_POST['qty_rec'][$i],
+                  'qty_ok'=>$_POST['qty_ok'][$i],
+                  'qty_rej'=>$_POST['qty_rej'][$i],
+                );
+                $id2 = $this->qc_model->insert('material_inspection_note_detail',$data2);
+              } 
+
+              redirect(base_url('all_orders/view_plane/'.$wo)); 
+              }
+                $this->data['get_detail'] = $this->qc_model->get_row_single('work_orders' ,array('id' => $wo));
+                // print_r($this->data['get_detail']);
+                // die();
+                $this->data['title'] = 'Material Inspection Note';
+                $this->data['wo_no'] = $wo;          
+                $this->load->template('qc/material_inspection_note',$this->data);
+            }
+
 
 }

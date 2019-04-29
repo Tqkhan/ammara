@@ -59,7 +59,7 @@
                                                 <?php echo $module["gramage"] ?>
                                             </td>
                                             <td>
-                                                <?php if($module["stock"]) {echo $module["stock"] - $module['less'] + $module['addi'] - $module['orders'];} else{echo 0;} ?>
+                                                <?php echo $module["product_qty"] ?>
                                             </td>
                                         </tr>
                                         <?php } ?>

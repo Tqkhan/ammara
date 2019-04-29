@@ -34,9 +34,11 @@
 										<table id="dataTableExample2" class="table table-bordered table-striped table-hover">
 											<thead>
 												<tr>
+													<th>Wo Id</th>
 													<th>Flow</th>
 													<th>Product Name</th>
 													<th>Quantity</th>
+													<th>Action</th>
 												</tr>
 											</thead>
 										    <tbody>
@@ -44,9 +46,15 @@
 										    		foreach ($detail as $o) {
 										    	?>
 										    	<tr>
+										    		<td><?php echo $o['wo_id'] ?></td>
 										    		<td><?php echo $o['Name'] ?></td>
 										    		<td><?php echo $o['Product_Name'] ?></td>
 										    		<td><?php echo $o['qty'] ?></td>
+										    		<td><?php if ($o['return_status'] == 0) {
+										    			?>
+										    			<a href="<?php echo base_url() ?>over_inventory/add_to_product_qty/<?php echo $o['id'] ?>/<?php echo $o['qty'] ?>/<?php echo $o['rp_id'] ?>"><button type="button" class="btn btn-primary">Add to Product qty</button></a>
+										    			<?php
+										    		}?></td>
 										    	</tr>
 										    	<?php } ?>
 											</tbody>

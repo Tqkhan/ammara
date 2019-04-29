@@ -6,6 +6,7 @@ class Requisition extends MY_Controller
     {
         parent::__construct();
         $this->load->model('requisition_model');
+        $this->load->model('Quantity_adjustments_model');
         $this->module     = 'requisition';
         $this->user_type  = $this->session->userdata('user_type');
         $this->id         = $this->session->userdata('user_id');
@@ -81,21 +82,84 @@ class Requisition extends MY_Controller
 
     public function get_order($id)
     {
-        $data = $this->requisition_model->get_order_product($id);
+        // $data = $this->requisition_model->get_order_product($id);
+        $data = $this->requisition_model->get_order_product_new($id);
         //print_r($this->db->last_query());
         echo json_encode($data);
     }
 
+    // public function received_order()
+    // {
+    //     $id = $this->input->post('id');
+    //     $detail_id = $this->input->post('detail_id');
+    //     $product_id = $this->input->post('product_id');
+    //     $received_quantity = $this->input->post('received_quantity');
+    //     $t_qty = $this->input->post('t_qty');
+    //     $remarks = $this->input->post('remarks');
+    //     $qty_post = $this->input->post('received_quantity');
+    //     $total_r_qty = 0;
+      
+    //     foreach ($qty_post as $value) {
+    //         $total_r_qty += $value;
+    //     }
+
+    //     if ($this->input->post('t_qty') == $total_r_qty) {
+    //         $this->requisition_model->update('requisition', array('status'=>'Complete'), array('id' => $id));
+    //     }else{
+    //         $this->requisition_model->update('requisition', array('status'=>'Partial'), array('id' => $id));
+    //     }
+    //     for ($i=0; $i < sizeof($detail_id); $i++) { 
+    //         $this->data['product_old_qty'] = $this->Quantity_adjustments_model->product_old_qty('product' , $product_id[$i]);
+    //         $new_qty = $this->data['product_old_qty']['product_qty'] - $this->input->post('received_quantity')[$i];
+
+    //         $this->requisition_model->update('product', array('product_qty'=>$new_qty), array('id' => $product_id[$i]));
+    //         $this->requisition_model->update('requisition_product', array('received_quantity'=>$received_quantity[$i],'product_id'=>$product_id[$i],'remarks'=>$remarks[$i]), array('id' => $detail_id[$i]));
+    //     }
+    //     redirect('requisition');
+    // }
     public function received_order()
     {
         $id = $this->input->post('id');
         $detail_id = $this->input->post('detail_id');
         $product_id = $this->input->post('product_id');
         $received_quantity = $this->input->post('received_quantity');
+        $t_qty = $this->input->post('t_qty');
         $remarks = $this->input->post('remarks');
-        $this->requisition_model->update('requisition', array('status'=>'Complete'), array('id' => $id));
+        $qty_post = $this->input->post('received_quantity');
+        $total_r_qty = 0;
+      
+        foreach ($qty_post as $value) {
+            $total_r_qty += $value;
+        }
+
+        $rec_qty = $this->input->post('rec_qty');
+
+        $total_rec_qty = 0;
+      
+        foreach ($rec_qty as $value1) {
+            $total_rec_qty += $value1;
+        }
+          $all_rec_qty =  $total_rec_qty + $total_r_qty;
+        // echo $total_r_qty;
+
+        // die();
+        if ($this->input->post('t_qty') == $all_rec_qty) {
+            $this->requisition_model->update('requisition', array('status'=>'Complete'), array('id' => $id));
+        }else{
+            $this->requisition_model->update('requisition', array('status'=>'Partial'), array('id' => $id));
+        }
         for ($i=0; $i < sizeof($detail_id); $i++) { 
-            $this->requisition_model->update('requisition_product', array('received_quantity'=>$received_quantity[$i],'product_id'=>$product_id[$i],'remarks'=>$remarks[$i]), array('id' => $detail_id[$i]));
+            $this->data['product_old_qty'] = $this->Quantity_adjustments_model->product_old_qty('product' , $product_id[$i]);
+            $new_qty = $this->data['product_old_qty']['product_qty'] - $this->input->post('received_quantity')[$i];
+
+            $this->requisition_model->update('product', array('product_qty'=>$new_qty), array('id' => $product_id[$i]));
+            $new_r_qty = $this->input->post('rec_qty')[$i] + $received_quantity[$i];
+            $data_r_product=array(
+                'received_quantity'=> $new_r_qty,
+                'product_id'=> $product_id[$i],
+                'remarks'=> $remarks[$i],
+            );
+            $this->requisition_model->update('requisition_product',$data_r_product,array('id' => $detail_id[$i]));
         }
         redirect('requisition');
     }

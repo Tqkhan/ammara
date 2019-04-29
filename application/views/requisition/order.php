@@ -97,7 +97,7 @@
                                                     <th></th>
                                                     <th></th>
                                                     <th class="qty">0.00</th>
-                                                    <th></th>
+                                                    <th><input type="hidden" name="t_qty" class="t_qty"></th>
                                                     <th></th>
                                                     <th class="total">0.00</th>
                                                     <th><i class="fa fa-trash-o" style="opacity:0.5; filter:alpha(opacity=50);"></i></th>
@@ -133,6 +133,7 @@
             con = con + parseInt($(this).val())
         })
         $('.qty').text(con+' ')
+        $('.t_qty').val(con)
     }
     function count_total() {
         var con = 0;
@@ -200,7 +201,7 @@
                 console.log(res)
                 $('.change-product option').not('option:first').remove()
                 for (var i = 0; i < res.length; i++) {
-                    $('.change-product').append('<option value="'+res[i]['id']+'" data-amount="'+res[i]['Product_Cost']+'" data-gramage="'+res[i]['gramage']+'">'+res[i]['Product_Name']+'</option>')
+                    $('.change-product').append('<option value="'+res[i]['id']+'" data-amount="'+res[i]['Product_Cost']+'" data-gramage="'+res[i]['gramage']+'" data-qty="'+res[i]['product_qty']+'">'+res[i]['Product_Name']+'</option>')
                 }
                 product = res;
             }
@@ -236,6 +237,7 @@
         var name = $(this).children("option:selected").html();
         var id_product = $(this).children("option:selected").attr("data-amount");
         var id_gramage = $(this).children("option:selected").attr("data-gramage");
+        var id_product_qty = $(this).children("option:selected").attr("data-qty");
         var singleValues = $( "#singleValues" ).val();
         
         res=product.filter(id=>id);
@@ -244,10 +246,11 @@
         app.append('<tr>')
         app.append('</tr>')
         app.find('tr').last().append('<td>'+name+'</td>')
-        app.find('tr').last().append('<td>'+id_gramage+'</td>')
+        app.find('tr').last().append('<td>'+id_product_qty+'</td>')
         app.find('tr').last().append('<td class="net_cost">'+data['Product_Cost']+'</td>')
         app.find('tr').last().append('<td><input type="hidden" name="product_id[]" value="'+id+'"><input type="number" class="form-control" name="quantity[]" value="1"></td>')
-        app.find('tr').last().append('<td class="stock_qty">'+ (data['stock'] - data['orders'])+'</td>')
+        // app.find('tr').last().append('<td class="stock_qty">'+ (data['stock'] - data['orders'])+'</td>')
+        app.find('tr').last().append('<td>'+id_product_qty+'</td>')
         app.find('tr').last().append('<td>'+data['Product_Unit']+'</td>')
         app.find('tr').last().append('<td class="sub_total">'+data['Product_Cost']+'</td>')
         app.find('tr').last().append('<td><i class="fa fa-trash-o remove" data-id="'+data['id']+'"></i></td>')

@@ -17,7 +17,8 @@ class Stock extends MY_Controller
             redirect('home');
         }
         $this->data['title'] = 'stock';
-        $this->data['stock'] = $this->stock_model->get_stock();
+        // $this->data['stock'] = $this->stock_model->get_stock();
+        $this->data['stock'] = $this->stock_model->get_stock_new();
         //echo '<pre>';print_r($this->data['stock']);die;
         $this->data['permission'] = $this->permission;
         $this->load->template('stock/index', $this->data);

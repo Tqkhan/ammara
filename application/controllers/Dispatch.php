@@ -59,7 +59,7 @@ class Dispatch extends MY_Controller {
         }
         $this->data['title'] = 'Slip';
         $this->data['slip'] = $this->dispatch_model->get_slip($id);
-        //echo '<pre>';print_r($this->data['slip']);die;
+        // echo '<pre>';print_r($this->data['slip']);die;
         $this->load->template('dispatch/slip',$this->data);
     }
 

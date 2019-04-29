@@ -7,4 +7,12 @@
 								 ->from('quantity_adjustments')->join('product', 'product.id = quantity_adjustments.Product'); if ($id != null) {
 								$this->db->where('quantity_adjustments.user_id', $id);
 							}return $this->db->get()->result_array();
-					}}
+					}
+					public function product_old_qty($table , $id)
+					{
+						$query = $this->db->query("SELECT * FROM $table where id = '$id'  ORDER BY id DESC LIMIT 1");
+						$result = $query->row_array();
+						return $result;
+					}
+
+				}

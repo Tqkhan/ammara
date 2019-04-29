@@ -28,4 +28,13 @@ class Stock_model extends MY_Model{
 				 ->group_by('p.id');
 		return $this->db->get()->result_array();
 	}
+
+	public function get_stock_new()
+	{	
+		$this->db->select('p.*')
+				 ->from('product p');
+		return $this->db->get()->result_array();
+	}
+
+
 }

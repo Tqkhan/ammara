@@ -76,4 +76,14 @@ class Requisition_model extends MY_Model{
 				 ->group_by('pp.id');
 		return $this->db->get()->result_array();
 	}
+
+	public function get_order_product_new($id)
+	{
+		$this->db->select('requisition_product.*, requisition_product.id as r_id , product.* , requisition.t_qty')
+				 ->from('requisition_product ')
+				 ->join('product','requisition_product.product_id = product.id')
+				 ->join('requisition','requisition.id = requisition_product.requisition_id')
+				 ->where('requisition_product.requisition_id',$id);
+		return $this->db->get()->result_array();
+	}
 }

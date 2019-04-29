@@ -34,8 +34,26 @@
 			{
 				redirect('home');
 			}
-			$data = $this->input->post();
-			$data['user_id'] = $this->session->userdata('user_id');$id = $this->Quantity_adjustments_model->insert('quantity_adjustments',$data);
+			$this->data['product_old_qty'] = $this->Quantity_adjustments_model->product_old_qty('product' , $this->input->post('Product'));
+
+			if ($this->input->post('Type') == "Addition") {
+				$new_qty = $this->data['product_old_qty']['product_qty']+$this->input->post('Quantity');
+			}else{
+				$new_qty = $this->data['product_old_qty']['product_qty']-$this->input->post('Quantity');
+			}
+			$data=array(
+			    'Date'=> $this->input->post('Date'),
+			    'Type'=> $this->input->post('Type'),
+			    'Quantity'=> $this->input->post('Quantity'),
+			    'Note'=> $this->input->post('Note'),
+			    'Product'=> $this->input->post('Product'),
+			    'user_id'=> $this->session->userdata('user_id'),
+			);
+			$product_data=array(
+			    'product_qty'=> $new_qty,
+			);
+			$this->Quantity_adjustments_model->insert('quantity_adjustments',$data);
+			$id = $this->Quantity_adjustments_model->update('Product',$product_data,array('id'=>$this->input->post('Product')));
 			if ($id) {
 				redirect('quantity_adjustments');
 			}

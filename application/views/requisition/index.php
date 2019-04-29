@@ -205,56 +205,13 @@
                 var tb  = $('.product-table tbody')
                 tb.empty()
                 for (var i = 0; i < res.length; i++) {
-                    var arr = [];
                     var data = res[i]
-                    var products = data['products']
-                    products = products.split(',')
-                    arr.push({
-                        value: data['product_id'], 
-                        text:  data['Product_Name'],
-                        qty: (data['stock'] - data['orders'])
-                    });
-                    for (var a = 0; a < products.length; a++) {
-                        products[a] = products[a].split(':')
-                        arr.push({
-                            value: products[a][2], 
-                            text:  products[a][3],
-                            qty: (products[a][0] - products[a][1])
-                        });
-                    }
-                    //console.log(products)
                     tb.append('<tr>')
                     tb.append('</tr>')
-                    tb.find('tr').last().append('<td><a href="#" id="'+data['product_id']+'" data-type="select" data-pk="1" data-value="'+data['product_id']+'" data-title="Change Product">'+data['Product_Name']+'</a></td>')
-                    $('#'+data['product_id']).editable({
-                        showbuttons: false,
-                        //prepend: "not selected",
-                        source: arr,
-                        display: function (value, sourceData) {
-                            //console.log(value)
-                            //console.log(sourceData)
-                            //console.log(arrayLookup(value,sourceData,'value','qty'))
-                            var qty = arrayLookup(value,sourceData,'value','qty')
-                            $(this).parent().parent().find('.stock_qty').text(qty)
-                            $(this).parent().parent().find('.product_id').val(value)
-                            var colors = {"": "gray", 1: "green", 2: "blue"},
-                                    elem = $.grep(sourceData, function (o) {
-                                        return o.value == value;
-                                    });
-
-                            if (elem.length) {
-                                $(this).text(elem[0].text).css("color", colors[value]);
-                            } else {
-                                $(this).empty();
-                            }
-                        },
-                        success: function(pro) {
-                            //alert($(this).attr('data-value'))
-                        }
-                    });
+                    tb.find('tr').last().append('<td>'+data['Product_Name']+'</td>')
                     tb.find('tr').last().append('<td>'+data['quantity']+'</td>')
-                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['id']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="number" class="form-control" name="received_quantity[]" value="'+data['quantity']+'"></td>')
-                    tb.find('tr').last().append('<td class="stock_qty">'+(data['stock'] - data['orders'])+'</td>')
+                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['r_id']+'"><input type="hidden" name="t_qty" value="'+data['t_qty']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="hidden" name="rec_qty[]" value="'+data['received_quantity']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="number" class="form-control" name="received_quantity[]" value="0" required=""></td>')
+                    tb.find('tr').last().append('<td>'+data['product_qty']+'</td>')
                     tb.find('tr').last().append('<td>'+data['Product_Unit']+'</td>')
                     tb.find('tr').last().append('<td><input type="text" class="form-control" name="remarks[]" value=""></td>')
                 }

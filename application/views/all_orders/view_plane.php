@@ -4412,6 +4412,132 @@
         <button id="btn" class="print-btn_corrective_action_request btn btn-info pull-right" role="button">Generate Print</button>
     <div style="height: 60px;"></div>
     <?php endif ?>
+     <?php if (isset($material_inspection_note)): ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd print-div_material_inspection_note">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4 class="product-totle">Material Inspection Note</h4>
+                        <br>
+                        <small class="product-tital"></small>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body ">
+
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="1">W.O # : <u><?php echo $material_inspection_note['wo_no'] ?></u></td>
+                                            <td colspan="1">Date : <u><?php echo $material_inspection_note['date'] ?></u></td>
+                                            <td colspan="1">Supplier Name : <u><?php echo $material_inspection_note['Supplier_Name'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">MIN # : <u><?php echo $material_inspection_note['min_no'] ?></u></td>
+                                            <td colspan="2">Challan Number : <u><?php echo $material_inspection_note['Challan_Number'] ?></u></td>
+
+                                        </tr>
+                                        
+                                        
+                                        <tr>
+                                            <td colspan="3"><center>For paper & Board</center></td>
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td>Appearance  : <u><?php echo $material_inspection_note['Appearance'] ?></u></td>
+                                            <td>Grammage  : <u><?php echo $material_inspection_note['Grammage'] ?></u></td>
+                                            <td colspan="">Thickness  : <u><?php echo $material_inspection_note['Thickness'] ?></u></td>
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td>Moisture  : <u><?php echo $material_inspection_note['Moisture'] ?></u></td>
+                                            <td colspan="2">Grain Direction  : <u><?php echo $material_inspection_note['Grain_Direction'] ?></u></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><center>Inks</center></td>
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td colspan="">Presence of Insects  : <u><?php echo $material_inspection_note['Presence_of_Insects'] ?></u></td>
+                                            <td colspan="">Oil_and_Grease_Stains  : <u><?php echo $material_inspection_note['Oil_and_Grease_Stains'] ?></u></td>
+                                            <td colspan="">Shade  : <u><?php echo $material_inspection_note['Shade'] ?></u></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><center>Alcohol</center></td>
+                                        </tr>
+                                        <tr>
+
+                                            
+                                            <td>Miscibility  : <u><?php echo $material_inspection_note['Miscibility'] ?></u></td>
+                                              <td colspan="">Purity  : <u><?php echo $material_inspection_note['Purity'] ?></u></td>
+                                              <td colspan="">status  : <u><?php echo $material_inspection_note['status'] ?></u></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <table class="minimalistBlack" style="width: 100%;">
+                                    <tbody>
+                                        <thead>
+                                            <tr>
+                                                <td colspan="1">S. No  <u></u></td>
+                                                <td colspan="1">Item Description  <u></u></td>
+                                                <td colspan="1">Unit  <u></u></td>
+                                                <td colspan="1">QTY REC  <u></u></td>
+                                                <td colspan="1">QTY OK  <u></u></td>
+                                                <td colspan="1">QTY REJ  <u></u></td>
+                                            </tr>
+                                        </thead>
+                                        <?php foreach ($material_inspection_note_detail as $material_insp_note_detail) {
+                                            # code...
+                                        ?>
+                                        <tr>
+                                            <td colspan="1"><?php echo $material_insp_note_detail   ['s_no'] ?>  <u></u></td>
+                                            <td colspan="1"><?php echo $material_insp_note_detail   ['item_desc'] ?>  <u></u></td>
+                                            <td colspan="1"><?php echo $material_insp_note_detail   ['unit'] ?>  <u></u></td>
+                                            <td colspan="1"><?php echo $material_insp_note_detail   ['qty_rec'] ?>  <u></u></td>
+                                            <td colspan="1"><?php echo $material_insp_note_detail   ['qty_ok'] ?>  <u></u></td>
+                                            <td colspan="1"><?php echo $material_insp_note_detail   ['qty_rej'] ?>  <u></u></td>
+                                            
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Received by Store Incharge:</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6">
+                                        <address>
+                                               <label for="example-text-input" class="col-sm-5">Verified By Quality:</label>
+                                                <e class="aks_value">__________________</e>
+                                                <br>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button id="btn" class="print-btn_material_inspection_note btn btn-info pull-right" role="button">Generate Print</button>
+    <div style="height: 60px;"></div>
+    <?php endif ?>
     <br>
     <br>
     <br>
@@ -5071,6 +5197,36 @@
     $('.print-btn_corrective_action_request').click(function() {
         w = window.open();
         var ht = $('.print-div_corrective_action_request').html()
+        var head = $('head').html()
+        w.document.write('<html>');
+        w.document.write('<head>');
+        w.document.write(head);
+      w.document.write('<style>input[type="radio"]{webkit-appearance: radio;}</style>') 
+        w.document.write('<style>.panel-title {    text-align: center;}</style>')
+        w.document.write('<style>.radio-inline {display: inline;}</style>')
+     w.document.write('<style>.panel-title {    text-align: center;}</style>')
+ w.document.write('<style>.radio-inline input[type="radio"]:checked + label:before {content: "*";order: 1;}</style>')
+        w.document.write('<style>.radio-inline input[type="radio"]:checked + label {background:pink !important; font-weight: 900; content: "Task";}</style>')
+        w.document.write('<style>. table.minimalistBlack {width: 100%;height: 200px; text-align: left; border-collapse: collapse;}</style>')
+         w.document.write('<style>table.minimalistBlack td, table.minimalistBlack th {border: 1px solid #000000;padding: 5px 4px;}</style>')
+         w.document.write('<style>table.minimalistBlack tbody td {font-size: 13px;}</style>')
+         w.document.write('<style>table.minimalistBlack thead {background: #CFCFCF;background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);border-bottom: 3px solid #000000;}</style>')
+         w.document.write('<style>table.minimalistBlack thead th {font-size: 15px;font-weight: bold;color: #000000;text-align: left;}</style>')
+        w.document.write('</head>');
+        w.document.write('<body>');
+        w.document.write(ht);
+        w.document.write('<body>');
+        w.document.write('</html>');
+        setTimeout(function() {
+            w.print();
+            w.close();
+        }, 300);
+    })
+</script>
+<script type="text/javascript">
+    $('.print-btn_material_inspection_note').click(function() {
+        w = window.open();
+        var ht = $('.print-div_material_inspection_note').html()
         var head = $('head').html()
         w.document.write('<html>');
         w.document.write('<head>');

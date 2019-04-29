@@ -6,6 +6,7 @@ class Purchases extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Purchases_model');
+        $this->load->model('Quantity_adjustments_model');
         $this->module     = 'purchases';
         $this->user_type  = $this->session->userdata('user_type');
         $this->id         = $this->session->userdata('user_id');
@@ -69,6 +70,8 @@ class Purchases extends MY_Controller
                 if ($data['Status'] == 'Received') {
                     $r = $quantity[$i];
                 }
+                $this->data['product_old_qty'] = $this->Quantity_adjustments_model->product_old_qty('product' , $product_id[$i]);
+                $new_qty = $this->data['product_old_qty']['product_qty']+$r;
                 $product[] = array(
                     'product_id'=>$product_id[$i],
                     'quantity'=>$quantity[$i],
@@ -76,7 +79,7 @@ class Purchases extends MY_Controller
                     'purchase_id'=>$id,
                     'received_quantity'=>$r,
                 );
-                $this->Purchases_model->update('product', array('Product_Cost'=>$price[$i]), array('id' => $product_id[$i]));
+                $this->Purchases_model->update('product', array('Product_Cost'=>$price[$i],'product_qty'=>$new_qty), array('id' => $product_id[$i]));
             }
             $this->Purchases_model->insert_batch('purchase_product',$product);
             redirect('purchases');             

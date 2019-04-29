@@ -157,6 +157,9 @@ class All_orders extends MY_Controller
 
 		$this->data['rejection_report'] = $this->all_orders_model->query_single_result("Select * from rejection_report where wo_no=".$id);
 
+		$this->data['material_inspection_note'] = $this->all_orders_model->get_row_single('material_inspection_note',array('wo_no'=>$id));
+		$this->data['material_inspection_note_detail'] = $this->all_orders_model->get_rows('material_inspection_note_detail',array('wo_no'=>$id));
+		
 		$rejection_report=$this->data['rejection_report']['id'];
 		if ($rejection_report) {
 			$this->data['rejection_report_parameter']=$this->all_orders_model->query_single_result("select * from rejection_report_parameter where rejection_report_id=".$rejection_report);
@@ -195,7 +198,7 @@ class All_orders extends MY_Controller
 
 
   //    echo "<pre>";
-		// print_r($this->data);die();
+		// print_r($this->data['material_inspection_note_detail']);die();
 		$this->load->template('all_orders/view_plane',$this->data);
 	}
 

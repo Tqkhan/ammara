@@ -3,7 +3,7 @@ class Over_inventory_model extends MY_Model{
 
 	public function get_stock($id)
 	{
-		$this->db->select('f.Name,sum(rp.pending_quantity) as qty,p.Product_Name')
+		$this->db->select('f.Name,sum(rp.pending_quantity) as qty,p.Product_Name, p.id ,  rp.id as rp_id,  rp.return_status , r.wo_id')
 				 ->from('flows f')
 				 ->join('requisition r', 'r.type=f.Name')
 				 ->join('requisition_product rp','r.id = rp.requisition_id')
