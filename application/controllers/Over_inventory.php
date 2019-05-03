@@ -32,20 +32,32 @@ class Over_inventory extends MY_Controller{
 	{
 		$this->data['title'] = 'Left Over Inventory';
 		$flow = $this->input->post('flow');
-		$this->data['detail'] = $this->over_inventory_model->get_stock($flow);
+		$this->data['detail'] = $this->over_inventory_model->get_stock_new($flow);
 		// echo "<pre>";
 		// print_r($this->data['detail']);
 		// die();
 		$this->load->template('over_inventory/plane',$this->data);
 	}
 
-	public function add_to_product_qty($id, $qty, $rp_id)
+	public function add_to_product_qty($id, $qty, $rp_id , $req_id)
 	{
 		
 		$this->data['product_old_qty'] = $this->Quantity_adjustments_model->product_old_qty('product' , $id);
             $new_qty = $this->data['product_old_qty']['product_qty'] + $qty;
 		$this->over_inventory_model->update('product',array('product_qty'=>$new_qty),array('id' => $id));
 		$this->over_inventory_model->update('requisition_product',array('return_status'=>'1'),array('id' => $rp_id));
+
+		$ledger_detail = [
+		    'product_id'=>$id,
+		    'requisition' => $req_id,
+		    'qty' => $qty,
+		    'balance' => $new_qty,
+		    'date' => date('Y-m-d'),
+		    'reference' => 'Debit',
+		];
+		$this->over_inventory_model->insert('product_ledger', $ledger_detail);
+
+
 			redirect(base_url().'over_inventory/index');
 		
 	}

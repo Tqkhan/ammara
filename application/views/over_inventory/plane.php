@@ -52,7 +52,7 @@
 										    		<td><?php echo $o['qty'] ?></td>
 										    		<td><?php if ($o['return_status'] == 0) {
 										    			?>
-										    			<a href="<?php echo base_url() ?>over_inventory/add_to_product_qty/<?php echo $o['id'] ?>/<?php echo $o['qty'] ?>/<?php echo $o['rp_id'] ?>"><button type="button" class="btn btn-primary">Add to Product qty</button></a>
+										    			<a href="<?php echo base_url() ?>over_inventory/add_to_product_qty/<?php echo $o['id'] ?>/<?php echo $o['qty'] ?>/<?php echo $o['rp_id'] ?>/<?php echo $o['req_id'] ?>"><button type="button" class="btn btn-primary">Add to Product qty</button></a>
 										    			<?php
 										    		}?></td>
 										    	</tr>

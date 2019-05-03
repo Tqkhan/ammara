@@ -79,7 +79,7 @@ class Requisition_model extends MY_Model{
 
 	public function get_order_product_new($id)
 	{
-		$this->db->select('requisition_product.*, requisition_product.id as r_id , product.* , requisition.t_qty')
+		$this->db->select('requisition_product.*, requisition_product.id as r_id , product.* , requisition.t_qty, requisition.wo_id')
 				 ->from('requisition_product ')
 				 ->join('product','requisition_product.product_id = product.id')
 				 ->join('requisition','requisition.id = requisition_product.requisition_id')

@@ -210,7 +210,7 @@
                     tb.append('</tr>')
                     tb.find('tr').last().append('<td>'+data['Product_Name']+'</td>')
                     tb.find('tr').last().append('<td>'+data['quantity']+'</td>')
-                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['r_id']+'"><input type="hidden" name="t_qty" value="'+data['t_qty']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="hidden" name="rec_qty[]" value="'+data['received_quantity']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="number" class="form-control" name="received_quantity[]" value="0" required=""></td>')
+                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['r_id']+'"><input type="hidden" name="t_qty" value="'+data['t_qty']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="hidden" name="rec_qty[]" value="'+data['received_quantity']+'"><input type="hidden" class="product_id" name="product_id[]" value="'+data['product_id']+'"><input type="hidden" class="wo_no" name="wo_no" value="'+data['wo_id']+'"><input type="number" class="form-control" name="received_quantity[]" value="0" required=""></td>')
                     tb.find('tr').last().append('<td>'+data['product_qty']+'</td>')
                     tb.find('tr').last().append('<td>'+data['Product_Unit']+'</td>')
                     tb.find('tr').last().append('<td><input type="text" class="form-control" name="remarks[]" value=""></td>')

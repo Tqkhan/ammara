@@ -46,7 +46,7 @@
                                         <input type="text" class="form-control" name="" disabled="" value="<?php echo $o['received_quantity'] ?>">
                                     </div>
                                     <div class="col-md-4">
-                                        <label>Pending Quantity</label>
+                                        <label>Left Quantity</label>
                                         <input type="number" class="form-control" name="pending[]">
                                     </div>
                                 </div>

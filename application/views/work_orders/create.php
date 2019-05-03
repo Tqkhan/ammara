@@ -1,4 +1,4 @@
-<!-- /.Navbar  Static Side -->
+/.Navbar  Static Side -->
 <div class="control-sidebar-bg"></div>
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -65,7 +65,7 @@
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Item Description</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control get_item_desc" name="" type="text" value="" id="example-text-input" placeholder="">
+                                            <input class="form-control get_item_desc" name="item_desc" type="text" value="" id="example-text-input" placeholder="">
                                         </div>
 
                                     </div>
@@ -163,16 +163,14 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-group col-lg-6">
+                                   <!--  <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Description</label>
                                         <div class="col-sm-9">
                                            <input class="form-control" name="description" type="text" value="" id="example-text-input" placeholder="">
                                         </div>
 
                                     </div>
-                                    
-                                </div>
-                                <div class="form-group row">
+ -->                                    
                                     <div class="form-group col-lg-6">
                                         <label for="example-text-input" class="col-sm-3 col-form-label">Create Date</label>
                                         <div class="col-sm-9">
@@ -180,6 +178,8 @@
                                         </div>
 
                                     </div>
+                                </div>
+                                <div class="form-group row">
                                     
                                 </div>
                                 <div class="form-group row">
@@ -250,4 +250,4 @@ $('[name="Item_Code"]').on('change' , function(){
 
 
 
-<!-- START CORE PLUGINS -->
+<!-- START CORE PLUGINS

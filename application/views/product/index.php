@@ -46,6 +46,7 @@
                                         <!-- <th>Barcode</th> -->
                                         <th>Category</th>
                                         <th>Sub Category</th>
+                                        <th>Product Qty</th>
                                         <th>Product Unit</th>
                                         <th>Product Cost</th>
                                         <th>Product Price</th>
@@ -55,7 +56,7 @@
                                         <?php 
 											if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
 										?>
-                                        <th>Action</th>
+                                        <th>Action<span style="visibility: hidden;">az</span></th>
                                         <?php } ?>
                                     </tr>
                                 </thead>
@@ -81,6 +82,9 @@
                                             </td>
                                             <td>
                                                 <?php echo $module["sub_category"] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $module["product_qty"] ?>
                                             </td>
                                             <td>
                                                 <?php echo $module["Product_Unit"] ?>
@@ -112,6 +116,7 @@
 													if ($permission["deleted"] == "1") {
 												?>
                                                 <a href="<?php echo base_url() ?>product/delete/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/d-icon.png" title="Delete" alt="Delete" width="25" height="25"></a>
+                                                <a href="<?php echo base_url() ?>product/view_product_ledger/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/view.png" title="View Ledger" alt="View Ledger" width="25" height="25"></a>
                                                 <?php } ?>
                                             </td>
                                             <?php } ?>

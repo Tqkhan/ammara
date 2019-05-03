@@ -319,8 +319,9 @@ class All_orders extends MY_Controller
 
 			}
 			if ($batch_id) {
-				echo '<script>window.open("","_self").close()</script>';
+				// echo '<script>window.open("","_self").close()</script>';
 				//redirect('all_orders');
+				redirect(base_url('all_orders/view_plane/'.$data['wo_id'])); 
 			}
 			//print_r($data);die;
 		}

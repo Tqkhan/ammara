@@ -11,9 +11,10 @@ class Purchases_model extends MY_Model{
 
 	public function get_order_product($id)
 	{
-		$this->db->select('p.Product_Name,pp.quantity,pp.id')
+		$this->db->select('p.Product_Name,pp.quantity,pp.received_quantity as pp_received_quantity,pu.total_qty,pu.received_quantity,pp.id')
 				 ->from('purchase_product pp')
 				 ->join('product p','p.id = pp.product_id')
+				 ->join('purchases pu','pu.id = pp.purchase_id')
 				 ->where('pp.purchase_id',$id)
 				 ->group_by('pp.id');
 		return $this->db->get()->result_array();
@@ -36,6 +37,26 @@ class Purchases_model extends MY_Model{
 				 ->where('p.Sub_Category',$id)
 				 ->where('p.Category',$parent)
 				 ->group_by('p.id');
+		return $this->db->get()->result_array();
+	}
+
+	public function order_detail($id)
+	{
+		$this->db->select('purchases.* , vednor.*')
+				 ->from('purchases')
+				 ->join('vednor','vednor.id = purchases.Supplier', 'left')
+				 ->where('purchases.id',$id);
+				 // ->group_by('p.id');
+		return $this->db->get()->row_array();
+	}
+	public function order_detail_all($id)
+	{
+		$this->db->select('purchase_product.* , product.*')
+				 ->from('purchase_product')
+				 ->join('product','product.id = purchase_product.product_id', 'left')
+				 
+				 ->where('purchase_product.purchase_id',$id);
+				 // ->group_by('p.id');
 		return $this->db->get()->result_array();
 	}
 }

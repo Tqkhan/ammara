@@ -18,6 +18,9 @@
 			$this->data['title'] = 'Product';
 			if ( $this->permission['view_all'] == '1'){$this->data['product'] = $this->Product_model->get_product();}
 			elseif ($this->permission['view'] == '1') {$this->data['product'] = $this->Product_model->get_product($this->id);}
+			// echo "<pre>";
+			// print_r($this->data['product']);
+			// die();
 			$this->data['permission'] = $this->permission;
 			$this->load->template('product/index',$this->data);
 		}public function create()
@@ -58,7 +61,7 @@
 				redirect('home');
 			}
 			$this->data['title'] = 'Edit Product';
-			$this->data['product'] = $this->Product_model->get_row_single('product',array('id'=>$id));$this->data['table_category'] = $this->Product_model->all_rows('category');$this->data['table_sub_category'] = $this->Product_model->all_rows('sub_category');$this->load->template('product/edit',$this->data);
+			$this->data['product'] = $this->Product_model->get_row_single('product',array('id'=>$id));$this->data['table_category'] = $this->Product_model->all_rows('category');$this->data['table_sub_category'] = $this->Product_model->all_rows('sub_category');$this->load->template('product/view_product_ledger',$this->data);
 		}
 
 		public function update()
@@ -93,4 +96,13 @@
 			}
 			$this->Product_model->delete('product',array('id'=>$id));
 			redirect('product');
-		}}
+		}
+		public function view_product_ledger($id)
+		{
+
+			$this->data['product_ledger'] = $this->Product_model->get_product_ledger($id);
+			// echo "<pre>";print_r($this->data['product_ledger']);die();
+			$this->load->template('product/view_product_ledger',$this->data);
+		}
+
+	}

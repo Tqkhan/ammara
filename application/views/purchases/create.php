@@ -156,7 +156,7 @@
                                                     <th></th>
                                                     <th class="qty">0.00</th>
                                                     <th class="total">0.00</th>
-                                                    <th><i class="fa fa-trash-o" style="opacity:0.5; filter:alpha(opacity=50);"></i></th>
+                                                    <th><input type="hidden" name="total_qty" class="total_qty"><i class="fa fa-trash-o" style="opacity:0.5; filter:alpha(opacity=50);"></i></th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -195,6 +195,7 @@
             con = con + parseInt($(this).val())
         })
         $('.qty').text(con+'')
+        $('.total_qty').val(con)
     }
     function count_total() {
         var con = 0;

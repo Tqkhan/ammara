@@ -64,7 +64,8 @@
                                                 <?php echo $module["Date"] ?>
                                             </td>
                                             <td>
-                                                <?php echo $module["Reference_No"] ?>
+                                                <a data-toggle="modal" onclick="get_id_for_detail(<?php echo  $module["id"] ?>)"  data-target="#modal-lg"><?php echo $module["Reference_No"] ?></a>
+                                                
                                             </td>
                                             <td>
                                                 <?php echo $module["Status"] ?>
@@ -156,6 +157,23 @@
       </div>
     </div>
 </form>
+<div class="modal fade" id="modal-lg" tabindex="-1" role="dialog">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                <h4 class="modal-title">Ammara Commercial Printers (Pvt.) Ltd.</h4>
+                <center><p>Plot No.C 6&7 S.G.M Industrial Area Phase II Main Dumloti Road Karachi Pakistan</p></center>
+                     
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             </div>
+             <div class="modal-body append_p_and_l_detail">
+                 
+             </div>
+             
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+
 <script type="text/javascript">
     function get_id(id) {
         $('#order_id').val(id)
@@ -173,9 +191,33 @@
                     tb.append('</tr>')
                     tb.find('tr').last().append('<td>'+data['Product_Name']+'</td>')
                     tb.find('tr').last().append('<td>'+data['quantity']+'</td>')
-                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['id']+'"><input type="number" class="form-control" name="received_quantity[]" value="'+data['quantity']+'"></td>')
+                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['id']+'"><input type="hidden" name="order_quantity[]" value="'+data['quantity']+'"><input type="hidden" name="rec_qty" value="'+data['received_quantity']+'"><input type="hidden" name="total_qty" value="'+data['total_qty']+'"><input type="number" class="form-control" name="received_quantity[]" value="'+data['pp_received_quantity']+'"></td>')
                 }
             }
         });
+    }
+
+    function get_id_for_detail(id) {
+        // $('#order_id').val(id)
+        $.ajax({
+   
+           url: '<?php echo base_url() ?>purchases/get_order_detail/',
+   
+           data: { id:id },
+   
+           type: 'POST',
+   
+   
+   
+           success:function(resp)
+           {
+   
+               $('.append_p_and_l_detail').html(resp);
+               // alert(resp);
+   
+           }
+   
+   
+       });
     }
 </script>

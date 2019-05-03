@@ -213,10 +213,11 @@ function get_single_difrreance($date,$end=null)
                         <!--        <li class="rad-dropmenu-footer"><a href="#">See All Tasks</a></li>-->
                         <!--    </ul>-->
                         <!--</li>-->
-                        <li class="dropdown" id="click_notification" >
+                        <!-- <li class="dropdown" id="click_notification" >
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="material-icons">add_alert</i>
-<span class="label label-success" id="count_notification"></span>                            </a>
+<span class="label label-success" id="count_notification"></span>
+                            </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li class="rad-dropmenu-header"><a href="#">Your Notifications</a></li>
 
@@ -224,9 +225,8 @@ function get_single_difrreance($date,$end=null)
                                 <div id="get_notification" style="overflow:auto;height:300px;">
 
                                 </div>
-                            </ul>  <!-- /.dropdown-alerts -->
-                            <!-- /.dropdown-alerts -->
-                        </li>
+                            </ul> 
+                        </li> -->
                         <!-- /.Dropdown -->
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">

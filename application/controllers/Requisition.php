@@ -160,6 +160,17 @@ class Requisition extends MY_Controller
                 'remarks'=> $remarks[$i],
             );
             $this->requisition_model->update('requisition_product',$data_r_product,array('id' => $detail_id[$i]));
+
+            $ledger_detail = [
+                'product_id'=>$product_id[$i],
+                'qty' => $new_r_qty,
+                'balance' => $new_qty,
+                'job_card_no' => $this->input->post('wo_no'),
+                'date' => date('Y-m-d'),
+                'reference' => 'Credit',
+            ];
+            $this->requisition_model->insert('product_ledger', $ledger_detail);
+
         }
         redirect('requisition');
     }

@@ -42,6 +42,7 @@
 													<th>Id</th>
 													<th>Client</th>
 													<th>Item Code</th>
+													<th>Item Desc</th>
 													<th>Quantity</th>
 													<th>PO No</th>
 													<th>PO Date</th>
@@ -49,7 +50,7 @@
 													<th>Delivery Date</th>
 													<th>Delivery Status</th>
 													<th>Status</th>
-													<th>Description</th>
+													<!-- <th>Description</th> -->
 													<th>Instruction Remarks</th>
 													<?php 
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
@@ -66,6 +67,7 @@
 													<td><?php echo $module["id"] ?></td>
 													<td><?php echo $module["Client"] ?></td>
 													<td><?php echo $module["Item_Code"] ?></td>
+													<td><?php echo $module["item_desc"] ?></td>
 													<td><?php echo $module["quantity"] ?></td>
 													<td><?php echo $module["PO_No"] ?></td>
 													<td><?php echo $module["PO_Date"] ?></td>
@@ -73,7 +75,7 @@
 													<td><?php echo $module["Delivery_Date"] ?></td>
 													<td><?php echo $module["Delivery_Status"] ?></td>
 													<td><?php echo $module["status"] ?></td>
-													<td><?php echo $module["description"] ?></td>
+													<!-- <td><?php echo $module["description"] ?></td> -->
 													<td><?php echo $module["Instruction_Remarks"] ?></td>
 													<?php 
 														if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
