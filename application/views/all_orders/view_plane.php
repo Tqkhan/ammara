@@ -1933,19 +1933,19 @@
                                             
                                         </div>
                                          <?php 
-                                              if (isset($inprocess_inspection_printing)) {
+                                            //   if (isset($inprocess_inspection_printing)) {
                                                   
-                                            echo "<pre>";
-                                            print_r($inprocess_inspection_printing);
-                                              }
+                                            // echo "<pre>";
+                                            // print_r($inprocess_inspection_printing);
+                                            //   }
 
                                              ?>
                                              <?php 
-                                              if (isset($inprocess_inspection_printing_frequencies)) {
+                                            //   if (isset($inprocess_inspection_printing_frequencies)) {
                                                   
-                                            echo "<pre>";
-                                            print_r($inprocess_inspection_printing_frequencies);
-                                              }
+                                            // echo "<pre>";
+                                            // print_r($inprocess_inspection_printing_frequencies);
+                                            //   }
 
                                              ?>
                                     </div>
