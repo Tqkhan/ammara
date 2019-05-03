@@ -39,7 +39,8 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/printing_machine',$this->data);
     }
 
-    public function printing_complete($plane_id,$flow_id)
+    public function printing_complete($plane_id,$flow_id, $WO_no, $comp)
+   
     {
         if ($this->input->post()) {
             $data = $this->input->post();
@@ -61,7 +62,7 @@ class Machine_flow extends MY_Controller {
             unset($data['waste']);
             $this->machine_flow_model->update('printing',$start,array('plane_id'=>$plane_id,'flow_id'=>$flow_id));
 
-            
+            $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
             $code = $data['code'];
             $from = $data['from'];
             $to = $data['to'];
@@ -119,7 +120,8 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/coating_machine',$this->data);
     }
 
-    public function coating_complete($plane_id,$flow_id)
+    public function coating_complete($plane_id,$flow_id, $WO_no, $comp)
+
     {
         if ($this->input->post()) {
             $data = $this->input->post();
@@ -140,7 +142,7 @@ class Machine_flow extends MY_Controller {
             unset($data['output']);
             unset($data['waste']);
             $this->machine_flow_model->update('coating',$start,array('plane_id'=>$plane_id,'flow_id'=>$flow_id));
-
+            $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
             
             $code = $data['code'];
             $from = $data['from'];
@@ -213,7 +215,7 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/die_cutting',$this->data);
     }
 
-    public function die_cutting_complete($plane_id,$flow_id)
+    public function die_cutting_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         if ($this->input->post()) {
             $data = $this->input->post();
@@ -234,7 +236,7 @@ class Machine_flow extends MY_Controller {
             unset($data['output']);
             unset($data['waste']);
             $this->machine_flow_model->update('die_cutting',$start,array('plane_id'=>$plane_id,'flow_id'=>$flow_id));
-
+             $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
             $code = $data['code'];
             $from = $data['from'];
             $to = $data['to'];
@@ -545,9 +547,10 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/cutting',$this->data);
     }
 
-    public function cutting_complete($plane_id,$flow_id)
+    public function cutting_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         //redirect('cutting');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
         redirect('requisition/pending_quantity/'.$wo_id.'/Cutting?redirect='.base_url('cutting'));
