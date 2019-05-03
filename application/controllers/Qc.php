@@ -26,6 +26,9 @@ class Qc extends MY_Controller {
         elseif ($this->permission['view'] == '1') {
             $this->data['work_orders'] = $this->qc_model->get_item($this->id);
         }
+        // echo "<pre>";
+        // print_r($this->data['work_orders']);
+        // die();
         $this->data['permission'] = $this->permission;
         $this->load->template('qc/index',$this->data);
     }

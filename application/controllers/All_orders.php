@@ -240,7 +240,7 @@ class All_orders extends MY_Controller
 		$this->load->template('all_orders/batch_release_old',$this->data);
 	}
 /*insert data in 2 table in one form*/
-	public function batch_release($id,$flow_id)
+	public function batch_release($id)
 	{
 		
 		if ($this->permission['edit'] == '0') 
@@ -326,7 +326,7 @@ class All_orders extends MY_Controller
 			//print_r($data);die;
 		}
 		$this->data['title'] = 'Batch Release Form';
-		$this->data['order'] = $this->all_orders_model->get_batch_detail($id,$flow_id);
+		$this->data['order'] = $this->all_orders_model->get_batch_detail($id);
 		//echo '<pre>';print_r($this->data['order']);die;
 		$this->load->template('all_orders/batch_release',$this->data);
 	}
