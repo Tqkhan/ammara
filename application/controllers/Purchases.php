@@ -34,6 +34,17 @@ class Purchases extends MY_Controller
         $this->data['title']        = 'Create Purchases';
         $this->data['table_vednor'] = $this->Purchases_model->all_rows('vednor');
         $this->data['table_category'] = $this->Purchases_model->all_rows('category');
+
+
+
+        $query = $this->db->query("SELECT * FROM purchases ORDER BY id DESC LIMIT 1");
+        $this->data['result'] = $query->row_array();
+        $this->data['new_id'] = $this->data['result']['id'] + 1;
+       // print_r($this->data['result']);
+       // die();
+
+
+
         $this->load->template('purchases/create', $this->data);
     }
     public function insert()

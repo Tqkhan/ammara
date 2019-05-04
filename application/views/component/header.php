@@ -120,6 +120,18 @@ function get_single_difrreance($date,$end=null)
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>admin_assets/assets/dist/button/js/bootstrap-toggle.js"></script>
     </head>
+    <style type="text/css">
+        .active_wapper{
+            width: 100vw;
+            margin: 70px 0 0 0px !important;
+        }
+        .active_footer{
+            margin: 70px 0 0 0px !important;
+        }
+        .hide_sidebar{
+            display: none;
+        }
+    </style>
     <body>
         <div id="wrapper" class="wrapper animsition">
             <!-- Navigation -->
@@ -135,15 +147,16 @@ function get_single_difrreance($date,$end=null)
                         <!--<span>AdminPage</span>-->
                     </a>
                 </div>
-                <div class="nav-container">
+               <div class="nav-container">
                     <!-- /.navbar-header -->
                     <ul class="nav navbar-nav hidden-xs">
-                        <!-- <li><a id="fullscreen" href="#"><i class="material-icons">fullscreen</i> </a></li> -->
+                        <li><a id="hide_sidebar" href="#"><i class="fa fa-bars" style="color: black; font-size:20px"></i> </a></li>
+                        <li><a id="fullscreen" href="#"><i style="color: black;" class="material-icons">fullscreen</i> </a></li>
                         <!-- /.Fullscreen -->
-                        <!-- <li class="hidden-xs">
-                            <a class="search-trigger" href="#">
+                        <li class="hidden-xs">
+                           <!--  <a class="search-trigger" href="#">
                                 <i class="material-icons">search</i>
-                            </a>
+                            </a> -->
                             <div class="fullscreen-search-overlay" id="search-overlay">
                                 <a href="#" class="fullscreen-close" id="fullscreen-close-button"><i class="ti-close"></i></a>
                                 <div id="fullscreen-search-wrapper">
@@ -153,9 +166,9 @@ function get_single_difrreance($date,$end=null)
                                     </form>
                                 </div>
                             </div>
-                        </li> -->
+                        </li>
                         <!-- /.Full page search -->
-                        <!-- <li><a id="menu-toggle" href="#"><i class="material-icons">apps</i></a></li> -->
+                        
                         <!-- /.Sidebar menu toggle icon -->
                         <!--Start dropdown mega menu-->
 

@@ -79,6 +79,7 @@
 													<th>Delivery Date</th>
 													<th>Delivery Status</th>
 													<th>Instruction Remarks</th>
+													<th>Inv Status</th>
 													<th>Status</th>
 													<?php 
 														if ($permission["created"] == "1"){
@@ -102,6 +103,9 @@
 													<td><?php echo $module["Delivery_Date"] ?></td>
 													<td><?php echo $module["Delivery_Status"] ?></td>
 													<td><?php echo $module["Instruction_Remarks"] ?></td>
+													<td><?php if ($module["status"] == TRUE) {
+														echo $module["status"];
+													} else echo $module["inv_status"];  ?></td>
 													<td>
 														<?php 
 															if ($module["approval"] == "1") {
@@ -134,6 +138,8 @@
 														<a href="<?php echo base_url() ?>production_plan/flow/<?php echo $module["plane_id"] ?>"><img src="<?php echo base_url() ?>assets/icons/create.png" title="Create Production Flow" alt="Create Production Flow" width="25" height="25"></a>
 
 														<a href="<?php echo base_url() ?>production_plan/edit_flow/<?php echo $module["plane_id"] ?>"><img src="<?php echo base_url() ?>assets/icons/edit.png" title="Edit Production Flow" alt="Edit Production Flow" width="25" height="25"></a>
+
+														<a href="<?php echo base_url() ?>requisition/view_order/<?php echo $module["id"] ?>/production_plan" target="_blank"><img src="<?php echo base_url() ?>assets/icons/view_order.png" title="View Order" alt="View Order" width="25" height="25"></a>
 	                                                	<?php } ?>
 	                                                </td>
 	                                                <?php } ?>

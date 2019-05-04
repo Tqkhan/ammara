@@ -3,11 +3,12 @@ class Production_plan_model extends MY_Model{
 
 public function get_production_plan($id = null)
 	{
-		$this->db->select('work_orders.*,clients.client_Name as Client, item.Item_Code,count(production_plan.id) as p_id, production_plan.id as plane_id')
+		$this->db->select('work_orders.*,clients.client_Name as Client, item.Item_Code,count(production_plan.id) as p_id, production_plan.id as plane_id, requisition.status')
 			 ->from('work_orders')
 			 ->join('clients', 'clients.id = work_orders.Client')
 			 ->join('production_plan', 'production_plan.WO_no = work_orders.id', 'left')
 			 ->join('item', 'item.id = work_orders.Item_Code')
+			 ->join('requisition', 'requisition.wo_id = work_orders.id' , 'left')
 			 ->group_by('work_orders.id');
 			if ($id != null) {
 				$this->db->where('work_orders.user_id', $id);

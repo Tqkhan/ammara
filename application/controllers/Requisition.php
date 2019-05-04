@@ -29,6 +29,40 @@ class Requisition extends MY_Controller
 		$this->load->template('requisition/index',$this->data);
     }
 
+    public function insert_production_plan_inv()
+    {
+        // echo "<pre>";
+        // print_r($_POST);
+        // die();
+        $data = array(
+            'wo_id'=>$this->input->post('wo_id'),
+            'type'=>$this->input->post('type'),
+            'store_id'=>$this->input->post('store_id'),
+            'type'=>$this->input->post('type'),
+            't_qty'=>$this->input->post('total_qty'),
+            'status'=>"Pending",
+            'user_id'=>$this->session->userdata('user_id'),
+        );
+        
+        $id = $this->requisition_model->insert('requisition', $data);
+        $this->requisition_model->update('work_orders', array('inv_status'=>"Pending"), array('id' => $this->input->post('my_wo_id')));
+        if ($id) {
+            for ($i=0; $i < sizeof($this->input->post('product_id')); $i++) { 
+                $r = 0;
+                $product[] = array(
+                    'product_id'=>$this->input->post('product_id')[$i],
+                    'quantity'=>$this->input->post('quantity')[$i],
+                    'requisition_id'=>$id,
+                    'received_quantity'=>$r,
+                );
+            }
+            $this->requisition_model->insert_batch('requisition_product',$product);
+            redirect('production_plan/index');
+        }
+        else{
+            redirect('production_plan/index');
+        }
+    }
     public function insert()
     {
         // echo "<pre>";

@@ -144,9 +144,8 @@
             </div>
         </div>
         
-        <form method="post" id="requisition" action="<?php echo base_url() ?>requisition/insert_production_plan_inv" enctype="multipart/form-data">
+        <form method="post" id="requisition" action="<?php echo base_url() ?>requisition/insert" enctype="multipart/form-data">
             <input type="hidden" name="wo_id" value="<?php echo $production_plan["WO_no"] ?>">
-            <input type="hidden" name="my_wo_id" value="<?php echo $production_plan["WO_no"] ?>">
             <input type="hidden" name="type" value="Production Plan">
             <div class="row">
                 <div class="col-sm-12">
@@ -206,21 +205,36 @@
                                                     <th>Gramage</th>
                                                     <th>Net Unit Cost</th>
                                                     <th>Quantity</th>
+                                                    <th>Avalible Quantity</th>
+                                                    <th>Product Unit</th>
                                                     <th>Subtotal (USD)</th>
                                                     <th><i class="fa fa-trash-o" style="opacity:0.5; filter:alpha(opacity=50);"></i></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                
+                                                <?php foreach ($products as $p) {?>
+                                                <tr>
+                                                    <td><?php echo $p['Product_Name'] ?></td>
+                                                    <td><?php echo $p['gramage'] ?></td>
+                                                    <td class="net_cost"><?php echo $p['Product_Cost'] ?></td>
+                                                    <td><input type="hidden" name="product_id[]" value="<?php echo $p['id'] ?>"><input type="number" class="form-control" name="quantity[]" value="1"></td>
+                                                    <td class="stock_qty">0</td>
+                                                    <td><?php echo $p['Product_Unit'] ?></td>
+                                                    <td class="sub_total"><?php echo $p['Product_Cost'] ?></td>
+                                                    <td><i class="fa fa-trash-o remove" data-id="<?php echo $p['id'] ?>"></i></td>
+                                                </tr>
+                                                <?php } ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
                                                     <th>Total</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th class="qty">0.00</th>
+                                                    <th class="qty">0</th>
+                                                    <th></th>
+                                                    <th></th>
                                                     <th class="total">0.00</th>
-                                                    <th><input type="hidden" name="total_qty" class="total_qty"><i class="fa fa-trash-o" style="opacity:0.5; filter:alpha(opacity=50);"></i></th>
+                                                    <th><i class="fa fa-trash-o" style="opacity:0.5; filter:alpha(opacity=50);"></i></th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -259,16 +273,14 @@
         $('[name="quantity[]"]').each(function() {
             con = con + parseInt($(this).val())
         })
-        $('.qty').text(con+'')
-        $('.total_qty').val(con)
+        $('.qty').text(con+' ')
     }
     function count_total() {
         var con = 0;
         $('.sub_total').each(function() {
             con = con + parseInt($(this).text())
         })
-        $('.total').text(con+'.00');
-        $('.grand_total').val(con);
+        $('.total').text(con+'.00')
     }
     function add_qty() {
         $('[name="quantity[]"]').keyup(function() {
@@ -319,8 +331,9 @@
     $('.sub-category').change(function() {
         var parent = $('.category').val()
         var id = $(this).val()
+        var store_id = $('[name="store_id"]').val()
         $.ajax({
-            url: "<?php echo base_url() ?>purchases/get_product/"+id+'/'+parent,
+            url: "<?php echo base_url() ?>purchases/get_product/"+id+'/'+parent+'/'+store_id,
             type: 'GET',
             dataType: 'json', // added data type
             success: function(res) {
@@ -334,8 +347,8 @@
             }
         });
     })
-    /*test*/
     $('.change-product').change(function() {
+        var id = $(this).val()
         var p_id = $('.change-product').val();
          $.ajax({
          
@@ -359,51 +372,51 @@
          
          
            });
-        // $('.cost').val('jhlkhj');
+        // res = JSON.search( product, '//*[id="'+id+'"]' );
         var id = $(this).val()
         var name = $(this).children("option:selected").html();
         var id_product = $(this).children("option:selected").attr("data-amount");
         var id_gramage = $(this).children("option:selected").attr("data-gramage");
         var singleValues = $( "#singleValues" ).val();
 
-        // res = JSON.search( product, '//*[id="'+id+'"]' );
         res=product.filter(id=>id);
         var data = res[0]
         app.append('<tr>')
         app.append('</tr>')
         app.find('tr').last().append('<td>'+name+'</td>')
         app.find('tr').last().append('<td>'+id_gramage+'</td>')
-        app.find('tr').last().append('<td><e class="net_cost">'+ id_product +'</e><input type="hidden" name="price[]" class="form-control" value='+ id_product +'></td>')
+        app.find('tr').last().append('<td class="net_cost">'+data['Product_Cost']+'</td>')
         app.find('tr').last().append('<td><input type="hidden" name="product_id[]" value="'+id+'"><input type="number" class="form-control" name="quantity[]" value="1"></td>')
-        app.find('tr').last().append('<td class="sub_total">'+ id_product +'</td>')
+        app.find('tr').last().append('<td class="stock_qty">'+ (data['stock'] - data['orders'])+'</td>')
+        app.find('tr').last().append('<td>'+data['Product_Unit']+'</td>')
+        app.find('tr').last().append('<td class="sub_total">'+data['Product_Cost']+'</td>')
         app.find('tr').last().append('<td><i class="fa fa-trash-o remove" data-id="'+data['id']+'"></i></td>')
         count_qty()
         count_total()
         add_qty()
         remove_row()
-        change_price()
         $('.change-product').val('')
         $('.change-product option[value="'+id+'"]').css('display','none')
     })
-    // $("#requisition").submit(function(e) {
-    //   var url = $(this).attr('action'); // the script where you handle the form input.
-    //   $.ajax({
-    //      type: "POST",
-    //      url: url,
-    //      data: $(this).serialize(), // serializes the form's elements.
-    //      success: function(data)
-    //      {
-    //         if(data == 1){
-    //           $("#requisition").hide()
-    //           window.location.href = '<?php echo base_url('production_plan') ?>'
-    //         }
-    //         else{
-    //           alert('Data Not Insert')
-    //         }
-    //      }
-    //   });
-    //   e.preventDefault(); // avoid to execute the actual submit of the form.
-    // });
+    $("#requisition").submit(function(e) {
+      var url = $(this).attr('action'); // the script where you handle the form input.
+      $.ajax({
+         type: "POST",
+         url: url,
+         data: $(this).serialize(), // serializes the form's elements.
+         success: function(data)
+         {
+            if(data == 1){
+              $("#requisition").hide()
+              window.location.href = '<?php echo base_url('production_plan') ?>'
+            }
+            else{
+              alert('Data Not Insert')
+            }
+         }
+      });
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
     $('[name="store_id"]').change(function() {
         $('.change-product').attr('disabled', true)
         if ($(this).val() != null && $(this).val() != '') {

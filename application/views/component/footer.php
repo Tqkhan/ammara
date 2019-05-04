@@ -302,7 +302,17 @@ new Morris.Line({
 
 
         </script>
-
+<script type="text/javascript">
+    // sidebar hide script
+$(document).ready(function () {
+    $("#hide_sidebar").click(function() {  
+    // alert();
+    $('#page-wrapper').toggleClass("active_wapper");     
+    $('.sidebar').toggleClass("hide_sidebar"); 
+    $('.main-footer').toggleClass("active_footer"); 
+  });
+});
+</script>
 
 <script src="<?php echo base_url('assets/assets/plugins/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.js') ?>" type="text/javascript"></script>
 <!-- typeaheadjs -->
