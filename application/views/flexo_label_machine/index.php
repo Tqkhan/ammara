@@ -97,7 +97,7 @@
                                                             else{
                                                         ?>
                                                         <a href="<?php echo base_url() ?>flexo_label_machine/view_machine/<?php echo $o["id"] ?>/<?php echo $o['flow_id'] ?>"><img src="<?php echo base_url() ?>assets/icons/view_detail.png" title="View Detail" alt="View Detail" width="25" height="25"></a>
-                                                        <?php
+                                                        <!-- <?php
                                                                 if ($o['submit'] == 0) {
                                                         ?>
                                                         <a href="<?php echo base_url('machine_flow/flexo_label_machine_complete/'.$o['id'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/complete.png" title="Complete" alt="Complete" width="25" height="25"></a>
@@ -111,7 +111,27 @@
                                                                 //echo '<img src="'.base_url().'assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25">';
                                                             }
                                                             }
+                                                        ?> -->
+                                                        <?php
+                                                                if ($o['submit'] == 0) {
+                                                                    if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
                                                         ?>
+                                                        <a href="<?php echo base_url('machine_flow/flexo_label_machine_complete/'.$o['id'].'/'.$o['flow_id'].'/'.$o['WO_no'].'/Yes') ?>"><img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed B_R" alt="Completed B_R" width="25" height="25"></a>
+                                                        <?php }else{
+
+
+                                                            ?>
+                                                            <a href="<?php echo base_url('machine_flow/flexo_label_machine_complete/'.$o['id'].'/'.$o['flow_id'].'/'.$o['WO_no'].'/No') ?>"><img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25"></a>
+
+                                                            <?php
+                                                        } ?>
+                                                        <?php 
+                                                            }
+                                                            else{
+                                                                if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
+                                                        ?>
+                                                        
+                                                        <?php } }?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?> 

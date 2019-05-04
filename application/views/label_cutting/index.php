@@ -82,7 +82,44 @@
                                                         <a href="<?php echo base_url() ?>requisition/view_order/<?php echo $o["WO_no"] ?>/Label_Cutting" target="_blank"><img src="<?php echo base_url() ?>assets/icons/view_order.png" title="View Order" alt="View Order" width="25" height="25"></a>
                                                         <?php } ?>
                                                         <a target="_blank" href="<?php echo base_url() ?>all_orders/view_plane/<?php echo $o["WO_no"] ?>"><img src="<?php echo base_url() ?>assets/icons/view_plan.png" title="View Plan" alt="View Plan" width="25" height="25"></a>
+
+
                                                         <?php 
+                                                            if ($o['con'] == 0) {
+                                                        ?>
+                                                        <a href="<?php echo base_url('machine_flow/label_cutting_start/'.$o['id'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/start_process.png" title="Start" alt="Start" width="25" height="25"></a>
+                                                        <?php 
+                                                            }
+                                                            else{
+                                                        ?>
+                                                        <a href="<?php echo base_url() ?>flexo_label_machine/view_machine/<?php echo $o["id"] ?>/<?php echo $o['flow_id'] ?>"><img src="<?php echo base_url() ?>assets/icons/view_detail.png" title="View Detail" alt="View Detail" width="25" height="25"></a>
+                                                        
+                                                        <?php
+                                                                if ($o['submit'] == 0) {
+                                                                    if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
+                                                        ?>
+                                                        <a href="<?php echo base_url('machine_flow/label_cutting_complete/'.$o['id'].'/'.$o['flow_id'].'/'.$o['WO_no'].'/Yes') ?>"><img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed B_R" alt="Completed B_R" width="25" height="25"></a>
+                                                        <?php }else{
+
+
+                                                            ?>
+                                                            <a href="<?php echo base_url('machine_flow/label_cutting_complete/'.$o['id'].'/'.$o['flow_id'].'/'.$o['WO_no'].'/No') ?>"><img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25"></a>
+
+                                                            <?php
+                                                        } ?>
+                                                        <?php 
+                                                            }
+                                                            else{
+                                                                if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
+                                                        ?>
+                                                        
+                                                        <?php } } }?>
+
+
+
+
+
+                                                        <!-- <?php 
                                                             if ($o['con'] == 0) {
                                                                 echo '<a href="'.base_url('machine_flow/label_cutting_start/'.$o['id'].'/'.$o['flow_id']).'"><img src="'.base_url().'assets/icons/start_process.png" title="Start" alt="Start" width="25" height="25"></a>';
                                                             }
@@ -95,22 +132,11 @@
                                                         ?>
                                                         <a target="_blank" href="<?php echo base_url('all_orders/batch_release/'.$o['WO_no'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/batch-release.png" title="Batch Release" alt="Batch Release" width="25" height="25"></a>
                                                         <?php } 
-                                                                    //echo '<img src="'.base_url().'assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25">';
+                                                                    
                                                                 }
                                                             }
-                                                        ?>
-                                                        <!-- <?php 
-                                                            if ($o['con'] >= 1) {
-                                                                if ($o['submit'] == 0) {
-                                                        ?>
-                                                        <a href="<?php echo base_url('machine_flow/label_cutting_complete/'.$o['id'].'/'.$o['flow_id']) ?>"><button class="btn btn-info">Complete</button></a>
-                                                        <?php 
-                                                            }
-                                                            else{
-                                                                echo 'completed';
-                                                            }
-                                                            }
                                                         ?> -->
+                                                       
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

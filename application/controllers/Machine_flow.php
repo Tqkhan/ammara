@@ -289,11 +289,12 @@ class Machine_flow extends MY_Controller {
         redirect('plate_making');
     }
 
-    public function plate_making_complete($plane_id,$flow_id)
+    public function plate_making_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('plate_making');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Plate_Making?redirect='.base_url('plate_making'));
     }
 
@@ -323,11 +324,12 @@ class Machine_flow extends MY_Controller {
 
     }
 
-    public function label_cutting_complete($plane_id,$flow_id)
+    public function label_cutting_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('label_cutting');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+         $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Label_Cutting?redirect='.base_url('label_cutting'));
     }
 
@@ -348,11 +350,12 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/stripping_report',$this->data);
     }
 
-    public function stripping_report_complete($plane_id,$flow_id)
+    public function stripping_report_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('leaflet_cutting');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Stripping_report?redirect='.base_url('stripping_report'));
     }
 
@@ -438,11 +441,12 @@ class Machine_flow extends MY_Controller {
     }
 
 
-    public function flexo_label_machine_complete($plane_id,$flow_id)
+    public function flexo_label_machine_complete($plane_id,$flow_id,$WO_no,$flow_id)
     {
         $id = $this->complete($flow_id);
         //redirect('leaflet_cutting');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/flexo_label_machine?redirect='.base_url('flexo_label_machine'));
     }
 
@@ -463,11 +467,12 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/leaflet_cutting',$this->data);
     }
 
-    public function leaflet_cutting_complete($plane_id,$flow_id)
+    public function leaflet_cutting_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('leaflet_cutting');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Leaflet_Cutting?redirect='.base_url('leaflet_cutting'));
     }
 
@@ -491,11 +496,12 @@ class Machine_flow extends MY_Controller {
         redirect('packing');
     }
 
-    public function packing_complete($plane_id,$flow_id)
+    public function packing_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('packing');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Packing?redirect='.base_url('packing'));
     }
 
@@ -522,11 +528,12 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/sorting',$this->data);
     }
 
-    public function sorting_complete($plane_id,$flow_id)
+    public function sorting_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('sorting');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Sorting?redirect='.base_url('sorting'));
     }
 
@@ -562,11 +569,12 @@ class Machine_flow extends MY_Controller {
         redirect('folding');
     }
 
-    public function folding_complete($plane_id,$flow_id)
+    public function folding_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('folding');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Folding?redirect='.base_url('folding'));
     }
 
@@ -576,11 +584,12 @@ class Machine_flow extends MY_Controller {
         redirect('uv_printing');
     }
 
-    public function uv_printing_complete($plane_id,$flow_id)
+    public function uv_printing_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         $id = $this->complete($flow_id);
         //redirect('uv_printing');
         $wo_id = $this->machine_flow_model->get_wo_id_by_flow($flow_id)['id'];
+        $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
         redirect('requisition/pending_quantity/'.$wo_id.'/Uv_Printing?redirect='.base_url('uv_printing'));
     }
 
@@ -601,7 +610,7 @@ class Machine_flow extends MY_Controller {
         $this->load->template('machine_flow/pasting',$this->data);
     }
 
-    public function pasting_complete($plane_id,$flow_id)
+    public function pasting_complete($plane_id,$flow_id,$WO_no,$comp)
     {
         if ($this->input->post()) {
             $data = $this->input->post();
@@ -627,7 +636,7 @@ class Machine_flow extends MY_Controller {
             unset($data['weight']);
             $this->machine_flow_model->update('pasting',$start,array('plane_id'=>$plane_id,'flow_id'=>$flow_id));
 
-
+            $this->machine_flow_model->update('work_orders',array('comp_status' => $comp),array('id' => $WO_no));
             $code = $data['code'];
             $from = $data['from'];
             $to = $data['to'];

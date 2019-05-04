@@ -122,7 +122,6 @@
                                                         ?>
                                                         
                                                         <?php } } ?>
-                                                        <!-- <img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25"> -->
                                                         <?php
                                                             
                                                             }

@@ -87,29 +87,22 @@
                                                             }
                                                             else{
                                                                 if ($o['submit'] == 0) {
-                                                                    echo '<a href="'.base_url('machine_flow/uv_printing_complete/'.$o['id'].'/'.$o['flow_id']).'"><img src="'.base_url().'assets/icons/complete.png" title="Complete" alt="Complete" width="25" height="25"></a>';
+                                                                    if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
+                                                                        echo '<a href="'.base_url('machine_flow/uv_printing_complete/'.$o['id'].'/'.$o['flow_id'].''.$o['WO_no']).'"><img src="'.base_url().'assets/icons/complete.png" title="Complete" alt="Complete" width="25" height="25"></a>';
+                                                                    }else{
+                                                                        echo '<a href="'.base_url('machine_flow/uv_printing_complete/'.$o['id'].'/'.$o['flow_id'].''.$o['WO_no']).'"><img src="'.base_url().'assets/icons/complete.png" title="Complete" alt="Complete" width="25" height="25"></a>';
+                                                                    }
                                                                 }
                                                                 else{
                                                                     if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
                                                         ?>
-                                                        <a target="_blank" href="<?php echo base_url('all_orders/batch_release/'.$o['WO_no'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/batch-release.png" title="Batch Release" alt="Batch Release" width="25" height="25"></a>
+                                                        
                                                         <?php } 
-                                                                    //echo '<img src="'.base_url().'assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25">';
+                                                                   
                                                                 }
                                                             }
                                                         ?>
-                                                        <!-- <?php 
-                                                            if ($o['con'] >= 1) {
-                                                                if ($o['submit'] == 0) {
-                                                        ?>
-                                                        <a href="<?php echo base_url('machine_flow/uv_printing_complete/'.$o['id'].'/'.$o['flow_id']) ?>"><button class="btn btn-info">Complete</button></a>
-                                                        <?php 
-                                                            }
-                                                            else{
-                                                                echo 'completed';
-                                                            }
-                                                            }
-                                                        ?> -->
+                                                        
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
