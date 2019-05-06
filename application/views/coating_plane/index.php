@@ -90,22 +90,7 @@
                                                             else{
                                                         ?>
                                                         <a href="<?php echo base_url() ?>coating_plane/view_machine/<?php echo $o["id"] ?>/<?php echo $o['flow_id'] ?>"><img src="<?php echo base_url() ?>assets/icons/view_detail.png" title="View Detail" alt="View Detail" width="25" height="25"></a>
-                                                        <!-- <?php
-                                                                if ($o['submit'] == 0) {
-                                                        ?>
-                                                        <a href="<?php echo base_url('machine_flow/coating_complete/'.$o['id'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed" alt="View Plane" width="25" height="25"></a>
-                                                        <?php 
-                                                            }
-                                                            else{
-                                                                if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
-                                                        ?>
-                                                        <a target="_blank" href="<?php echo base_url('all_orders/batch_release/'.$o['WO_no'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/batch-release.png" title="Batch Release" alt="Batch Release" width="25" height="25"></a>
-                                                        <?php } ?>
                                                         
-                                                        <?php
-                                                            }
-                                                            }
-                                                        ?> -->
 
                                                         <?php
                                                                 if ($o['submit'] == 0) {
@@ -126,12 +111,24 @@
                                                                 if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
                                                         ?>
                                                         
-                                                        <?php } } ?>
-                                                        <!-- <img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed" alt="Completed" width="25" height="25"> -->
-                                                        <?php
-                                                            
-                                                            }
-                                                        ?>
+                                                        <?php } } }?>
+                                                        
+                                                     <!-- <?php
+                                                               if ($o['submit'] == 0) {
+                                                       ?>
+                                                       <a href="<?php echo base_url('machine_flow/coating_complete/'.$o['id'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/complete_process.png" title="Completed" alt="View Plane" width="25" height="25"></a>
+                                                       <?php 
+                                                           }
+                                                           else{
+                                                               if ($o['flow_id'] == $o['last'] && $o['batch'] < 1) {
+                                                       ?>
+                                                       <a target="_blank" href="<?php echo base_url('all_orders/batch_release/'.$o['WO_no'].'/'.$o['flow_id']) ?>"><img src="<?php echo base_url() ?>assets/icons/batch-release.png" title="Batch Release" alt="Batch Release" width="25" height="25"></a>
+                                                       
+                                                       
+                                                       <?php
+                                                           }
+                                                           }
+                                                       ?>  -->
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
