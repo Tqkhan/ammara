@@ -20,6 +20,31 @@ class Reports extends MY_Controller {
         {
             redirect('home');
         }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $vendor_id = $_POST['sup'];
+            $product_id = $_POST['product_id'];
+            $explode_date = explode('-', $_POST['daterange']);
+
+            $current_date = $explode_date[0];
+            $str_currentdate = strtotime($current_date);
+            $str_current_day = date('Y-m-d' , $str_currentdate );
+
+            $last_date = $explode_date[1];
+            $str_last_date = strtotime($last_date);
+            $str_last_day = date('Y-m-d' , $str_last_date );
+            
+
+            $this->data['purchases_log'] = $this->Reports_model->purchases_log($vendor_id , $product_id , $str_current_day , $str_last_day);
+            // echo "<pre>";
+            // print_r($this->data['purchases_log']);
+            // die();
+        }
+        else{
+            $this->data['purchases_log'] = [];
+        }
+
+
         $this->data['title'] = 'Purchases Report';
         
         $this->data['permission'] = $this->permission;

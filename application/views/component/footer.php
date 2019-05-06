@@ -39,6 +39,7 @@
 
         <script src="<?php echo base_url() ?>admin_assets/assets/dist/js/app.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url() ?>admin_assets/assets/dist/js/jQuery.style.switcher.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
 
@@ -313,6 +314,15 @@ new Morris.Line({
 
 
 
+        </script>
+        <script>
+            $(function() {
+              $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+              }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+              });
+            });
         </script>
 <script type="text/javascript">
     // sidebar hide script

@@ -85,6 +85,7 @@ function get_single_difrreance($date,$end=null)
         <link id="defaultTheme" href="<?php echo base_url() ?>admin_assets/assets/dist/css/skins/skin-dark-1.min.css" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url() ?>admin_assets/assets/dist/css/custom.css" rel="stylesheet" type="text/css"/>
         <!-- multi select -->
+         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
         <link href="<?php echo  base_url()?>admin_assets/assets/plugins/amcharts/export.css" rel="stylesheet" type="text/css" />
 
 

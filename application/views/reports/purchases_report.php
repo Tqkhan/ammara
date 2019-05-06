@@ -29,12 +29,12 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <form action="<?php echo base_url()?>admin/reports/search_by_customer" method="POST" enctype="multipart/form-data" >
+                                    <form action="<?php echo base_url()?>reports/purchases_report" method="POST" enctype="multipart/form-data" >
                                         <div class="form-group row">
                                             <div class="form-group col-lg-4">
-                                               <label for="">Vendor</label>
-                                                <select class="form-control" name="customer" required="">
-                                                <option value="">Select Customer</option>
+                                               <label for="">Supplier</label>
+                                                <select class="form-control" name="sup" required="">
+                                                <option value="">Select Supplier</option>
                                                 <?php 
                                                    foreach ($vednor as $ven) {
                                                        echo '<option value="'.$ven['id'].'">'.$ven['Name'].'</option>';
@@ -43,17 +43,17 @@
                                              </select>
                                             </div>
                                             <div class="form-group col-lg-4">
-                                               <label for="">Customer Title</label>
-                                                <select class="form-control" name="customer" required="">
-                                                <option value="">Select Customer</option>
+                                               <label for="">Product</label>
+                                                <select class="form-control" name="product_id" required="">
+                                                <option value="">Select Product</option>
                                                 <?php 
-                                                   foreach ($vednor as $ven) {
-                                                       echo '<option value="'.$ven['id'].'">'.$ven['Name'].'</option>';
+                                                   foreach ($product as $pro) {
+                                                       echo '<option value="'.$pro['id'].'">'.$pro['Product_Name'].'</option>';
                                                    }
                                                    ?>
                                              </select>
                                             </div>
-                                            <div class="form-group col-lg-6">
+                                            <div class="form-group col-lg-4">
                                                <label for="">Date</label>
                                                  <input class="form-control" type="text" id="date_range_input" name="daterange" value="<?php echo  date("m/d/Y");?> - <?php echo  date("m/d/Y", strtotime(' +2 day'));?>" />
                                             </div>
@@ -72,22 +72,25 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Wo_no</th>
-                                                    <th>Sender</th>
-                                                    <th>Store</th>
-                                                    <th>Status</th>
+                                                    <th>Reference_No</th>
+                                                    <th>Supplier</th>
+                                                    <th>Product Name</th>
+                                                    <th>total_qty</th>
+                                                    <th>received_quantity</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                    foreach ($requisition as $module) {
+                                                $con = 1;
+                                                    foreach ($purchases_log as $module) {
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $module['id'] ?></td>
-                                                    <td><?php echo $module['wo_id'] ?></td>
-                                                    <td><?php echo $module['type'] ?></td>
+                                                    <td><?php echo $con++; ?></td>
+                                                    <td><?php echo $module['Reference_No'] ?></td>
                                                     <td><?php echo $module['Name'] ?></td>
-                                                    <td><?php echo $module['status'] ?></td>
+                                                    <td><?php echo $module['Product_Name'] ?></td>
+                                                    <td><?php echo $module['total_qty'] ?></td>
+                                                    <td><?php echo $module['received_quantity'] ?></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>
