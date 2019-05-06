@@ -18,4 +18,14 @@ class Product_release_model extends MY_Model{
 				 ->group_by('pp.id');
 		return $this->db->get()->result_array();
 	}
+	public function products_detail_get($id)
+	{
+		$this->db->select('product_release.*, product_release_product.*,product.Product_Name')
+				 ->from('product_release')
+				 ->join('product_release_product','product_release_product.product_release_id = product_release.id')
+				 ->join('product','product.id = product_release_product.product_id')
+				 ->where('product_release.id',$id);
+				 // ->group_by('pp.id');
+		return $this->db->get()->result_array();
+	}
 }

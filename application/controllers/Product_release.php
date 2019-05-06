@@ -122,9 +122,8 @@ class Product_release extends MY_Controller
     	$id = $this->Product_release_model->update('product_release', array('Status'=>$status), array(
             'id' => $id
         ));
-        if ($id) {
             redirect('product_release');
-        }
+        
     }
 
     public function get_order($id)
@@ -144,5 +143,13 @@ class Product_release extends MY_Controller
             $this->Product_release_model->update('product_release_product', array('received_quantity'=>$received_quantity[$i]), array('id' => $detail_id[$i]));
         }
         redirect('product_release');
+    }
+    public function view_product_release($id)
+    {
+        
+        $this->data['title'] = 'View Product Release';
+        $this->data['permission'] = $this->permission;
+        $this->data['products'] = $this->Product_release_model->products_detail_get($id);
+        $this->load->template('product_release/view_product_release', $this->data);
     }
 }

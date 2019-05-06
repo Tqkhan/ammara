@@ -27,35 +27,26 @@
                     <div class="panel-heading">
                         <div class="panel-title">
                             <h4>View Product release</h4>
-                            <?php 
-								if ($permission["created"] == "1") {
-							?>
-                            <a href="<?php echo base_url("product_release/create") ?>"><button class="btn btn-info pull-right">Add Product release</button></a>
-                            <?php } ?>
                         </div>
                     </div>
                     <div class="panel-body">
 
                         <div class="table-responsive">
-                            <table id="dataTableExample2" class="table table-bordered table-striped table-hover">
+                            <table id="dataTableExample3" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
                                         <th>Date</th>
                                         <th>Reference No</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Note</th>
-                                        <?php 
-											if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
-										?>
-                                        <th>Action</th>
-                                        <?php } ?>
+                                        <th>Product Name</th>
+                                        <th>Qty</th>
+                                        <th>Received Qty</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-							    		foreach ($product_release as $module) {
+							    		foreach ($products as $module) {
 							    	?>
                                         <tr>
                                             <td>
@@ -68,44 +59,16 @@
                                                 <?php echo $module["Reference_No"] ?>
                                             </td>
                                             <td>
-                                                <?php echo $module["Name"] ?>
+                                                <?php echo $module["Product_Name"] ?>
                                             </td>
                                             <td>
-                                                <?php echo $module["Status"] ?>
+                                                <?php echo $module["quantity"] ?>
                                             </td>
                                             <td>
-                                                <?php echo $module["Note"] ?>
+                                                <?php echo $module["received_quantity"] ?>
                                             </td>
-                                            <?php 
-												if ($permission["edit"] == "1" || $permission["deleted"] == "1"){
-											?>
-                                            <td>
-                                            	<?php 
-                                            		if($module["Status"] != 'Complete'){
-                                            	?>
-                                            	<div class="dropdown">
-												  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
-												  <span class="caret"></span></button>
-												  <ul class="dropdown-menu">
-												    <li><a href="<?php echo base_url('product_release/change_status/'.$module["id"].'/Pending') ?>">Pending</a></li>
-                                                    <li><a href="#" data-toggle="modal" data-target="#myModal" onclick="get_id(<?php echo $module["id"] ?>)">Complete</a></li>
-												    <!-- <li><a href="<?php echo base_url('product_release/change_status/'.$module["id"].'/Completed') ?>">Completed</a></li> -->
-												  </ul>
-												</div>
-												<?php } ?>
-                                                <?php 
-													if ($permission["edit"] == "1") {
-												?>
-                                                <a href="<?php echo base_url() ?>product_release/edit/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/edit.png" title="Edit" alt="Edit" width="25" height="25"></a>
-                                                <?php } ?>
-                                                <?php 
-													if ($permission["deleted"] == "1") {
-												?>
-                                                <a href="<?php echo base_url() ?>product_release/delete/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/d-icon.png" title="Delete" alt="Delete" width="25" height="25"></a>
-                                                <?php } ?>
-                                                <a href="<?php echo base_url() ?>product_release/view_product_release/<?php echo $module["id"] ?>"><img src="<?php echo base_url() ?>assets/icons/view.png" title="view Product Release" alt="view Product Release" width="25" height="25"></a>
-                                            </td>
-                                            <?php } ?>
+                                           
+                                            
                                         </tr>
                                         <?php } ?>
                                 </tbody>
@@ -164,26 +127,3 @@
       </div>
     </div>
 </form>
-<script type="text/javascript">
-    function get_id(id) {
-        $('#order_id').val(id)
-        $.ajax({
-            url: "<?php echo base_url() ?>product_release/get_order/"+id,
-            type: 'GET',
-            dataType: 'json', // added data type
-            success: function(res) {
-                console.log(res)
-                var tb  = $('.product-table tbody')
-                tb.empty()
-                for (var i = 0; i < res.length; i++) {
-                    var data = res[i]
-                    tb.append('<tr>')
-                    tb.append('</tr>')
-                    tb.find('tr').last().append('<td>'+data['Product_Name']+'</td>')
-                    tb.find('tr').last().append('<td>'+data['quantity']+'</td>')
-                    tb.find('tr').last().append('<td><input type="hidden" name="detail_id[]" value="'+data['id']+'"><input type="number" class="form-control" name="received_quantity[]" value="'+data['quantity']+'"></td>')
-                }
-            }
-        });
-    }
-</script>
