@@ -38,6 +38,7 @@ class Users extends MY_Controller {
         }
         $this->data['title'] = 'Create User';
         $this->data['role'] = $this->User_model->all_rows('user_type');
+        $this->data['sub_store'] = $this->User_model->all_rows('sub_store');
         $this->load->template('user/create',$this->data);
     }
 
@@ -47,18 +48,32 @@ class Users extends MY_Controller {
         {
             redirect('home');
         }
-        $data = $this->input->post();
-        $username = $this->User_model->get_row_single('users',array('name'=>$data['name']));
+        // $imp_sub_stores = implode(",",$_POST['sub_stores']);
+       
+        // print_r($imp_sub_stores);die();
+        // $_POST = $this->input->post();
+        $username = $this->User_model->get_row_single('users',array('name'=>$_POST['name']));
         if (!empty($username)) {
             $this->session->set_flashdata('error', 'Username Already Exist');
             redirect("users/create");
         }
-        $email = $this->User_model->get_row_single('users',array('email'=>$data['email']));
+        $email = $this->User_model->get_row_single('users',array('email'=>$_POST['email']));
         if (!empty($email)) {
             $this->session->set_flashdata('error', 'Email Already Exist');
             redirect("users/create");
         }
-        $data['password'] = md5($data['password']);
+        $_POST['password'] = md5($_POST['password']);
+
+        $data=array(
+
+          'name'=>$_POST['name'],
+          'email'=>$_POST['email'],
+          'password'=>$_POST['password'],
+          'role'=>$_POST['role'],
+          'alow_sub_store'=>$_POST['alow_sub_store'],
+          'sub_stores_id'=>$_POST['sub_stores'],
+        );
+
         $id = $this->User_model->insert('users',$data);
         if ($id) {
             redirect('users');

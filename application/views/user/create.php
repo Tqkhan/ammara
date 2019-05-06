@@ -72,10 +72,43 @@
                                 </div>
 
                             </div>
-<?php if ($this->session->flashdata('error')): ?>
-                <a class="btn btn-danger block full-width m-b"><?php echo $this->session->flashdata('error'); ?></a>
+                            <div class="form-group row">
 
-<?php endif ?>
+                                <label for="example-text-input" class="col-sm-3 col-form-label">Allow Sub Store<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <div class="radio radio-info radio-inline">
+                                        <input type="radio" id="transfer_yes" value="Yes" name="alow_sub_store" class="transfer_check" >
+                                        <label for="transfer_yes"> Yes </label>
+                                    </div>
+                                    <div class="radio radio-info radio-inline">
+                                        <input type="radio" id="transfer_no" value="No" name="alow_sub_store" checked="" class="transfer_check">
+                                        <label for="transfer_no"> No </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                               
+                            <div class="bank_id_transfer_div" style="display: none;">
+                                <div class="form-group row">
+
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Allow Sub Store<span class="required">*</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="exampleSelect2" name="sub_stores">
+                                           <?php 
+
+                                               foreach ($sub_store as $r) {
+                                                   echo '<option value="'.$r['id'].'">'.$r['Name'].'</option>';
+                                               }
+                                           ?>
+                                        </select>
+                                         <!-- <small>Select species sub Store. You may control+click</small> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                            <?php if ($this->session->flashdata('error')): ?>
+                                <a class="btn btn-danger block full-width m-b"><?php echo $this->session->flashdata('error'); ?></a>
+                            <?php endif ?>
                             <div class="form-group row">
 
                                 <div class="col-sm-12">
@@ -90,3 +123,18 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $('.transfer_check').on('change', function(){
+         var transfer_checkId = $(this).val();
+
+         if (transfer_checkId == "Yes") {
+             // alert(transfer_checkId);
+             $('.bank_id_transfer_div').show();
+         }
+         else
+         {
+             $('.bank_id_transfer_div').hide();
+
+         }
+    });
+</script>
