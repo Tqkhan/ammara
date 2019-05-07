@@ -31,8 +31,11 @@ class Over_inventory extends MY_Controller{
 	public function stock()
 	{
 		$this->data['title'] = 'Left Over Inventory';
+		$query = $this->db->query("SELECT * FROM users where id = ".$this->session->userdata('user_id')."");
+		$row = $query->row_array();
+		$sup_id = $row['sub_stores_id'];
 		$flow = $this->input->post('flow');
-		$this->data['detail'] = $this->over_inventory_model->get_stock_new($flow);
+		$this->data['detail'] = $this->over_inventory_model->get_stock_new($flow , $sup_id);
 		// echo "<pre>";
 		// print_r($this->data['detail']);
 		// die();

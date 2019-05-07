@@ -1,10 +1,13 @@
 <?php
 class Requisition_model extends MY_Model{
-	public function get_requisition($id = null)
+	public function get_requisition($sup_id, $id = null)
 	{
 		$this->db->select('requisition.*,sub_store.Name')
 				 ->from('requisition')
 				 ->join('sub_store', 'sub_store.id = requisition.store_id'); 
+		if ($sup_id == TRUE) {
+		 	$this->db->where('sub_store.id', $sup_id);
+		}
 		if ($id != null) {
 			$this->db->where('requisition.user_id', $id);
 		}

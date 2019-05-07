@@ -33,7 +33,8 @@ class Reports extends MY_Controller {
             $last_date = $explode_date[1];
             $str_last_date = strtotime($last_date);
             $str_last_day = date('Y-m-d' , $str_last_date );
-            
+            $this->data['str_current_day_show'] = $current_date;
+            $this->data['str_last_date_show'] = $last_date;
 
             $this->data['purchases_log'] = $this->Reports_model->purchases_log($vendor_id , $product_id , $str_current_day , $str_last_day);
             // echo "<pre>";
@@ -51,6 +52,34 @@ class Reports extends MY_Controller {
         $this->data['vednor'] = $this->Reports_model->all_rows('vednor');
         $this->data['product'] = $this->Reports_model->all_rows('product');
         $this->load->template('reports/purchases_report',$this->data);
+    }
+
+    public function product_report()
+    {
+        if ( $this->permission['view'] == '0' && $this->permission['view_all'] == '0' ) 
+        {
+            redirect('home');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $product_id = $_POST['product_id'];
+            
+            $this->data['product_log'] = $this->Reports_model->product_log($product_id);
+            // echo "<pre>";
+            // print_r($this->data['product_log']);
+            // die();
+        }
+        else{
+            $this->data['product_log'] = [];
+        }
+
+
+        $this->data['title'] = 'Product Report';
+        
+        $this->data['permission'] = $this->permission;
+        $this->data['vednor'] = $this->Reports_model->all_rows('vednor');
+        $this->data['product'] = $this->Reports_model->all_rows('product');
+        $this->load->template('reports/product_report',$this->data);
     }
 
 }

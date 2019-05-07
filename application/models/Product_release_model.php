@@ -1,12 +1,19 @@
 <?php
 class Product_release_model extends MY_Model{
 
-	public function get_product_release($id = null)
+	public function get_product_release($sup_id, $id = null)
 	{
 		$this->db->select('product_release.*,sub_store.Name')
-				 ->from('product_release')->join('sub_store', 'sub_store.id = product_release.Store'); if ($id != null) {
-				$this->db->where('product_release.user_id', $id);
-			}return $this->db->get()->result_array();
+				 ->from('product_release')
+				 ->join('sub_store', 'sub_store.id = product_release.Store'); 
+					
+				 if ($sup_id == TRUE) {
+					$this->db->where('sub_store.id', $sup_id);
+					}
+				if ($id != null) {
+					$this->db->where('product_release.user_id', $id);
+					}
+					return $this->db->get()->result_array();
 	}
 
 	public function get_order_product($id)

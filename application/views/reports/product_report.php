@@ -10,12 +10,12 @@
                             <i class="pe-7s-box1"></i>
                         </div>
                         <div class="header-title">
-                            <h1>Purchases Report</h1>
+                            <h1>Product Report</h1>
                             <small> </small>
                             <ol class="breadcrumb">
                                 <li><a href="<?php echo base_url() ?>"><i class="pe-7s-home"></i> Home</a></li>
 
-                                <li class="active">Purchases Report</li>
+                                <li class="active">Product Report</li>
                             </ol>
                         </div>
                     </div> <!-- /. Content Header (Page header) -->
@@ -25,32 +25,18 @@
                             <div class="panel panel-bd">
                                 <div class="panel-heading">
                                     <div class="panel-title">
-                                        <h4><?php if ($this->input->server('REQUEST_METHOD') == 'POST') {
-                                            $get_expense_data = $this->db->query("SELECT * FROM `vednor` where id='".$_POST['sup']."' ")->row_array(); echo  $get_expense_data['Name']; }
-                                            ?> Purchases Report <?php if ($this->input->server('REQUEST_METHOD') == 'POST') {
+                                        <h4> Product Report <?php if ($this->input->server('REQUEST_METHOD') == 'POST') {
                                             if ($_POST['product_id'] == TRUE) {
                                                  $get_product_data = $this->db->query("SELECT * FROM `product` where id='".$_POST['product_id']."' ")->row_array(); echo " Product Name "; echo  $get_product_data['Product_Name'];
                                              } }
-                                            ?> <?php if ($this->input->server('REQUEST_METHOD') == 'POST') { echo $newDate = date("d-m-Y", strtotime($str_current_day_show)); echo " To "; echo $newDate2 = date("d-m-Y", strtotime($str_last_date_show)); }
                                             ?> 
                                         </h4>
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <form action="<?php echo base_url()?>reports/purchases_report" method="POST" enctype="multipart/form-data" >
+                                    <form action="<?php echo base_url()?>reports/product_report" method="POST" enctype="multipart/form-data" >
                                         <div class="form-group row">
-                                            <div class="form-group col-lg-4">
-                                               <label for="">Supplier</label>
-                                                <select class="form-control" name="sup" >
-                                                <option value="">Select Supplier</option>
-                                                <?php 
-                                                   foreach ($vednor as $ven) {
-                                                       echo '<option value="'.$ven['id'].'">'.$ven['Name'].'</option>';
-                                                   }
-                                                   ?>
-                                             </select>
-                                            </div>
-                                            <div class="form-group col-lg-4">
+                                            <div class="form-group col-lg-11">
                                                <label for="">Product</label>
                                                 <select class="form-control" name="product_id" >
                                                 <option value="">Select Product</option>
@@ -61,16 +47,12 @@
                                                    ?>
                                              </select>
                                             </div>
-                                            <div class="form-group col-lg-4">
-                                               <label for="">Date</label>
-                                                 <input class="form-control" type="text" id="date_range_input" name="daterange" value="<?php echo  date("m/d/Y");?> - <?php echo  date("m/d/Y", strtotime(' +2 day'));?>" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-1">
+                                               <label for="" style="visibility: hidden;">Product</label>
                                                 <button type="submit" class="btn btn-primary pull-right" name="" value="search">Search</button>
                                             </div>
                                         </div>
+                                       
                                     </form>
                                 </div>
                                 <div class="panel-body">
@@ -80,30 +62,49 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Reference No</th>
-                                                    <th>Supplier</th>
+                                                    <th>WO #</th>
+                                                    <th>Type</th>
                                                     <th>Product Name</th>
                                                     <th>Order Qty</th>
-                                                    <th>Received Qty</th>
+                                                    <th>Send Qty</th>
                                                     <th>Status</th>
+                                                    <th>created_at</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                 $con = 1;
-                                                    foreach ($purchases_log as $module) {
+                                                $t_o_qty = 0;
+                                                $t_r_qty = 0;
+                                                    foreach ($product_log as $module) {
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $con++; ?></td>
-                                                    <td><?php echo $module['Reference_No'] ?></td>
-                                                    <td><?php echo $module['Name'] ?></td>
+                                                    <td><?php echo $module['wo_id'] ?></td>
+                                                    <td><?php echo $module['type'] ?></td>
                                                     <td><?php echo $module['Product_Name'] ?></td>
-                                                    <td><?php echo $module['total_qty'] ?></td>
+                                                    <td><?php echo $module['quantity'] ?></td>
                                                     <td><?php echo $module['received_quantity'] ?></td>
-                                                    <td><?php echo $module['Status'] ?></td>
+                                                    <td><?php echo $module['status'] ?></td>
+                                                    <td><?php echo $module['created_at'] ?></td>
                                                 </tr>
-                                                <?php } ?>
+                                                <?php 
+                                                $t_o_qty += $module['quantity'];
+                                                $t_r_qty += $module['received_quantity'];
+                                                } ?>
                                             </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><strong>Total</strong></td>
+                                                    <td></td>
+                                                    <td><strong><?php echo $t_o_qty;?></strong></td>
+                                                    <td><strong><?php echo $t_r_qty;?></strong></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                         
                                     </div>

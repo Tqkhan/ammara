@@ -28,6 +28,10 @@
                                 <h4>Add Product release</h4>
                             </div>
                         </div>
+                        <?php $query = $this->db->query("SELECT * FROM users where id = ".$this->session->userdata('user_id')."");
+                            $row = $query->row_array();
+                            $sup_id = $row['sub_stores_id'];
+                        ?>
                         <div class="panel-body">
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Date<span class="required">*</span></label>
@@ -40,10 +44,14 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Store<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="Store" required="">
+                                    <select class="form-control" name="Store" required="" <?php if ($sup_id == TRUE) { echo "disabled='true'"; }?>>
                                         <option>Select Store</option>
                                         <?php foreach ($table_sub_store as $t) {?>
-                                        <option value="<?php echo $t["id"] ?>"><?php echo $t["Name"] ?></option>
+                                        <option value="<?php echo $t["id"] ?>"<?php if ($sup_id == TRUE) {
+                                                    if ($t['id'] == $sup_id) {
+                                                       echo "Selected";
+                                                    }
+                                                }?>><?php echo $t["Name"] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

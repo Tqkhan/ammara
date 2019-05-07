@@ -18,12 +18,15 @@ class Requisition extends MY_Controller
     	if ($this->permission['view'] == '0' && $this->permission['view_all'] == '0') {
             redirect('home');
         }
+        $query = $this->db->query("SELECT * FROM users where id = ".$this->session->userdata('user_id')."");
+        $row = $query->row_array();
+        $sup_id = $row['sub_stores_id'];
         $this->data['title'] = 'Requisition';
         if ( $this->permission['view_all'] == '1'){
-			$this->data['requisition'] = $this->requisition_model->get_requisition();
+			$this->data['requisition'] = $this->requisition_model->get_requisition($sup_id);
 		}
 		elseif ($this->permission['view'] == '1') {
-			$this->data['requisition'] = $this->requisition_model->get_requisition($this->id);
+			$this->data['requisition'] = $this->requisition_model->get_requisition($this->id , $sup_id);
 		}
 		$this->data['permission'] = $this->permission;
 		$this->load->template('requisition/index',$this->data);

@@ -17,10 +17,17 @@ class Product_release extends MY_Controller
             redirect('home');
         }
         $this->data['title'] = 'Product_release';
+        $query = $this->db->query("SELECT * FROM users where id = ".$this->session->userdata('user_id')."");
+        $row = $query->row_array();
+        $sup_id = $row['sub_stores_id'];
+        // print_r($row['sub_stores_id']);
+
+
+
         if ($this->permission['view_all'] == '1') {
-            $this->data['product_release'] = $this->Product_release_model->get_product_release();
+            $this->data['product_release'] = $this->Product_release_model->get_product_release( $sup_id);
         } elseif ($this->permission['view'] == '1') {
-            $this->data['product_release'] = $this->Product_release_model->get_product_release($this->id);
+            $this->data['product_release'] = $this->Product_release_model->get_product_release($this->id, $sup_id);
         }
         $this->data['permission'] = $this->permission;
         $this->load->template('product_release/index', $this->data);

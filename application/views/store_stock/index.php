@@ -30,14 +30,24 @@
                         </div>
                     </div>
                     <div class="panel-body">
+                        <?php $query = $this->db->query("SELECT * FROM users where id = ".$this->session->userdata('user_id')."");
+                                    $row = $query->row_array();
+                                    $sup_id = $row['sub_stores_id'];
+                        ?>
 						<form method="post" action="<?php echo base_url('store_stock/view') ?>">
 							<div class="col-md-12">
 								<label>Stores</label>
-								<select class="form-control" name="store" required="">
+								<select class="form-control" name="store" required="" <?php if ($sup_id == TRUE) { echo "disabled='true'"; }?>>
 									<option>Select Store</option>
 									<?php 
 										foreach ($stores as $s) {
-											echo '<option value="'.$s['id'].'">'.$s['Name'].'</option>';
+											?>
+                                            <option value="<?php echo $s['id'];?>" <?php if ($sup_id == TRUE) {
+                                                    if ($s['id'] == $sup_id) {
+                                                       echo "Selected";
+                                                    }
+                                                }?>><?php echo $s['Name'];?></option>
+                                            <?php
 										}
 									?>
 								</select>
